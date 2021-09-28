@@ -31,7 +31,7 @@ class SpecList(Action):
         buttons = []
 
         for row in specs:
-            buttons.append({"title":row.spec_name,"payload":"/"+str(row.spec_id)})
+            buttons.append({"title":row.spec_name,"payload":"/inform{\"entry_id\": \""+str(row.spec_id)+"\"}"})
 
         dispatcher.utter_button_message("Select the specialization you want", buttons)
 

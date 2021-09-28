@@ -22,6 +22,7 @@ intents:
   - inform_userhash
   - inform_reporthash
   - inform_docthash
+  - inform
 
 
 entities:
@@ -99,7 +100,7 @@ responses:
 
   utter_ask_wether_doct_specialist:
   - text: "Do you want to meet a specialist ?"
-  - buttons:
+    buttons:
     - title: Yes
       payload: /affirm
     - title: No

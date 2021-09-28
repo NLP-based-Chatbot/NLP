@@ -8,8 +8,6 @@ stories:
   - action: utter_ask_name
   - intent: inform_patient_name
   - action: utter_ask_wether_doct_specialist
-  - intent: affirm
-  - action: act_list_specilizations
   - checkpoint: asked_wether_specialist
 
 
