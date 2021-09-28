@@ -1,0 +1,33 @@
+version: "2.0"
+
+rules:
+
+- rule: Details about the router compatible devices
+  steps:
+  - intent: compatible_devices
+  - action: utter_compatible_devices
+
+- rule: Porpose of wps button
+  steps:
+  - intent: purpose_wps_btn
+  - action: utter_purpose_wps_btn
+
+- rule: Number of devices can be connected to router
+  steps:
+  - intent: device_count
+  - action: utter_device_count
+
+- rule: wifi coverage
+  steps:
+  - intent: wifi_coverage
+  - action: utter_wifi_coverage
+
+- rule: Inform damaged unit
+  steps:
+  - intent: damaged_unit
+  - action: utter_damaged_unit
+
+- rule: Return a wifi unit
+  steps:
+  - intent: return_unit
+  - action: utter_return_unit

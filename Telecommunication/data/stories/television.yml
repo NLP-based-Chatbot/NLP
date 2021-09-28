@@ -1,0 +1,49 @@
+version: "2.0"
+
+stories:
+
+#get_tv_connection
+- story: Getting a new tv connection service provider given
+  steps:
+  - intent: get_tv_connection
+  - slot_was_set:
+    - television_service_provider: peo
+  - action: utter_get_tv_connection
+
+- story: Getting a new tv connection service provider not given
+  steps:
+  - intent: get_tv_connection
+  - action: utter_ask_preferable_tv_provider
+  - intent: ans_preferable_tv_provider
+  - action: utter_get_tv_connection
+
+#check_bill
+- story: Check tv connection bill service provider given
+  steps:
+  - intent: check_bill
+  - slot_was_set:
+    - television_service_provider: peo
+  - action: utter_check_bill
+
+- story: Getting a new tv connection service provider not given
+  steps:
+  - intent: check_bill
+  - action: utter_ask_preferable_tv_provider
+  - intent: ans_preferable_tv_provider
+  - action: utter_check_bill
+
+#tv_packages
+
+- story: Tv package details service provider given
+  steps:
+  - intent: tv_packages
+  - slot_was_set:
+    - television_service_provider: peo
+  - action: utter_tv_packages
+
+- story: Getting a new tv connection service provider not given
+  steps:
+  - intent: tv_packages
+  - action: utter_ask_preferable_tv_provider
+  - intent: ans_preferable_tv_provider
+  - action: utter_tv_packages

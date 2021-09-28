@@ -1,0 +1,45 @@
+version: "2.0"
+
+responses:
+# Genaral responses
+    utter_compatible_devices:
+    - text: You can connect PC/Switch/Router through Ethernet LAN, Wi-Fi Enabled devices, Analog Phone/Fax/POS machines, CCTV /surveillance devices.
+    
+    utter_purpose_wps_btn:
+    - text: WPS is Wi-Fi Protected Setup. WPS is a network security standard that allows users to easily secure a wireless home network, connect wireless devices to it without accessing the router configuration screens and wireless network security key/password. To connect WPS both parties should support WPS.
+
+    utter_device_count:
+    - text: 32 Devices can be connected to a normal router.
+
+    utter_wifi_coverage:
+    - text: 250M line of sight. The area may reduce when the signal passes through an object..
+
+    utter_damaged_unit:
+    - text: Please visit the nearest service center of your service provider.
+
+    utter_return_unit:
+    - text: Please Visit the nearest service center and Disconnect the connection to avoid bills hand return back the router and accessories.
+
+# Conditional responses
+    utter_new_broadband_conection:
+        - condition:
+            - type: slot
+              name: service_provider
+              value: dialog
+          text: "Please check from the Official Dialog website https://www.dialog.lk/browse/hbbRevampHomePage.jsp"
+        - condition:
+            - type: slot
+              name: service_provider
+              value: mobitel
+          text: "Please check from the Official Mobitel website https://www.mobitel.lk/broadband/new-connection"
+        - condition:
+            - type: slot
+              name: service_provider
+              value: hutch
+          text: "Please check from the Official Hutch website https://hutch.lk/mifi-router/"
+        - text: "There is no broadband connection service to the givien service provider"
+          
+  
+# Cross questions
+    utter_ask_preferable_service_provider:
+    - text: What is your preferable service provider to get a broadband connection?

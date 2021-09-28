@@ -1,0 +1,100 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - thanking
+#genaral
+  - new_connection
+  - change_plan
+  - check_ownership
+  - check_other_connections
+  - change_ownership
+  - get_loan
+  - check_balance
+  - recharge_account
+  - signal_lost
+  - sim_lost
+  - check_coverage
+  - ans_service_provider
+  - ans_connection_type
+#broadband
+  - new_broadband_conection
+  - compatible_devices
+  - purpose_wps_btn
+  - device_count
+  - wifi_coverage
+  - damaged_unit
+  - return_unit
+#packages
+  - package_info
+  - package_activate
+  - package_balance
+  - deactivate_package
+#television
+  - get_tv_connection
+  - check_bill
+  - tv_packages
+  - ans_preferable_tv_provider
+
+
+entities:
+  - package_type
+  - package_value
+  - service_provider
+  - television_service_provider
+  - connection_type
+
+slots:
+  package_type:
+    type: any
+  service_provider:
+    type: text
+    influence_conversation: true
+  connection_type:
+    type: text
+    influence_conversation: true
+  television_service_provider:
+    type: text
+    influence_conversation: true
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  
+  utter_thanking:
+  - text: "You're welcome"
+
+  utter_package:
+  - text: "You want Rs.{package_value} package right?"
+  
+  utter_service_provider:
+  - text: "Who is your service provider?"
+  
+  utter_activate_package:
+  - text: "Activating {service_provider} Rs. {package_value} data package."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

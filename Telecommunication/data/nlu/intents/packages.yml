@@ -1,0 +1,34 @@
+version: "2.0"
+
+nlu:
+- intent: package_info
+  examples: |
+    - What are the [voice](package_type) packages available?
+    - What are the [time based](package_type) data packages available?
+    - [Content based](package_type) data package details?
+    - Data package details?
+    - Can I get data package details?
+    - I want details about [daily](package_type) data packages?
+    - [Daily](package_type) data package details please?
+
+- intent: package_activate
+  examples: |
+    - I want to activate a [99](package_value) data package.
+    - Can I active [mobitel](service_provider) a [49](package_value) data card?
+    - Rs. [199](package_value) data card
+    - I want Rs. [29](package_value) data card
+    - I want [dialog](service_provider) Rs. [29](package_value) data card
+
+- intent: package_balance
+  examples: |
+    - What is remaining amount of my data package?
+    - Data package balance?
+    - I need to check data balance
+    - How much data available?
+
+- intent: deactivate_package
+  examples: |
+    - How to deactivate my [daily](package_type) package
+    - I want deactivate my [daily](package_type) package
+    - Remove my [time based](package_type) package
+    - How to remove my [daily](package_type) package

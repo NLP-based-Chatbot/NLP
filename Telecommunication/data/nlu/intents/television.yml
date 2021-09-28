@@ -1,0 +1,31 @@
+version: "2.0"
+
+nlu:
+- intent: get_tv_connection
+  examples: |
+    - What are the requrements to buy [dialog](television_service_provider) TV
+    - How to get a [peo](television_service_provider) TV connection?
+    - I want to get [peo](television_service_provider) TV connection
+    - I want [dialog](television_service_provider) TV
+    - How to obtain a [dialog](television_service_provider) TV connection?
+
+- intent: check_bill
+  examples: |
+    - How do I check my [dialog](television_service_provider) TV Bill?
+    - I want to check my [peo](television_service_provider) TV bill 
+    - How to check the TV bill
+    - I need to check the TV bill
+
+- intent: tv_packages
+  examples: |
+    - What are the peo TV packages available?
+    - Television package details?
+    - [Dialog](television_service_provider) TV package details?
+    - I want [peo](television_service_provider) TV package details?
+
+# Answer questions
+- intent: ans_preferable_tv_provider
+  examples: |
+    - [peo](television_service_provider) TV
+    - [Dialog](television_service_provider) TV
+    - I want [Dialog](television_service_provider) TV

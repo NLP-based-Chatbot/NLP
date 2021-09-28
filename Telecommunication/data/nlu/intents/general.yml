@@ -1,0 +1,100 @@
+version: "2.0"
+
+nlu:
+- intent: new_connection
+  examples: |
+    - How do I apply for a new [Postpaid](connection_type) plan
+    - I need a new [prepaid](connection_type) connection
+    - How to get a new [postpaid](connection_type) connection
+    - I want new [postpaid](connection_type) connection
+    - How to obtain a new connection?
+    - I need to get a new connection
+
+- intent: change_plan
+  examples: |
+    - Can I change my existing [postpaid](connection_type) to one of these plans
+    - Can I change my connection plan
+    - How to change my [prepaid]{"entity": "connection_type", "role": "current_connection_type"} plan to [postpaid]{"entity": "connection_type", "role": "new_connection_type"} plan 
+    - Is it possible to change my connection type
+
+- intent: check_ownership
+  examples: |
+    - How to confirm ownership for my mobile connection?
+    - How to get ownership details for my connection
+    - I need to check the ownership of my sim
+    - How to check ownership of sim
+
+- intent: check_other_connections
+  examples: |
+    - What are the other connections under my identification?
+    - Is it possible to get other connections under my id?
+    - Other connections registered to my id number?
+    - Are there more connection to my id number?
+
+- intent: change_ownership
+  examples: |
+    - How to correct my ownership details?
+    - How to change my ownership details?
+    - Is it possible to change ownership details?
+    - My ownership details are wrong, How to change?
+
+- intent: get_loan
+  examples: |
+    - How to get a load?
+    - Can I get a load?
+    - Is it possible to get a loan?
+    - I need to get a loan?
+
+- intent: check_balance
+  examples: |
+    - How to check my account balance?
+    - Account balance?
+    - How much balance available on my account?
+    - I want to get my account balance?
+
+- intent: sim_lost
+  examples: |
+    - My sim card is lost
+    - My sim card is damaged
+    - I need a new sim because by sim card is damaged
+    - I lost my sim card
+
+- intent: recharge_account
+  examples: |
+    - I want to recharge my account
+    - How to recharge my account?
+    - I need to recharge
+    - Recharge my account
+
+- intent: signal_lost
+  examples: |
+    - My data connection is very slow
+    - I got disconneted every time
+    - My data speed is at a very low level
+    - My signal level is low
+    - My download speed is very low
+
+- intent: check_coverage
+  examples: |
+    - I want to know whether I’m in Fixed LTE coverage area or not?
+    - Am I in Fixed LTE coverage area?
+    - Is it possible to get coverage area map?
+    - Coverage areas on the map
+
+
+# Answer to questions
+
+- intent: ans_service_provider
+  examples: |
+    - [dialog](service_provider)
+    - [mobitel](service_provider)
+    - [airtel](service_provider)
+    - My service provider is [mobitel](service_provider)
+    - It's [hutch](service_provider)
+    - I have a [etisalat](service_provider) sim
+
+- intent: ans_connection_type
+  examples: |
+    - [postpaid](connection_type)
+    - [prepaid](connection_type)
+
