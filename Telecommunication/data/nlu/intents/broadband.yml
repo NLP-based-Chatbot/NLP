@@ -1,0 +1,55 @@
+version: "2.0"
+
+nlu:
+- intent: new_broadband_conection
+  examples: |
+    - How to get a router?
+    - I want a wifi router
+    - How to get a [dialog](service_provider) 4G router.
+    - I want to get a [mobitel](service_provider) wifi router
+
+- intent: compatible_devices
+  examples: |
+    - What are the devices that can be connected to my router?
+    - Compatible devices to connect to the router?
+    - What are the comaptible devices that can be connected to the router?
+    - My laptop can be connected to the router?
+    - My smart phone can be connected to the router?
+    - Can I connect my mobile phone to the router?
+
+- intent: purpose_wps_btn
+  examples: |
+    - What is the purpose of the WPS button?
+    - What is the WPS button?
+    - WPS button
+    - Purpose of the WPS button
+
+- intent: device_count
+  examples: |
+    - How many devices can be connected to the router simultaneously?
+    - How many phones can be connected to my router?
+    - How many number of devices can be conneced to my router?
+    - Number of devices can be connected simultaneously to the router?
+
+- intent: wifi_coverage
+  examples: |
+    - What is the Wi-Fi coverage area of a router?
+    - I want to know the Wi-Fi coverage area of a router?
+    - Wifi-coverge of the router?
+    - How far the wifi signal will work?
+    - What is the distence of the wifi-coverage?
+
+- intent: damaged_unit
+  examples: |
+    - My router is not working
+    - My router is damnged
+    - Antena of the router is broken
+    - Router is not working properly
+    - My router is damaged
+
+- intent: return_unit
+  examples: |
+    - How to return my router?
+    - I need to return my router
+    - I don't need the router
+    - I want to retunr the router

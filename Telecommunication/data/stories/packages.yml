@@ -1,0 +1,17 @@
+version: "2.0"
+
+stories:
+
+- story: activate_data_package_service_provider_given
+  steps:
+  - intent: package_activate
+  - slot_was_set:
+    - service_provider: mobitel
+  - action: utter_activate_package
+
+- story: activate_data_package_service_provider_not_given
+  steps:
+  - intent: package_activate
+  - action: utter_service_provider
+  - intent: ans_service_provider
+  - action: utter_activate_package

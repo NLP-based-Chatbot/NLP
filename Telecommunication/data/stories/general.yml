@@ -1,0 +1,122 @@
+version: "2.0"
+
+stories:
+#new_connection
+- story: get_new_connection_connection_type_given
+  steps:
+  - intent: new_connection
+  - slot_was_set:
+    - connection_type: postpaid
+  - action: utter_new_connection
+
+- story: get_new_connection_connection_type_not_given
+  steps:
+  - intent: new_connection
+  - action: utter_ask_connection_type
+  - intent: ans_connection_type
+  - action: utter_new_connection
+
+#change_plan
+- story: Change the the connection plan between prepaid postpaid provider given
+  steps:
+  - intent: change_plan
+  - slot_was_set:
+    - service_provider: dialog
+  - action: utter_change_plan
+
+- story: Change the the connection plan between prepaid postpaid provider not given
+  steps:
+  - intent: change_plan
+  - action: utter_ask_connection_type
+  - intent: ans_connection_type
+  - action: utter_change_plan
+
+#get_loan
+- story: get_loan_provider_given
+  steps:
+  - intent: get_loan
+  - slot_was_set:
+    - service_provider: mobitel
+  - action: utter_get_loan
+
+- story: get_loan_provider_not_given
+  steps:
+  - intent: get_loan
+  - action: utter_ask_service_provider
+  - intent: ans_service_provider
+  - action: utter_get_loan
+
+#check_balance
+- story: Check balance provider given
+  steps:
+  - intent: check_balance
+  - slot_was_set:
+    - service_provider: hutch
+  - action: utter_check_balance
+
+- story: Check balance provider not given
+  steps:
+  - intent: check_balance
+  - action: utter_ask_service_provider
+  - intent: ans_service_provider
+  - action: utter_check_balance
+
+#sim_lost
+- story: Sim lost provider given
+  steps:
+  - intent: sim_lost
+  - slot_was_set:
+    - service_provider: airtel
+  - action: utter_sim_lost
+
+- story: Sim lost provider not given
+  steps:
+  - intent: sim_lost
+  - action: utter_ask_service_provider
+  - intent: ans_service_provider
+  - action: utter_sim_lost
+
+#recharge_account
+- story: Recharge account provider given
+  steps:
+  - intent: recharge_account
+  - slot_was_set:
+    - service_provider: dialog
+  - action: utter_recharge_account
+
+- story: Recharge account provider not given
+  steps:
+  - intent: recharge_account
+  - action: utter_ask_service_provider
+  - intent: ans_service_provider
+  - action: utter_recharge_account
+
+#signal_lost
+- story: Signal lost provider given
+  steps:
+  - intent: signal_lost
+  - slot_was_set:
+    - service_provider: dialog
+  - action: utter_signal_lost
+
+- story: Recharge account provider not given
+  steps:
+  - intent: signal_lost
+  - action: utter_ask_service_provider
+  - intent: ans_service_provider
+  - action: utter_signal_lost
+
+#check_coverge
+- story: Check coverage provider given
+  steps:
+  - intent: check_coverage
+  - slot_was_set:
+    - service_provider: dialog
+  - action: utter_check_coverage
+
+- story: Recharge account provider not given
+  steps:
+  - intent: check_coverage
+  - action: utter_ask_service_provider
+  - intent: ans_service_provider
+  - action: utter_check_coverage

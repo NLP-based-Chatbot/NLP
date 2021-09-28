@@ -1,0 +1,18 @@
+version: "2.0"
+
+rules:
+
+- rule: Check the sim ownership details
+  steps:
+  - intent: check_ownership
+  - action: utter_check_ownership
+
+- rule: Check other connection under one sim
+  steps:
+  - intent: check_other_connections
+  - action: utter_check_other_connections
+
+- rule: change the sim ownership
+  steps:
+  - intent: change_ownership
+  - action: utter_change_ownership
