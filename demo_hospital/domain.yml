@@ -1,0 +1,124 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - make_appiontment
+  - change_appiontment
+  - delete_appointment
+  - check_appointment
+  - get_report
+  - inform_doct_name
+  - inform_patient_name
+  - inform_usertype
+  - inform_date
+  - inform_time
+  - inform_relativetime
+  - inform_userhash
+  - inform_reporthash
+  - inform_docthash
+
+
+entities:
+  - reservation
+  - option
+  - service_person
+  - date
+  - person_name
+  - sp_name
+  - time
+  - userhash
+  - docthash
+  - reporthash
+  - client_person
+  - relativedate
+  - refer_after
+  - refer_before
+  - deliverable
+  - entry_id
+
+slots:
+  option:
+    type: text
+  date:
+    type: text
+  relativedate:
+    type: text
+  person_name:
+    type: text
+  sp_name:
+    type: text
+  time:
+    type: text
+  refer_after:
+    type: text
+  refer_before:
+    type: text
+  userhash:
+    type: text
+  docthash:
+    type: text
+  reporthash:
+    type: text
+  entry_id:
+    type: text
+
+actions:
+  - act_list_specilizations
+  - act_list_doctors
+  - act_show_timerange
+
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_ask_name:
+  - text: "Tell me your name first"
+
+  utter_ask_wether_doct_specialist:
+  - text: "Do you want to meet a specialist ?"
+  - buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+
+  utter_ask_date:
+  - text: "What is the day do you prefer?"
+
+  utter_ask_time:
+  - text: "Tell me a time comfortable for you"
+
+  utter_thank:
+  - text: "Thank you"
+
+  utter_thank_service:
+  - text: "Thank you for using our service"
+
+  
+
+session_config:
+  session_expiration_time: 120
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,47 @@
+version: "2.0"
+
+stories:
+
+- story: place an appiontment begin
+  steps:
+  - intent: make_appiontment
+  - action: utter_ask_name
+  - intent: inform_patient_name
+  - action: utter_ask_wether_doct_specialist
+  - intent: affirm
+  - action: act_list_specilizations
+  - checkpoint: asked_wether_specialist
+
+
+- story: place appointment affirm branch
+  steps:
+  - checkpoint: asked_wether_specialist
+  - intent: affirm
+  - action: act_list_specilizations
+  - intent: inform
+    entities:
+    - entry_id: "12"
+  - action: act_list_doctors
+  - intent: inform_docthash
+  - action: utter_ask_date
+  - or:
+    - intent: inform_relativetime
+    - intent: inform_date
+  - action: act_show_timerange
+  - intent: inform_time
+ # - checkpoint: before_final_appointment_placement
+
+
+- story: place appointment deny branch
+  steps:
+  - checkpoint: asked_wether_specialist
+  - intent: deny
+  - action: utter_ask_date
+  - or:
+    - intent: inform_relativetime
+    - intent: inform_date
+  - action: utter_ask_time
+  - intent: inform_time
+  - action: act_list_doctors
+  - intent: inform_docthash
+ # - checkpoint: before_final_appointment_placement
