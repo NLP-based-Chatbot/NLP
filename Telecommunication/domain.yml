@@ -49,6 +49,7 @@ entities:
   - service_provider
   - television_service_provider
   - connection_type
+  - package_value
 
 slots:
   package_type:
@@ -86,14 +87,6 @@ responses:
   utter_thanking:
   - text: "You're welcome"
 
-  utter_package:
-  - text: "You want Rs.{package_value} package right?"
-  
-  utter_service_provider:
-  - text: "Who is your service provider?"
-  
-  utter_activate_package:
-  - text: "Activating {service_provider} Rs. {package_value} data package."
 
 session_config:
   session_expiration_time: 60
