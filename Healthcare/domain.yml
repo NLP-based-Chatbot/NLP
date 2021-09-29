@@ -68,6 +68,8 @@ slots:
     type: text
   entry_id:
     type: text
+  current_intent:
+    type: text
 
 actions:
   - act_list_specilizations

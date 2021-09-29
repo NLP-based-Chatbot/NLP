@@ -42,4 +42,6 @@ stories:
   - intent: inform_time
   - action: act_list_doctors
   - intent: inform_docthash
+
+
  # - checkpoint: before_final_appointment_placement
