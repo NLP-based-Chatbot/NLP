@@ -89,22 +89,22 @@ responses:
         - type: slot
           name: service_provider
           value: dialog
-      text: Dialog customer can check the balance by dailing '#456#'.
+      text: Dialog customers can check the balance by dailing '#456#'.
     - condition:
         - type: slot
           name: service_provider
           value: mobitel
-      text: Mobitel customer can check the balance by dailing '*100#'.
+      text: Mobitel customers can check the balance by dailing '*100#'.
     - condition:
         - type: slot
           name: service_provider
           value: airtel
-      text: Airtel customer can check the balance by dailing '*555#'.
+      text: Airtel customers can check the balance by dailing '*555#'.
     - condition:
         - type: slot
           name: service_provider
           value: hutch
-      text: Hutch customer can check the balance by dailing '*344#'.
+      text: Hutch customers can check the balance by dailing '*344#'.
 
   utter_sim_lost:
     - condition:
