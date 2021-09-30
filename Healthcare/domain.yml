@@ -3,12 +3,13 @@ session_config:
   session_expiration_time: 120
   carry_over_slots_to_new_session: true
 intents:
+- affirm
+- make_appiontment
+- inform_time
 - inform_date
 - inform_docthash
-- inform_time
 - inform_patient_name
-- make_appiontment
-- affirm
+- inform
 - greet
 - goodbye
 - deny
@@ -22,7 +23,6 @@ intents:
 - inform_relativetime
 - inform_userhash
 - inform_reporthash
-- inform
 entities:
 - client_person
 - date
@@ -38,6 +38,7 @@ entities:
 - reservation
 - service_person
 - sp_name
+- spec_id
 - time
 - userhash
 slots:
@@ -75,6 +76,9 @@ slots:
     type: text
     influence_conversation: true
   entry_id:
+    type: text
+    influence_conversation: true
+  spec_id:
     type: text
     influence_conversation: true
   current_intent:
@@ -117,9 +121,9 @@ actions:
 - act_place_appointment
 - act_set_intent
 - act_show_timerange
-- form_place_appointment
 - utter_ask_date
 - utter_ask_name
+- utter_ask_time
 - utter_ask_wether_doct_specialist
 forms:
   form_place_appointment:

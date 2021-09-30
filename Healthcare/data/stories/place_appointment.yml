@@ -2,16 +2,38 @@ version: "2.0"
 
 stories:
 
-- story: place an appiontment 1
+- story: place an appiontment 
   steps:
   - intent: make_appiontment
-  - action: act_set_intent
+  - action: form_place_appointment
+  - active_loop: form_place_appointment
   - action: utter_ask_name
   - intent: inform_patient_name
   - action: utter_ask_wether_doct_specialist
-  - or:
-    - intent: deny
-    - intent: affirm
+  - checkpoint: asked_is_specialist
+
+- story: place appointment specialist 
+  steps:
+  - checkpoint: asked_is_specialist
+  - intent: affirm
+  - action: act_list_specilizations
+  - intent: inform
+    entities:
+    - spec_id: 12
+  - slot_was_set:
+    - spec_id: 12
+  - checkpoint: end_of_select_specilization_phase
+
+- story: place appointment not specialist 
+  steps:
+  - checkpoint: asked_is_specialist
+  - intent: deny
+  - checkpoint: end_of_select_specilization_phase
+
+
+- story: after specialization phase
+  steps:
+  - checkpoint: end_of_select_specilization_phase
   - action: act_list_doctors
   - intent: inform_docthash
   - action: utter_ask_date
@@ -19,50 +41,6 @@ stories:
     - intent: inform_relativetime
     - intent: inform_date
   - action: act_show_timerange
+  - action: utter_ask_time
   - intent: inform_time
-
-  # - checkpoint: asked_wether_specialist
-
-
-# - story: place an appiontment begin 2
-#   steps:
-#   - intent: make_appiontment
-#   - action: utter_ask_name
-#   - intent: inform_patient_name
-#   - action: utter_ask_wether_doct_specialist
-#   - checkpoint: asked_wether_specialist
-
-
-# - story: place appointment affirm branch
-#   steps:
-#   - checkpoint: asked_wether_specialist
-#   - intent: affirm
-#   - action: act_list_specilizations
-#   - intent: inform
-#     entities:
-#     - entry_id: "12"
-#   - action: act_list_doctors
-#   - intent: inform_docthash
-#   - action: utter_ask_date
-#   - or:
-#     - intent: inform_relativetime
-#     - intent: inform_date
-#   - action: act_show_timerange
-#   - intent: inform_time
-#   - checkpoint: before_final_appointment_placement
-
-
-# - story: place appointment deny branch
-#   steps:
-#   - checkpoint: asked_wether_specialist
-#   - intent: deny
-#   - action: utter_ask_date
-#   - or:
-#     - intent: inform_relativetime
-#     - intent: inform_date
-#   - action: utter_ask_time
-#   - intent: inform_time
-#   - action: act_list_doctors
-#   - intent: inform_docthash
-#   - checkpoint: before_final_appointment_placement
 

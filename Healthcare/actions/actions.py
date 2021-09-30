@@ -3,7 +3,9 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
-from rasa_sdk.forms import FormAction
+from rasa_sdk.forms import FormAction,FormValidationAction
+
+import json
 
 class SetIntent(Action):
 
@@ -91,9 +93,11 @@ class TimeRange(Action):
 
         return []
 
-# class PlaceAppointment(FormAction):
+class PlaceAppointment(FormAction):
 
-#     def name(self) -> Text:
-#         return "form_place_appointment"
+    def name(self) -> Text:
+        return "form_place_appointment"
+
+
 
     
