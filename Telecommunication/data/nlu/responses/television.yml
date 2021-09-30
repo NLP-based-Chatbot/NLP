@@ -53,4 +53,3 @@ responses:
 # Cross questions
   utter_ask_preferable_tv_provider:
     - text: What is your preferable television connection? 
-    - text: Peo Tv or Dialog TV?

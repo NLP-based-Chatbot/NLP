@@ -172,7 +172,8 @@ responses:
         - type: slot
           name: service_provider
           value: hutch
-      text: Call Airtel customer care 1788.
+      text: Call Hutch customer care 1788.
+    - text: Who is your service provider?
 
   utter_check_coverage:
     - condition:
@@ -201,4 +202,4 @@ responses:
   utter_ask_connection_type:
     - text: What is your connection type? Prepaid or Postpaid?
   utter_ask_service_provider:
-    - text: What is your service provider?
+    - text: Who is your service provider?

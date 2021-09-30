@@ -49,7 +49,6 @@ entities:
   - service_provider
   - television_service_provider
   - connection_type
-  - package_value
 
 slots:
   package_type:

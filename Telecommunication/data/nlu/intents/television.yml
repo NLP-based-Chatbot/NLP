@@ -6,8 +6,10 @@ nlu:
     - What are the requrements to buy [dialog](television_service_provider) TV
     - How to get a [peo](television_service_provider) TV connection?
     - I want to get [peo](television_service_provider) TV connection
+    - I want to get TV connection
     - I want [dialog](television_service_provider) TV
     - How to obtain a [dialog](television_service_provider) TV connection?
+    - How to obtain a television connections?
 
 - intent: check_bill
   examples: |
