@@ -1,0 +1,35 @@
+
+version: "2.0"
+stories:
+- story: interactive_story_1
+  steps:
+  - intent: make_appiontment
+    entities:
+    - reservation: appointment
+  - action: act_set_intent
+  - action: utter_ask_name
+  - intent: inform_patient_name
+    entities:
+    - person_name: kavindu
+  - slot_was_set:
+    - person_name: kavindu
+  - action: utter_ask_wether_doct_specialist
+  - intent: affirm
+  - action: act_list_doctors
+  - intent: inform_docthash
+    entities:
+    - docthash: doc_4j5k2454jkg54kh3465hkj256k
+  - slot_was_set:
+    - docthash: doc_4j5k2454jkg54kh3465hkj256k
+  - action: utter_ask_date
+  - intent: inform_date
+    entities:
+    - date: 2021/10/02
+  - slot_was_set:
+    - date: 2021/10/02
+  - action: act_show_timerange
+  - intent: inform_time
+    entities:
+    - time: 19:30
+  - slot_was_set:
+    - time: 19:30
