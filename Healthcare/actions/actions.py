@@ -6,6 +6,11 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.forms import FormAction,FormValidationAction
 
 import json
+import requests
+import environ
+
+
+env = environ.Env()
 
 class SetIntent(Action):
 
@@ -26,14 +31,14 @@ class SpecList(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        specs = session.query(Specialization)
+        specs = json.loads()
 
         buttons = []
 
         for row in specs:
             buttons.append({"title":row.spec_name,"payload":"/inform{\"entry_id\": \""+str(row.spec_id)+"\"}"})
 
-        dispatcher.utter_button_message("Select the specialization you want", buttons)
+        dispatcher.utter_message("Select the specialization you want", buttons)
 
         return []
 
@@ -62,7 +67,7 @@ class DoctorList(Action):
         for row in doctors:
             buttons.append({"title": "Dr."+row.first_name+" "+row.last_name,"payload":"/"+str(row.docthash)})
 
-        dispatcher.utter_button_message("List of Doctors", buttons)
+        dispatcher.utter_message("List of Doctors", buttons)
 
         return []
 
