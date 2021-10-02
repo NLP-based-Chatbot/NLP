@@ -23,6 +23,7 @@ intents:
   - check_coverage
   - ans_service_provider
   - ans_preferable_payment_method
+  - ans_preferable_service_provider
 #broadband
   - new_broadband_conection
   - compatible_devices
@@ -32,10 +33,14 @@ intents:
   - damaged_unit
   - return_unit
 #packages
-  - package_info
+  - data_package_info
   - package_activate
   - package_balance
   - deactivate_package
+  - data_package_info_inform
+  - ans_payment_method
+  - ans_package_type
+  - ans_package_value
 #television
   - get_tv_connection
   - check_bill
@@ -86,6 +91,9 @@ slots:
     influence_conversation: true
 
 #television
+  tv_provider:
+    type: text
+    influence_conversation: true
   preferable_tv_provider:
     type: text
     influence_conversation: true
@@ -103,18 +111,39 @@ responses:
 
 #packages
   utter_ask_package_type:
-    - text: What type of package do you prefer?
-    - text: Data card, time based, content based, anytime, unlimited. etc
+    - text: What type of package do you prefer? Data card, time based, content based, anytime or unlimited?
   utter_ask_package_value:
     - text: What is the cost you can spend on the package?
   utter_ask_service_provider:
     - text: Who is your service provider?
   utter_ask_payment_method:
     - text:  Are you using prepaid or postpaid connection?
+  utter_submit_data_package_form:
+    - text: form submitted
 
 #television
   utter_ask_preferable_tv_provider:
     - text: What is your preferable television connection? 
+forms:
+  data_package_form:
+    required_slots:
+      service_provider:
+        - type: from_entity
+          entity: service_provider
+          intent: ans_service_provider
+      payment_method:
+        - type: from_entity
+          entity: payment_method  
+          intent: ans_payment_method   
+      package_type:
+        - type: from_entity
+          entity: package_type
+          intent: ans_package_type
+      package_value:
+        - type: from_entity
+          entity: package_value
+          intent: ans_package_value
+
 
 actions:
   - validate_data_package_form
