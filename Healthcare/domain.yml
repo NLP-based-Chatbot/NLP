@@ -3,12 +3,12 @@ session_config:
   session_expiration_time: 120
   carry_over_slots_to_new_session: true
 intents:
-- affirm
 - make_appiontment
-- inform_time
+- inform_patient_name
 - inform_date
 - inform_docthash
-- inform_patient_name
+- inform_time
+- affirm
 - inform
 - greet
 - goodbye
