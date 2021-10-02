@@ -5,8 +5,8 @@ nlu:
   examples: |
     - How to get a router?
     - I want a wifi router
-    - How to get a [dialog](service_provider) 4G router.
-    - I want to get a [mobitel](service_provider) wifi router
+    - How to get a [dialog](preferable_service_provider) 4G router.
+    - I want to get a [mobitel](preferable_service_provider) wifi router
 
 - intent: compatible_devices
   examples: |

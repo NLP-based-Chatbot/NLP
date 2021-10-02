@@ -22,7 +22,7 @@ intents:
   - sim_lost
   - check_coverage
   - ans_service_provider
-  - ans_connection_type
+  - ans_preferable_payment_method
 #broadband
   - new_broadband_conection
   - compatible_devices
@@ -44,48 +44,80 @@ intents:
 
 
 entities:
+#genaral
+  - preferable_payment_method
+  - preferable_service_provider  
+
+#broadband
+#  - preferable_service_provider 
+
+#packages
   - package_type
   - package_value
   - service_provider
-  - television_service_provider
-  - connection_type
+  - payment_method
+
+#television
+  - tv_provider
+  - preferable_tv_provider
 
 slots:
+#genaral
+  preferable_service_provider:
+    type: text
+    influence_conversation: true
+  preferable_payment_method:
+    type: text
+    influence_conversation: true
+#broadband
+
+#packages
   package_type:
-    type: any
+    type: text
+    influence_conversation: true
+  package_value:
+    type: text
+    influence_conversation: true
   service_provider:
     type: text
     influence_conversation: true
-  connection_type:
+  payment_method:
     type: text
     influence_conversation: true
-  television_service_provider:
+
+#television
+  preferable_tv_provider:
     type: text
     influence_conversation: true
+
 
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
+#cross questions
+#genaral
+  utter_ask_preferable_payment_method:
+    - text: What is your connection type? Prepaid or Postpaid?
+  utter_ask_preferable_service_provider:
+    - text: What is your preferable service provider?
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+#broadband
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+#packages
+  utter_ask_package_type:
+    - text: What type of package do you prefer?
+    - text: Data card, time based, content based, anytime, unlimited. etc
+  utter_ask_package_value:
+    - text: What is the cost you can spend on the package?
+  utter_ask_service_provider:
+    - text: Who is your service provider?
+  utter_ask_payment_method:
+    - text:  Are you using prepaid or postpaid connection?
 
-  utter_happy:
-  - text: "Great, carry on!"
+#television
+  utter_ask_preferable_tv_provider:
+    - text: What is your preferable television connection? 
 
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-  
-  utter_thanking:
-  - text: "You're welcome"
-
+actions:
+  - validate_data_package_form
 
 session_config:
   session_expiration_time: 60

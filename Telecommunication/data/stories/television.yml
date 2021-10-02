@@ -7,7 +7,7 @@ stories:
   steps:
   - intent: get_tv_connection
   - slot_was_set:
-    - television_service_provider: peo
+    - tv_provider: peo
   - action: utter_get_tv_connection
 
 - story: Getting a new tv connection service provider not given
@@ -22,7 +22,7 @@ stories:
   steps:
   - intent: check_bill
   - slot_was_set:
-    - television_service_provider: peo
+    - tv_provider: peo
   - action: utter_check_bill
 
 - story: Getting a new tv connection service provider not given
@@ -38,7 +38,7 @@ stories:
   steps:
   - intent: tv_packages
   - slot_was_set:
-    - television_service_provider: peo
+    - tv_provider: peo
   - action: utter_tv_packages
 
 - story: Getting a new tv connection service provider not given

@@ -20,7 +20,7 @@ responses:
   utter_new_connection:
     - condition:
         - type: slot
-          name: connection_type
+          name: preferable_payment_method
           value: prepaid
       text: "Please check from the Official websites of service providers 
              Dialog - https://www.dialog.lk/mobile-prepaid-packages
@@ -29,7 +29,7 @@ responses:
              Hutch - https://hutch.lk"
     - condition:
         - type: slot
-          name: connection_type
+          name: preferable_payment_method
           value: postpaid
       text: "Please check from the Official websites of service providers 
              Dialog - https://www.dialog.lk/mobile-postpaid
@@ -41,7 +41,7 @@ responses:
   utter_get_loan:
     - condition:
         - type: slot
-          name: service_provider
+          name: preferable_service_provider
           value: dialog
       text: Dial 356 or '#356#'
     - condition:
@@ -197,9 +197,3 @@ responses:
           value: hutch
       text: You can see the Hutch coverage manp from here https://hutch.lk/coverage-map/.
 
-
-  # Cross questions
-  utter_ask_connection_type:
-    - text: What is your connection type? Prepaid or Postpaid?
-  utter_ask_service_provider:
-    - text: Who is your service provider?

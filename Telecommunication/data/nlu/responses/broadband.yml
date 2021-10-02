@@ -24,22 +24,20 @@ responses:
     utter_new_broadband_conection:
         - condition:
             - type: slot
-              name: service_provider
+              name: preferable_service_provider
               value: dialog
           text: "Please check from the Official Dialog website https://www.dialog.lk/browse/hbbRevampHomePage.jsp"
         - condition:
             - type: slot
-              name: service_provider
+              name: preferable_service_provider
               value: mobitel
           text: "Please check from the Official Mobitel website https://www.mobitel.lk/broadband/new-connection"
         - condition:
             - type: slot
-              name: service_provider
+              name: preferable_service_provider
               value: hutch
           text: "Please check from the Official Hutch website https://hutch.lk/mifi-router/"
         - text: "There is no broadband connection service to the givien service provider"
           
-  
-# Cross questions
-    utter_ask_preferable_service_provider:
-    - text: What is your preferable service provider to get a broadband connection?
+
+

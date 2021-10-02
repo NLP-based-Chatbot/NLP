@@ -1,15 +1,34 @@
 version: "2.0"
 
 nlu:
-- intent: package_info
+- intent: data_package_info
   examples: |
-    - What are the [voice](package_type) packages available?
+    - I'd like to know about data packages.
+    - I want details about data packages.
+    - What are the data packages available?
+    - Data package details?
+    - Could you please give me details about data packages?
+    - Can I get data package details?
+
+- intent: data_package_info_inform
+  examples: |
+    - What are the [mobitel](service_provider) packages available?
     - What are the [time based](package_type) data packages available?
     - [Content based](package_type) data package details?
-    - Data package details?
-    - Can I get data package details?
     - I want details about [daily](package_type) data packages?
     - [Daily](package_type) data package details please?
+    - I want details about [dialog](service_provider) data packages
+    - What are [prepaid](payment_method) data packages available for [mobitel](service_provider)?
+    - I want details about [dialog](service_provider) Rs. [99](package_value) data package
+    - Data packages for Rs. [49](package_value)?
+    - I want details about Rs. [29](package_value) data package
+    - [Hutch](package_value) Rs.[49](package_value) package details please?
+
+
+
+
+
+
 
 - intent: package_activate
   examples: |

@@ -1,0 +1,19 @@
+version: "2.0"
+
+rules:
+
+- rule: package details form
+  steps:
+  - intent: data_package_info
+  - action: data_package_form
+  - active_loop: data_package_form
+
+- rule: package details form submit
+  condition:
+  - active_loop: data_package_form
+  steps:
+  - action: data_package_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit_data_package_form
