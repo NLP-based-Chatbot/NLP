@@ -131,10 +131,12 @@ forms:
         - type: from_entity
           entity: service_provider
           intent: ans_service_provider
+          not_intent : ans_preferable_service_provider 
       payment_method:
         - type: from_entity
           entity: payment_method  
-          intent: ans_payment_method   
+          intent: ans_payment_method  
+          not_intent : ans_preferable_payment_method 
       package_type:
         - type: from_entity
           entity: package_type

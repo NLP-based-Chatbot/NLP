@@ -10,7 +10,7 @@ PACKAGE_TYPES = ["data card", "time based", "content based", "anytime", "unlimit
 class ActionPackageDetails(Action):
 
     def name(self) -> Text:
-        return "action_hello_world"
+        return "get_package_details"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -43,11 +43,11 @@ class ValidateDataPackageForm(FormValidationAction):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
        
-        if slot_value.lower() not in ALLOWD_SERVICE_PROVIDERS:
+        if slot_value.lower() not in PAYMENT_METHODS:
             dispatcher.utter_message(text=f"We can only give details about Prepaid and Postpaid plans")
-            return {"service_provider": None}
+            return {"payment_method": None}
         dispatcher.utter_message(text=f"OK! you want details about {slot_value} plans.")
-        return {"service_provider": slot_value}
+        return {"payment_method": slot_value}
     
     def validate_package_type(self, 
             slot_value: Any,
@@ -55,8 +55,8 @@ class ValidateDataPackageForm(FormValidationAction):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
        
-        if slot_value.lower() not in ALLOWD_SERVICE_PROVIDERS:
+        if slot_value.lower() not in PACKAGE_TYPES:
             dispatcher.utter_message(text=f"We can only give details about Data card, time based, content based, anytime and unlimited plans.")
-            return {"service_provider": None}
+            return {"package_type": None}
         dispatcher.utter_message(text=f"OK! you want details about{slot_value} plans.")
-        return {"service_provider": slot_value}
+        return {"package_type": slot_value}

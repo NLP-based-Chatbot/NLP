@@ -54,6 +54,8 @@ nlu:
   examples: |
     - Rs. [99](package_value) [unlimited](package_type)
     - [time based](package_type) data packages
+    - [Unlimited](package_type)
+    - [time based](package_type)
     - [Unlimited](package_type) data packages
     - Rs. [99](package_value) [Data card](package_type)
     - [content based](package_type) package
