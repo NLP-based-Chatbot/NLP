@@ -16,3 +16,19 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: place appointment form
+  steps:
+  - intent: make_appointment
+  - action: form_place_appointment
+  - active_loop: form_place_appointment
+
+- rule: place appointment form submit
+  condition:
+  - active_loop: form_place_appointment
+  steps:
+  - action: form_place_appointment
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: act_place_appointment
