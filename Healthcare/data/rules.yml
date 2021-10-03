@@ -1,39 +1,39 @@
-# version: "2.0"
+# # version: "2.0"
 
-rules:
+# rules:
 
-- rule: out-of-scope
-  steps:
-  - intent: out_of_scope
-  - action: utter_out_of_scope
+# - rule: out-of-scope
+#   steps:
+#   - intent: out_of_scope
+#   - action: utter_out_of_scope
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+# - rule: Say goodbye anytime the user says goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
 
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+# - rule: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
 
-- rule: place appointment form
-  steps:
-  - intent: make_appointment
-  - action: form_place_appointment
-  - active_loop: form_place_appointment
+# - rule: place appointment form
+#   steps:
+#   - intent: make_appointment
+#   - action: form_place_appointment
+#   - active_loop: form_place_appointment
 
-- rule: place appointment form submit
-  condition:
-  - active_loop: form_place_appointment
-  steps:
-  - action: form_place_appointment
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: act_place_appointment
-  
-- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
-  steps:
-  - intent: nlu_fallback
-  - action: utter_please_rephrase
+# # - rule: place appointment form submit
+# #   condition:
+# #   - active_loop: form_place_appointment
+# #   steps:
+# #   - action: form_place_appointment
+# #   - active_loop: null
+# #   - slot_was_set:
+# #     - requested_slot: null
+# #   - action: act_place_appointment
+
+# - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+#   steps:
+#   - intent: nlu_fallback
+#   - action: utter_please_rephrase

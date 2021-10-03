@@ -3,12 +3,12 @@ session_config:
   session_expiration_time: 120
   carry_over_slots_to_new_session: true
 intents:
-- make_appiontment
-- affirm
-- inform_patient_name
 - inform_date
+- inform_patient_name
+- affirm
 - inform
 - inform_time
+- make_appiontment
 - inform_docthash
 - greet
 - goodbye
@@ -117,13 +117,15 @@ responses:
   - text: Thank you for using our service
   utter_please_rephrase:
   - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_out_of_scope:
+  - text: I'm sorry, I can't understand what are you saying?
 actions:
 - act_list_doctors
 - act_list_specilizations
 - act_place_appointment
+- act_set_appoint_data
 - act_set_intent
 - act_show_timerange
-- act_set_appoint_data
 - utter_ask_date
 - utter_ask_name
 - utter_ask_time
