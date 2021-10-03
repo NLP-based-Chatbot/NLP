@@ -120,6 +120,9 @@ responses:
   utter_thank_service:
   - text: "Thank you for using our service"
 
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request.
+
   
 
 session_config:
