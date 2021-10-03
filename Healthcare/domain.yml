@@ -124,6 +124,7 @@ actions:
 - act_set_intent
 - act_show_timerange
 - act_place_appointment
+- act_set_appoint_data
 - utter_ask_date
 - utter_ask_name
 - utter_ask_time

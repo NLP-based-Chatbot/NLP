@@ -53,4 +53,6 @@ stories:
   - intent: inform_time
   - action: form_place_appointment
   - active_loop: null
+  - action: act_set_appoint_data
+  - action: act_place_appointment
 

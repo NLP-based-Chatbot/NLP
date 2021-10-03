@@ -8,6 +8,7 @@ from rasa_sdk.forms import FormAction,FormValidationAction
 import json
 import requests
 import environ
+import datetime
 
 from pathlib import Path
 import os
@@ -116,9 +117,58 @@ class TimeRange(Action):
 
         return []
 
-class PlaceAppointment(FormAction):
+class PlaceAppointment(Action):
 
     def name(self) -> Text:
-        return "form_place_appointment"
+        return "act_place_appointment"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        date = tracker.get_slot("date")
+        time = tracker.get_slot("time")
+        docthash = tracker.get_slot("docthash")
+        username = tracker.get_slot("person_name")
+
+        response_doctor = requests.post(POSTURL,json={"function":"docbyhash","data":{"docthash":docthash}})
+        doctor = response_doctor.json()[0]
+
+        response_patient = requests.post(POSTURL,json={"function":"newpatient","data":{"username":username}})
+        patient = response_patient.json()[0]
+
+        doct_id = doctor["pk"]
+        cust_id = patient["pk"]
+
+        response = requests.post(POSTURL,json={"function":"newappoint","data":{"doct_id":doct_id , "cust_id":cust_id,"date":date,"time":time}})
+
+        return []
+
+class PreprocessAppointmentData(Action):
+
+    def name(self) -> Text:
+        return "act_set_appoint_data"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        date = tracker.get_slot("date")
+
+        if date==None:
+            reldate = tracker.get_slot("relative_date")
+            if reldate=="today":
+                date = str(datetime.date.today())
+            elif reldate=="tomorrow":
+                date = str(datetime.date.today()+datetime.timedelta(days=1))
+
+        # response = requests.post(POSTURL,json={"function":"docbyhash","data":{"docthash":docthash}})
+        # doctor = response.json()[0]
+
+
+        return [SlotSet("date",date)]
+                
+
+    
 
     

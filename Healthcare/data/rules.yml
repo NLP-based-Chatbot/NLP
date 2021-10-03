@@ -32,6 +32,7 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: act_place_appointment
+  
 - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
   steps:
   - intent: nlu_fallback
