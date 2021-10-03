@@ -219,19 +219,25 @@ nlu:
     - [report_feoguow3thogotoirgw5f67](reporthash)
 - intent: inform
   examples: |
-    - 1(entry_id)
-    - 2(entry_id)
-    - 3(entry_id)
-    - 4(entry_id)
-    - 5(entry_id)
-    - 11(entry_id)
-    - 12(entry_id)
-    - 13(entry_id)
-    - 16(entry_id)
-    - [5](spec_id)
-    - [8](spec_id)
-    - [34](spec_id)
+    - [1](entry_id)
+    - [2](entry_id)
+    - [3](entry_id)
+    - [4](entry_id)
+    - [5](entry_id)
+    - [11](entry_id)
+    - [12](entry_id)
+    - [13](entry_id)
+    - [16](entry_id)
+
 - regex: date
+
+- intent: out_of_scope
+  examples: |
+    - I want to order food
+    - What is 2 + 2?
+    - Who's the US President?
+
+- regex: userhash
   examples: |
     - ((0[0-9]|[0-9])|1[0-2])-([0-2][0-9]|[3][0-1])
     - ((0[0-9]|[0-9])|1[0-2])/([0-2][0-9]|[3][0-1])

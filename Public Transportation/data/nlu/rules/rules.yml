@@ -1,0 +1,72 @@
+version: '2.0'
+
+rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  # New Rules
+
+  - rule: Rephrase unexpacted intent
+    steps:
+      - intent: nlu_fallback
+      - action: utter_rephrase
+
+  - rule: Schedule form
+    steps:
+      - intent: ask_schedule
+      - action: utter_searching
+      - action: schedule_form
+      - active_loop: schedule_form
+      - active_loop: null
+      - action: action_get_schedule
+      - action: action_reset_transport_slots
+
+  - rule: Booking form
+    steps:
+      - intent: ask_booking
+      - action: utter_searching
+      - action: schedule_form
+      - active_loop: schedule_form
+      - active_loop: null
+      - action: utter_slots_booking
+      - action: action_reset_transport_slots
+
+  - rule: Find path
+    steps:
+      - intent: ask_path
+      - action: utter_searching
+      - action: path_form
+      - active_loop: path_form
+      - active_loop: null
+      - action: utter_path
+      - action: action_reset_transport_slots
+
+  # - rule: Respond to transport
+  #   steps:
+  #     - intent: transport
+  #     - action: utter_transport
+
+  # - rule: Activate schedule form
+  #   steps:
+  #     - intent: transport/ask_schedule
+  #     - action: utter_transport/ask_schedule
+  #     - action: schedule_form
+  #     - active_loop: schedule_form
+  #     - active_loop: null
+  #     - action: utter_slots_schedule
+
+  # - rule: Activate booking form
+  #   steps:
+  #     - intent: transport/ask_booking
+  #     - action: utter_transport/ask_booking
+  #     - action: schedule_form
+  #     - active_loop: schedule_form
+  #     - active_loop: null
+  #     - action: utter_slots_booking
