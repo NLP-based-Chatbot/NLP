@@ -39,7 +39,5 @@ responses:
           text: "Please check from the Official Hutch website https://hutch.lk/mifi-router/"
         - text: "There is no broadband connection service to the givien service provider"
           
-  
-# Cross questions
-    utter_ask_preferable_service_provider:
-    - text: What is your preferable service provider to get a broadband connection?
+
+

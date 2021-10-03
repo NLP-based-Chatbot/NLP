@@ -1,0 +1,12 @@
+version: "2.0"
+
+responses:
+# Genaral responses
+  utter_package:
+  - text: "You want Rs.{package_value} package right?"
+  
+  utter_service_provider:
+  - text: "Who is your service provider?"
+  
+  utter_activate_package:
+  - text: "Activating {service_provider} Rs. {package_value} data package."

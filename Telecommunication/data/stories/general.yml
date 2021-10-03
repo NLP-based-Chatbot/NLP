@@ -2,18 +2,18 @@ version: "2.0"
 
 stories:
 #new_connection
-- story: get_new_connection_connection_type_given
+- story: get_new_connection_payment_method_given
   steps:
   - intent: new_connection
   - slot_was_set:
-    - connection_type: postpaid
+    - payment_method: postpaid
   - action: utter_new_connection
 
-- story: get_new_connection_connection_type_not_given
+- story: get_new_connection_payment_method_not_given
   steps:
   - intent: new_connection
-  - action: utter_ask_connection_type
-  - intent: ans_connection_type
+  - action: utter_ask_preferable_payment_method
+  - intent: ans_payment_method
   - action: utter_new_connection
 
 #change_plan
@@ -27,8 +27,8 @@ stories:
 - story: Change the the connection plan between prepaid postpaid provider not given
   steps:
   - intent: change_plan
-  - action: utter_ask_connection_type
-  - intent: ans_connection_type
+  - action: utter_ask_preferable_payment_method
+  - intent: ans_payment_method
   - action: utter_change_plan
 
 #get_loan

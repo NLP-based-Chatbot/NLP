@@ -22,7 +22,6 @@ intents:
   - sim_lost
   - check_coverage
   - ans_service_provider
-  - ans_connection_type
 #broadband
   - new_broadband_conection
   - compatible_devices
@@ -32,10 +31,14 @@ intents:
   - damaged_unit
   - return_unit
 #packages
-  - package_info
+  - data_package_info
   - package_activate
   - package_balance
   - deactivate_package
+  - data_package_info_inform
+  - ans_payment_method
+  - ans_package_type
+  - ans_package_value
 #television
   - get_tv_connection
   - check_bill
@@ -44,56 +47,95 @@ intents:
 
 
 entities:
+#genaral
+
+
+#broadband
+#  - preferable_service_provider 
+
+#packages
   - package_type
   - package_value
   - service_provider
-  - television_service_provider
-  - connection_type
+  - payment_method
+
+#television
+  - tv_provider
+  - preferable_tv_provider
 
 slots:
+#genaral
+
+#broadband
+
+#packages
   package_type:
-    type: any
+    type: text
+    influence_conversation: true
+  package_value:
+    type: text
+    influence_conversation: true
   service_provider:
     type: text
     influence_conversation: true
-  connection_type:
+  payment_method:
     type: text
     influence_conversation: true
-  television_service_provider:
+
+#television
+  tv_provider:
     type: text
     influence_conversation: true
+  preferable_tv_provider:
+    type: text
+    influence_conversation: true
+
 
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
+#cross questions
+#genaral
+  utter_ask_preferable_payment_method:
+    - text: What is your connection type? Prepaid or Postpaid?
+  utter_ask_preferable_service_provider:
+    - text: Who is your preferable service provider?
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+#broadband
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+#packages
+  utter_ask_package_type:
+    - text: What type of package do you prefer? Data card, time based, content based, anytime or unlimited?
+  utter_ask_package_value:
+    - text: What is the cost you can spend on the package?
+  utter_ask_service_provider:
+    - text: Who is your service provider?
+  utter_ask_payment_method:
+    - text:  Are you using prepaid or postpaid connection?
+  utter_submit_data_package_form:
+    - text: form submitted
 
-  utter_happy:
-  - text: "Great, carry on!"
+#television
+  utter_ask_preferable_tv_provider:
+    - text: What is your preferable television connection? 
+forms:
+  data_package_form:
+    required_slots:
+      service_provider:
+        - type: from_entity
+          entity: service_provider
+          intent: ans_service_provider
+      payment_method:
+        - type: from_entity
+          entity: payment_method  
+          intent: ans_payment_method  
+      package_type:
+        - type: from_entity
+          entity: package_type
+          intent: ans_package_type
 
-  utter_goodbye:
-  - text: "Bye"
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-  
-  utter_thanking:
-  - text: "You're welcome"
-
-  utter_package:
-  - text: "You want Rs.{package_value} package right?"
-  
-  utter_service_provider:
-  - text: "Who is your service provider?"
-  
-  utter_activate_package:
-  - text: "Activating {service_provider} Rs. {package_value} data package."
+actions:
+  - validate_data_package_form
+  - get_package_details
 
 session_config:
   session_expiration_time: 60

@@ -20,7 +20,7 @@ responses:
   utter_new_connection:
     - condition:
         - type: slot
-          name: connection_type
+          name: payment_method
           value: prepaid
       text: "Please check from the Official websites of service providers 
              Dialog - https://www.dialog.lk/mobile-prepaid-packages
@@ -29,7 +29,7 @@ responses:
              Hutch - https://hutch.lk"
     - condition:
         - type: slot
-          name: connection_type
+          name: payment_method
           value: postpaid
       text: "Please check from the Official websites of service providers 
              Dialog - https://www.dialog.lk/mobile-postpaid
@@ -89,22 +89,22 @@ responses:
         - type: slot
           name: service_provider
           value: dialog
-      text: Dialog customer can check the balance by dailing '#456#'.
+      text: Dialog customers can check the balance by dailing '#456#'.
     - condition:
         - type: slot
           name: service_provider
           value: mobitel
-      text: Mobitel customer can check the balance by dailing '*100#'.
+      text: Mobitel customers can check the balance by dailing '*100#'.
     - condition:
         - type: slot
           name: service_provider
           value: airtel
-      text: Airtel customer can check the balance by dailing '*555#'.
+      text: Airtel customers can check the balance by dailing '*555#'.
     - condition:
         - type: slot
           name: service_provider
           value: hutch
-      text: Hutch customer can check the balance by dailing '*344#'.
+      text: Hutch customers can check the balance by dailing '*344#'.
 
   utter_sim_lost:
     - condition:
@@ -172,7 +172,8 @@ responses:
         - type: slot
           name: service_provider
           value: hutch
-      text: Call Airtel customer care 1788.
+      text: Call Hutch customer care 1788.
+    - text: Who is your service provider?
 
   utter_check_coverage:
     - condition:
@@ -196,9 +197,3 @@ responses:
           value: hutch
       text: You can see the Hutch coverage manp from here https://hutch.lk/coverage-map/.
 
-
-  # Cross questions
-  utter_ask_connection_type:
-    - text: What is your connection type? Prepaid or Postpaid?
-  utter_ask_service_provider:
-    - text: What is your service provider?
