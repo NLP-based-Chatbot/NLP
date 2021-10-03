@@ -16,4 +16,4 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: utter_submit_data_package_form
+  - action: get_package_details

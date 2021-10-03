@@ -22,8 +22,6 @@ intents:
   - sim_lost
   - check_coverage
   - ans_service_provider
-  - ans_preferable_payment_method
-  - ans_preferable_service_provider
 #broadband
   - new_broadband_conection
   - compatible_devices
@@ -50,8 +48,7 @@ intents:
 
 entities:
 #genaral
-  - preferable_payment_method
-  - preferable_service_provider  
+
 
 #broadband
 #  - preferable_service_provider 
@@ -68,12 +65,7 @@ entities:
 
 slots:
 #genaral
-  preferable_service_provider:
-    type: text
-    influence_conversation: true
-  preferable_payment_method:
-    type: text
-    influence_conversation: true
+
 #broadband
 
 #packages
@@ -105,7 +97,7 @@ responses:
   utter_ask_preferable_payment_method:
     - text: What is your connection type? Prepaid or Postpaid?
   utter_ask_preferable_service_provider:
-    - text: What is your preferable service provider?
+    - text: Who is your preferable service provider?
 
 #broadband
 
@@ -131,24 +123,19 @@ forms:
         - type: from_entity
           entity: service_provider
           intent: ans_service_provider
-          not_intent : ans_preferable_service_provider 
       payment_method:
         - type: from_entity
           entity: payment_method  
           intent: ans_payment_method  
-          not_intent : ans_preferable_payment_method 
       package_type:
         - type: from_entity
           entity: package_type
           intent: ans_package_type
-      package_value:
-        - type: from_entity
-          entity: package_value
-          intent: ans_package_value
 
 
 actions:
   - validate_data_package_form
+  - get_package_details
 
 session_config:
   session_expiration_time: 60

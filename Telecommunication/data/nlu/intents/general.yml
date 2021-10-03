@@ -3,19 +3,19 @@ version: "2.0"
 nlu:
 - intent: new_connection
   examples: |
-    - How do I apply for a new [Postpaid](preferable_payment_method) plan
-    - I need a new [prepaid](preferable_payment_method) connection
-    - How to get a new [postpaid](preferable_payment_method) connection
-    - I want new [postpaid](preferable_payment_method) connection
+    - How do I apply for a new [Postpaid](payment_method) plan
+    - I need a new [prepaid](payment_method) connection
+    - How to get a new [postpaid](payment_method) connection
+    - I want new [postpaid](payment_method) connection
     - How to obtain a new connection?
-    - I want new [dialog](preferable_service_provider) [postpaid](preferable_payment_method) connection
+    - I want new [dialog](preferable_service_provider) [postpaid](payment_method) connection
     - I need to get a new connection
 
 - intent: change_plan
   examples: |
-    - Can I change my existing [postpaid](preferable_payment_method) to one of these plans
+    - Can I change my existing [postpaid](payment_method) to one of these plans
     - Can I change my connection plan
-    - How to change my [prepaid]{"entity": "preferable_payment_method", "role": "current_preferable_payment_method"} plan to [postpaid]{"entity": "preferable_payment_method", "role": "new_preferable_payment_method"} plan 
+    - How to change my [prepaid]{"entity": "payment_method", "role": "current_payment_method"} plan to [postpaid]{"entity": "payment_method", "role": "new_preferable_payment_method"} plan 
     - Is it possible to change my connection type
 
 - intent: check_ownership
@@ -84,18 +84,4 @@ nlu:
 
 
 # Answer to questions
-
-- intent: ans_preferable_service_provider
-  examples: |
-    - [dialog](preferable_service_provider)
-    - [mobitel](preferable_service_provider)
-    - [airtel](preferable_service_provider)
-    - My service provider is [mobitel](preferable_service_provider)
-    - It's [hutch](preferable_service_provider)
-    - I have a [etisalat](preferable_service_provider) sim
-
-- intent: ans_preferable_payment_method
-  examples: |
-    - [postpaid](preferable_payment_method)
-    - [prepaid](preferable_payment_method)
 

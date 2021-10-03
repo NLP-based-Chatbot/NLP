@@ -20,7 +20,7 @@ responses:
   utter_new_connection:
     - condition:
         - type: slot
-          name: preferable_payment_method
+          name: payment_method
           value: prepaid
       text: "Please check from the Official websites of service providers 
              Dialog - https://www.dialog.lk/mobile-prepaid-packages
@@ -29,7 +29,7 @@ responses:
              Hutch - https://hutch.lk"
     - condition:
         - type: slot
-          name: preferable_payment_method
+          name: payment_method
           value: postpaid
       text: "Please check from the Official websites of service providers 
              Dialog - https://www.dialog.lk/mobile-postpaid
@@ -41,7 +41,7 @@ responses:
   utter_get_loan:
     - condition:
         - type: slot
-          name: preferable_service_provider
+          name: service_provider
           value: dialog
       text: Dial 356 or '#356#'
     - condition:

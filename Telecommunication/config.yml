@@ -15,9 +15,16 @@ pipeline:
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100
+  - name: FallbackClassifier
+    threshold: 0.6
 
 policies:
-- name: RulePolicy
+  - name: RulePolicy
+  - name: TEDPolicy
+    max_history: 8
+    epochs : 300
+  - name: "MemoizationPolicy"
+    max_history: 8
 
 
 

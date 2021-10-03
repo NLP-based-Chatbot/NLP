@@ -59,11 +59,14 @@ nlu:
     - [Unlimited](package_type) data packages
     - Rs. [99](package_value) [Data card](package_type)
     - [content based](package_type) package
+    - [anytime](package_type) 
 
 - intent: ans_package_value
   examples: |
     - Rs. [99](package_value) data card
     - Rs. [49](package_value)
+    - [100](package_value)
+    - [29](package_value)
 
 
 - intent: package_balance

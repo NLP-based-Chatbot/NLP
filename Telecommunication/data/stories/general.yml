@@ -2,18 +2,18 @@ version: "2.0"
 
 stories:
 #new_connection
-- story: get_new_connection_preferable_payment_method_given
+- story: get_new_connection_payment_method_given
   steps:
   - intent: new_connection
   - slot_was_set:
-    - preferable_payment_method: postpaid
+    - payment_method: postpaid
   - action: utter_new_connection
 
-- story: get_new_connection_preferable_payment_method_not_given
+- story: get_new_connection_payment_method_not_given
   steps:
   - intent: new_connection
   - action: utter_ask_preferable_payment_method
-  - intent: ans_preferable_payment_method
+  - intent: ans_payment_method
   - action: utter_new_connection
 
 #change_plan
@@ -28,7 +28,7 @@ stories:
   steps:
   - intent: change_plan
   - action: utter_ask_preferable_payment_method
-  - intent: ans_preferable_payment_method
+  - intent: ans_payment_method
   - action: utter_change_plan
 
 #get_loan
