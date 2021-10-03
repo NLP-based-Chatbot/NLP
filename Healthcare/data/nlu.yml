@@ -230,7 +230,7 @@ nlu:
     - [16](entry_id)
 
 - regex: date
-
+    - (0-9){4}-{0-9}{1-2}-(0-9){1-2}
 - intent: out_of_scope
   examples: |
     - I want to order food
