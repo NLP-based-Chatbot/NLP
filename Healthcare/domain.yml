@@ -4,12 +4,12 @@ session_config:
   carry_over_slots_to_new_session: true
 intents:
 - make_appiontment
+- affirm
 - inform_patient_name
 - inform_date
-- inform_docthash
-- inform_time
-- affirm
 - inform
+- inform_time
+- inform_docthash
 - greet
 - goodbye
 - deny
@@ -127,4 +127,16 @@ actions:
 - utter_ask_wether_doct_specialist
 forms:
   form_place_appointment:
-    required_slots: {}
+    required_slots:
+      docthash:
+      - type: from_entity
+        entity: docthash
+      userhash:
+      - type: from_entity
+        entity: userhash
+      date:
+      - type: from_entity
+        entity: date
+      time:
+      - type: from_entity
+        entity: time

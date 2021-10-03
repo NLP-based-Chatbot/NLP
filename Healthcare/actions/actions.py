@@ -116,11 +116,9 @@ class TimeRange(Action):
 
         return []
 
-# class PlaceAppointment(FormAction):
+class PlaceAppointment(FormAction):
 
-#     def name(self) -> Text:
-#         return "form_place_appointment"
-
-
+    def name(self) -> Text:
+        return "form_place_appointment"
 
     

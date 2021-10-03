@@ -7,6 +7,14 @@ stories:
   - intent: make_appiontment
   - action: form_place_appointment
   - active_loop: form_place_appointment
+  - slot_was_set:
+    - requested_slot: docthash
+  - slot_was_set:
+    - requested_slot: userhash
+  - slot_was_set:
+    - requested_slot: date
+  - slot_was_set:
+    - requested_slot: time
   - action: utter_ask_name
   - intent: inform_patient_name
   - action: utter_ask_wether_doct_specialist
@@ -43,4 +51,6 @@ stories:
   - action: act_show_timerange
   - action: utter_ask_time
   - intent: inform_time
+  - action: form_place_appointment
+  - active_loop: null
 

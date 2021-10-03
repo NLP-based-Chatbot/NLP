@@ -64,7 +64,7 @@ nlu:
     - i want to [place](option) an [appointment](reservation)
     - i want to [place](option) an [appointment](reservation) to meet a [dr](service_person)
     - i want to  [make](option) n [appointment](reservation)
-    - i want to [make](option) an [appointment](reservation)
+    - [appointment](reservation)
 - intent: change_appiontment
   examples: |
     - [change](option) [appointment](reservation)
@@ -138,6 +138,7 @@ nlu:
     - [yasith](person_name)
     - [sumanasiri](person_name)
     - [selwam](person_name)
+    - [kasun](person_name)
 - intent: inform_date
   examples: |
     - [2031-04-05](date)
@@ -152,6 +153,7 @@ nlu:
     - [2020/5/6](date)
     - [2021-10-5](date)
     - [2022-01-05](date)
+    - [2021-10-11](date)
 - intent: inform_time
   examples: |
     - [04:34](time)
@@ -173,6 +175,7 @@ nlu:
     - [20:50](time)
     - [21.00](time)
     - [20:30](time)
+    - [21.00](time)
 - intent: inform_relativetime
   examples: |
     - [today](relativedate)
