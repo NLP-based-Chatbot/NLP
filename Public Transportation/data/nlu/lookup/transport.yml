@@ -1,0 +1,55 @@
+# version: '2.0'
+# nlu:
+#   - lookup: city
+#     examples: |
+#       - Ambalangoda
+#       - Akuressa
+#       - Ampara
+#       - Bandarawela
+#       - Badulla
+#       - Bandaragama
+#       - Balangoda
+#       - Chillaw
+#       - Colombo
+#       - Dambulla
+#       - Embilipitiya
+#       - Eheliyagoda
+#       - Galle
+#       - Gampaha
+#       - Hambanthota
+#       - Haputhale
+#       - Horana
+#       - Homagama
+#       - Ingiriya
+#       - Ja-Ela
+#       - Jaffna
+#       - Kandy
+#       - Katharagama
+#       - Kalutara
+#       - Kesbawa
+#       - Kelaniya
+#       - Kegalle
+#       - Kurunagala
+#       - Kalawana
+#       - Mihinthale
+#       - Mannar
+#       - Mathugama
+#       - Moratuwa
+#       - Mount Lavinia
+#       - Mathale
+#       - Maharagama
+#       - Nuwara Eliya
+#       - Negombo
+#       - Pandura
+#       - Pelmadulla
+#       - Puttalam
+#       - Ratnapura
+#       - Sri Jayawardanapura Kotte
+#       - Kotte
+#       - Sigiriya
+#       - Thissamaharama
+#       - Trincomalee
+#       - Trinco
+#       - Tangalle
+#       - Wellawaya
+#       - Wattala
