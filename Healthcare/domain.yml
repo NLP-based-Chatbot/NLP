@@ -115,6 +115,8 @@ responses:
   - text: Thank you
   utter_thank_service:
   - text: Thank you for using our service
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
 actions:
 - act_list_doctors
 - act_list_specilizations
