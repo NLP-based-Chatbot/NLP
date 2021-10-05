@@ -32,6 +32,7 @@ class SetIntent(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         return []
+        
 class SpecList(Action):
 
     def name(self) -> Text:

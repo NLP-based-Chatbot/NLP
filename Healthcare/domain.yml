@@ -3,13 +3,13 @@ session_config:
   session_expiration_time: 120
   carry_over_slots_to_new_session: true
 intents:
-- inform_date
-- inform_patient_name
-- affirm
-- inform
-- inform_time
 - make_appiontment
 - inform_docthash
+- inform
+- inform_time
+- inform_patient_name
+- inform_date
+- affirm
 - greet
 - goodbye
 - deny
@@ -138,10 +138,12 @@ forms:
         entity: docthash
       userhash:
       - type: from_entity
-        entity: userhash
+        entity: person_name
       date:
       - type: from_entity
         entity: date
       time:
       - type: from_entity
         entity: time
+      - type: from_entity
+        entity: relativedate
