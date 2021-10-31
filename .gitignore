@@ -1,3 +1,5 @@
 *.tar.gz
 .env
 *.pyc
+
+__pycache__/*
