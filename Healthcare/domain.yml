@@ -23,6 +23,9 @@ intents:
 - inform_relativetime
 - inform_userhash
 - inform_reporthash
+- get_doctor_list
+- get_time_range
+- get_spec_list
 entities:
 - client_person
 - date
@@ -36,11 +39,12 @@ entities:
 - relativedate
 - reporthash
 - reservation
-- service_person
+- service_persongget_time_rangeet_time_range
 - sp_name
 - spec_id
 - time
 - userhash
+- list_items
 slots:
   option:
     type: text
@@ -111,6 +115,11 @@ responses:
   - text: What is the day do you prefer?
   utter_ask_time:
   - text: Tell me a time comfortable for you
+  utter_ask_toselect_docotor:
+  - text: You must select a Doctor first
+  utter_date_selection_success:
+  - text: Date selection is successfull
+
   utter_thank:
   - text: Thank you
   utter_thank_service:
@@ -119,6 +128,7 @@ responses:
   - text: I'm sorry, I didn't quite understand that. Could you rephrase?
   utter_out_of_scope:
   - text: I'm sorry, I can't understand what are you saying?
+  
 actions:
 - act_list_doctors
 - act_list_specilizations
@@ -126,6 +136,8 @@ actions:
 - act_set_appoint_data
 - act_set_intent
 - act_show_timerange
+- act_prompt_userdata
+- act_new_patient
 - utter_ask_date
 - utter_ask_name
 - utter_ask_time
@@ -133,17 +145,25 @@ actions:
 forms:
   form_place_appointment:
     required_slots:
+      client_person:
+      - type: from_entity
+        entity: client_person
+        intent: inform_patient_name
       docthash:
       - type: from_entity
         entity: docthash
-      userhash:
-      - type: from_entity
-        entity: person_name
+        intent: inform_docthash
       date:
       - type: from_entity
         entity: date
+        intent: inform_date
+      - type: from_entity
+        entity: relativedate
+        intent: inform_relativetime
       time:
       - type: from_entity
         entity: time
+        intent: inform_time
       - type: from_entity
         entity: relativedate
+        intent: inform_relativetime

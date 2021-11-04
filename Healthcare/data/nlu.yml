@@ -116,6 +116,13 @@ nlu:
     - where is my [report](deliverable)
     - i want my [report](deliverable)
     - i want to get my [report](deliverable)
+- intent: get_doctor_list
+  examples: | 
+    - show [doctors list](list_items)
+    - show doctors
+    - who are the doctors
+    - [doctors names](list_items)
+    - [doctor list](list_items)
 - intent: inform_patient_name
   examples: |
     - [kavindu](person_name)
@@ -142,6 +149,24 @@ nlu:
     - [kasun](person_name)
     - [thamalu](person_name)
     - [kavindu](person_name)
+- intent: get_time_range
+  examples: |
+    - select time
+    - reserve time
+    - select time slot
+    - reserve time slot
+    - get time slot
+    - set time slot
+    - select timeslot
+    - reserve timeslot
+    - get timeslot
+    - set timeslot
+- intent: get_spec_list
+  examples: |
+    - get [specializations](list_items)
+    - select [specialization](list_items)
+    - what are the [specializations](list_items)
+    - show me [specializations](list_items)
 - intent: inform_date
   examples: |
     - [2031-04-05](date)

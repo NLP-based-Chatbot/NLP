@@ -2,54 +2,97 @@ version: "2.0"
 
 stories:
 
-- story: place an appiontment 
+- story: get doctor list - spec is provided
   steps:
-  - intent: inform_patient_name
-  - action: utter_ask_wether_doct_specialist
-  - checkpoint: asked_is_specialist
-
-- story: place appointment specialist 
-  steps:
-  - checkpoint: asked_is_specialist
-  - intent: affirm
-  - action: act_list_specilizations
-  - intent: inform
-    entities:
-    - spec_id: 12
+  - intent: get_doctor_list
   - slot_was_set:
-    - spec_id: 12
-  - checkpoint: end_of_select_specilization_phase
-
-- story: place appointment not specialist 
-  steps:
-  - checkpoint: asked_is_specialist
-  - intent: deny
-  - checkpoint: end_of_select_specilization_phase
-
-
-- story: after specialization phase
-  steps:
-  - checkpoint: end_of_select_specilization_phase
+    - spec_id: 2
   - action: act_list_doctors
-  - intent: inform_docthash
-  - action: utter_ask_date
+
+- story: get doctor list - spec is not provided
+  steps:
+  - intent: get_doctor_list
+  - action: act_list_doctors
+
+- story: select time - doctor is selected
+  steps:
+  - intent: get_time_slot
+  - slot_was_set:
+    - docthash: doc_4h24kh23344hj342k5fhj2f5h1
+  - action: act_show_timerange
+
+- story: select time - doctor is not selected
+  steps:
+  - intent: get_time_slot
+  - slot_was_set:
+    - docthash: null
+  - action: utter_ask_toselect_docotor
+
+- story: get spec list
+  steps:
+  - intent: get_spec_list
+  - action: act_list_specilizations
+
+- story: select date
+  steps:
   - or:
     - intent: inform_relativetime
     - intent: inform_date
-  - action: act_show_timerange
-  - action: utter_ask_time
-  - intent: inform_time
+  - action: utter_date_selection_success
+
+- story: provide user name
+  steps:
+  - intent: inform_patient_name
+  - action: act_new_patient
+
+- story: provide user hash
+  steps:
+  - intent: inform_userhash
+  - action: act_prompt_userdata  
 
 
+# - story: provide doct hash 
+#   steps:
+#   - intent: inform_docthash
+#   - action: 
 
+# - story: inform doctor hash 
+#   steps:
+#   - intent:
 
-  # - slot_was_set:
-  #   - requested_slot: docthash
-  # - slot_was_set:
-  #   - requested_slot: userhash
-  # - slot_was_set:
-  #   - requested_slot: date
-  # - slot_was_set:
-  #   - requested_slot: time
+# - story: place an appiontment 
+#   steps:
+#   - intent: inform_patient_name
+#   - action: utter_ask_wether_doct_specialist
+#   - checkpoint: asked_is_specialist
 
+# - story: place appointment specialist 
+#   steps:
+#   - checkpoint: asked_is_specialist
+#   - intent: affirm
+#   - action: act_list_specilizations
+#   - intent: inform
+#     entities:
+#     - spec_id: 12
+#   - slot_was_set:
+#     - spec_id: 12
+#   - checkpoint: end_of_select_specilization_phase
 
+# - story: place appointment not specialist 
+#   steps:
+#   - checkpoint: asked_is_specialist
+#   - intent: deny
+#   - checkpoint: end_of_select_specilization_phase
+
+# - story: after specialization phase
+#   steps:
+#   - checkpoint: end_of_select_specilization_phase
+#   - action: act_list_doctors
+#   - intent: inform_docthash
+#   - action: utter_ask_date
+#   - or:
+#     - intent: inform_relativetime
+#     - intent: inform_date
+#   - action: act_show_timerange
+#   - action: utter_ask_time
+#   - intent: inform_time
