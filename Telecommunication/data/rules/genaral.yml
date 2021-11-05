@@ -16,3 +16,19 @@ rules:
   steps:
   - intent: change_ownership
   - action: utter_change_ownership
+
+- rule: New connection form
+  steps:
+  - intent: new_connection
+  - action: new_connection_form
+  - active_loop: new_connection_form
+
+- rule: New connection form submit
+  condition:
+  - active_loop: new_connection_form
+  steps:
+  - action: new_connection_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: get_new_connection
