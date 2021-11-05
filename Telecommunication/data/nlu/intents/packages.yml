@@ -18,21 +18,13 @@ nlu:
     - Data package details?
     - Could you please give me details about data packages?
     - Can I get data package details?
+    - Show me data package details?
     - What are the [mobitel](service_provider) packages available?
-    - What are the [time based](package_type) data packages available?
-    - [Content based](package_type) data package details?
-    - I want details about [daily](package_type) data packages?
-    - [Daily](package_type) data package details please?
+    - What are the [time-based](package_type) data packages available?
+    - [Content-based](package_type) data package details?
     - I want details about [dialog](service_provider) data packages
     - What are [prepaid](payment_method) data packages available for [mobitel](service_provider)?
     - I want details about [dialog](service_provider) Rs. [99](package_value) data package
-    - Data packages for Rs. [49](package_value)?
-    - I want details about Rs. [29](package_value) data package
-    - I want to activate a [99](package_value) data package.
-    - Can I active [mobitel](service_provider) a [49](package_value) data card?
-    - Rs. [199](package_value) data card
-    - I want Rs. [29](package_value) data card
-    - I want [dialog](service_provider) Rs. [29](package_value) data card
 
 - intent: ans_service_provider
   examples: |
@@ -49,17 +41,18 @@ nlu:
     - [postpaid](payment_method)
     - [postpaid](payment_method) connection
     - [prepaid](payment_method) connection
+    - I have a [prepaid](payment_method) connection
+    - I have a [postpaid](payment_method) connection
 
 - intent: ans_package_type
   examples: |
-    - Rs. [99](package_value) [unlimited](package_type)
     - [time based](package_type) data packages
     - [Unlimited](package_type)
-    - [time based](package_type)
+    - [time-based](package_type)
     - [Unlimited](package_type) data packages
-    - Rs. [99](package_value) [Data card](package_type)
-    - [content based](package_type) package
+    - [content-based](package_type) package
     - [anytime](package_type) 
+    - [data-card](package_type)
 
 - intent: ans_package_value
   examples: |
@@ -82,3 +75,20 @@ nlu:
     - I want deactivate my [daily](package_type) package
     - Remove my [time based](package_type) package
     - How to remove my [daily](package_type) package
+
+- synonym: time-based
+  examples: |
+    - time based
+    - timebased
+
+- synonym: content-based
+  examples: |
+    - content based
+    - contentbased
+
+- synonym: data-card
+  examples: |
+    - data card
+    - datacard
+
+

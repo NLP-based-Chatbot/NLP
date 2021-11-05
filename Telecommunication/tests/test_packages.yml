@@ -1,0 +1,29 @@
+version: "2.0"
+
+stories:
+- story: Ask about data package details
+  steps:
+  - user: |
+      I want to know about data packages
+    intent: data_package_info
+  - action: data_package_form
+  - active_loop: data_package_form
+  - user: |
+      [dialog](service_provider)
+    intent: ans_service_provider
+  - action: data_package_form
+  - user: |
+      [prepaid](payment_method)
+    intent: ans_payment_method
+  - action: data_package_form
+  - user: |
+      [unlimited](package_type)
+    intent: ans_package_type
+  - action: data_package_form
+  - active_loop: null
+  - action: get_package_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+  

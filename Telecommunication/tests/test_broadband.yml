@@ -1,0 +1,20 @@
+version: "2.0"
+
+stories:
+- story: ask for new broadband connection
+  steps:
+  - user: |
+      How to get a new wifi router
+    intent: new_broadband_conection
+  - action: utter_ask_new_connection_form_service_provider
+  - user: |
+      [mobitel](service_provider)
+    intent: ans_service_provider
+  - action: get_new_broadband_connection
+
+- story: ask for new broadband connection provider given
+  steps:
+  - user: |
+      How to get a [dialog](service_provider) wifi router
+    intent: new_broadband_conection
+  - action: get_new_broadband_connection

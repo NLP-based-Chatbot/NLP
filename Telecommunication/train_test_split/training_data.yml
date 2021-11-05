@@ -1,0 +1,260 @@
+version: "2.0"
+nlu:
+- intent: ans_preferable_tv_provider
+  examples: |
+    - [Dialog](preferable_tv_provider) TV
+- intent: new_broadband_conection
+  examples: |
+    - How to get a router?
+    - How to get a [dialog](service_provider) 4G router.
+    - I want to get a [mobitel](service_provider) wifi router
+- intent: purpose_wps_btn
+  examples: |
+    - WPS button
+    - What is the WPS button?
+    - What is the purpose of the WPS button?
+- intent: device_count
+  examples: |
+    - How many devices can be connected to the router simultaneously?
+    - How many phones can be connected to my router?
+    - Number of devices can be connected simultaneously to the router?
+- intent: return_unit
+  examples: |
+    - I don't need the router
+    - How to return my router?
+    - I want to retunr the router
+- intent: change_plan
+  examples: |
+    - Is it possible to change my connection type
+    - How to change my [prepaid](payment_method) connection to [postpaid](payment_method) [postpaid](payment_method)
+    - Can I change my existing [postpaid](payment_method) to one of these plans
+- intent: check_ownership
+  examples: |
+    - How to check ownership of sim
+    - I need to check the ownership of my sim
+    - How to get ownership details for my connection
+- intent: check_other_connections
+  examples: |
+    - Is it possible to get other connections under my id?
+    - Other connections registered to my id number?
+    - What are the other connections under my identification?
+- intent: change_ownership
+  examples: |
+    - Is it possible to change ownership details?
+    - How to change my ownership details?
+    - My ownership details are wrong, How to change?
+- intent: get_loan
+  examples: |
+    - I need to get a loan?
+    - How to get a load?
+    - Is it possible to get a loan?
+- intent: check_balance
+  examples: |
+    - I want to get my account balance?
+    - Account balance?
+    - How much balance available on my account?
+- intent: sim_lost
+  examples: |
+    - My sim card is lost
+    - I lost my sim card
+    - I need a new sim because by sim card is damaged
+- intent: recharge_account
+  examples: |
+    - I want to recharge my account
+    - Recharge my account
+    - How to recharge my account?
+- intent: check_coverage
+  examples: |
+    - Am I in Fixed LTE coverage area?
+    - Is it possible to get coverage area map?
+    - Coverage areas on the map
+- intent: bot_challenge
+  examples: |
+    - am I talking to a human?
+    - are you a bot?
+    - am I talking to a bot?
+- intent: thanking
+  examples: |
+    - Thank you very much
+    - Thanks
+    - Thank you
+- intent: ans_package_value
+  examples: |
+    - Rs. [49](package_value)
+    - [29](package_value)
+    - Rs. [99](package_value) data card
+- intent: package_balance
+  examples: |
+    - Data package balance?
+    - What is remaining amount of my data package?
+    - I need to check data balance
+- intent: deactivate_package
+  examples: |
+    - How to remove my [daily](package_type) package
+    - I want deactivate my [daily](package_type) package
+    - Remove my [time based](package_type) package
+- intent: check_bill
+  examples: |
+    - How do I check my [dialog](tv_provider) TV Bill?
+    - How to check the TV bill
+    - I need to check the TV bill
+- intent: tv_packages
+  examples: |
+    - What are the peo TV packages available?
+    - I want [peo](tv_provider) TV package details?
+    - [Dialog](tv_provider) TV package details?
+- intent: wifi_coverage
+  examples: |
+    - Wifi-coverge of the router?
+    - What is the Wi-Fi coverage area of a router?
+    - What is the distence of the wifi-coverage?
+    - I want to know the Wi-Fi coverage area of a router?
+- intent: damaged_unit
+  examples: |
+    - My router is damnged
+    - Antena of the router is broken
+    - Router is not working properly
+    - My router is not working
+- intent: signal_lost
+  examples: |
+    - My data speed is at a very low level
+    - I got disconneted every time
+    - My signal level is low
+    - My download speed is very low
+- intent: add_complaint
+  examples: |
+    - How to make a complaint
+    - I need to log a complaint
+    - I want to make a complaint
+    - Can I make a complaint
+- intent: compatible_devices
+  examples: |
+    - My smart phone can be connected to the router?
+    - What are the comaptible devices that can be connected to the router?
+    - Compatible devices to connect to the router?
+    - What are the devices that can be connected to my router?
+    - My laptop can be connected to the router?
+- intent: affirm
+  examples: |
+    - correct
+    - that sounds good
+    - indeed
+    - of course
+    - yes
+- intent: ans_service_provider
+  examples: |
+    - [Airtel](service_provider)
+    - [Dialog](service_provider)
+    - [Mobitel](service_provider)
+    - [Hutch](service_provider)
+    - I am using [mobitel](service_provider) connection
+- intent: ans_payment_method
+  examples: |
+    - [prepaid](payment_method)
+    - I have a [postpaid](payment_method) connection
+    - [postpaid](payment_method)
+    - [prepaid](payment_method) connection
+    - [postpaid](payment_method) connection
+- intent: ans_package_type
+  examples: |
+    - [Unlimited](package_type)
+    - [content-based](package_type) package
+    - [anytime](package_type)
+    - [time based](package_type) data packages
+    - [time-based](package_type)
+- intent: new_connection
+  examples: |
+    - How do I apply for a new [Postpaid](payment_method) plan
+    - I need a new [prepaid](payment_method) connection
+    - I want new [postpaid](payment_method) connection
+    - How to get a new [postpaid](payment_method) connection
+    - I need to get a new connection
+    - I want new [dialog](service_provider) [postpaid](payment_method) connection
+- intent: deny
+  examples: |
+    - don't like that
+    - n
+    - not really
+    - no
+    - never
+    - I don't think so
+- intent: get_tv_connection
+  examples: |
+    - How to obtain a [dialog](preferable_tv_provider) TV connection?
+    - How to obtain a television connections?
+    - I want [dialog](preferable_tv_provider) TV
+    - What are the requrements to buy [dialog](preferable_tv_provider) TV
+    - I want to get TV connection
+    - How to get a [peo](preferable_tv_provider) TV connection?
+- intent: goodbye
+  examples: |
+    - bye bye
+    - goodbye
+    - see you later
+    - have a nice day
+    - see you around
+    - bye
+    - cu
+    - cee you later
+    - good by
+- intent: greet
+  examples: |
+    - hello
+    - good afternoon
+    - goodmorning
+    - moin
+    - good evening
+    - hello there
+    - hey dude
+    - hi
+    - let's go
+    - goodevening
+    - good morning
+- intent: data_package_info
+  examples: |
+    - Data package details?
+    - What are the [time-based](package_type) data packages available?
+    - [Content-based](package_type) data package details?
+    - Can I get data package details?
+    - I want details about [dialog](service_provider) Rs. [99](package_value) data package
+    - I want details about data packages.
+    - Show me data package details?
+    - What are [prepaid](payment_method) data packages available for [mobitel](service_provider)?
+    - What are the data packages available?
+    - I'd like to know about data packages.
+    - What are the [mobitel](service_provider) packages available?
+- intent: mood_unhappy
+  examples: |
+    - so saad
+    - very sad
+    - super sad
+    - I'm so sad
+    - extremly sad
+    - I don't feel very well
+    - sad
+    - not good
+    - not very good
+    - my day was horrible
+    - unhappy
+- intent: mood_great
+  examples: |
+    - wonderful
+    - I am going to save the world
+    - feeling like a king
+    - I am fine
+    - extremely good
+    - so perfect
+    - so good
+    - amazing
+    - so so perfect
+    - I am amazing
+    - great
+    - perfect
+- synonym: time-based
+  examples: |
+    - time based
+    - timebased
+- synonym: content-based
+  examples: |
+    - content based
+    - contentbased
