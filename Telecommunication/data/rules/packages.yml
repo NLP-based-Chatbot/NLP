@@ -17,3 +17,13 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: get_package_details
+
+
+- rule: package details form intruption
+  condition:
+  - active_loop: data_package_form
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - action: data_package_form
+  - active_loop: data_package_form

@@ -3,12 +3,12 @@ version: "2.0"
 nlu:
 - intent: get_tv_connection
   examples: |
-    - What are the requrements to buy [dialog](preferable_tv_provider) TV
-    - How to get a [peo](preferable_tv_provider) TV connection?
-    - I want to get [peo](preferable_tv_provider) TV connection
+    - What are the requrements to buy [dialog](tv_provider) TV
+    - How to get a [peo](tv_provider) TV connection?
+    - I want to get [peo](tv_provider) TV connection
     - I want to get TV connection
-    - I want [dialog](preferable_tv_provider) TV
-    - How to obtain a [dialog](preferable_tv_provider) TV connection?
+    - I want [dialog](tv_provider) TV
+    - How to obtain a [dialog](tv_provider) TV connection?
     - How to obtain a television connections?
 
 - intent: check_bill
@@ -20,14 +20,22 @@ nlu:
 
 - intent: tv_packages
   examples: |
-    - What are the peo TV packages available?
+    - What are the [peo](tv_provider) TV packages available?
     - Television package details?
     - [Dialog](tv_provider) TV package details?
     - I want [peo](tv_provider) TV package details?
+    - I want [dialog](tv_provider) TV package details?
+    - Show me [dialog](tv_provider) TV packages
+    - Show me [peo](tv_provider) TV packages
 
 # Answer questions
-- intent: ans_preferable_tv_provider
+- intent: ans_tv_provider
   examples: |
-    - [peo](preferable_tv_provider) TV
-    - [Dialog](preferable_tv_provider) TV
-    - I want [Dialog](preferable_tv_provider) TV
+    - [peo](tv_provider) TV
+    - [Dialog](tv_provider) TV
+    - [Dialog](tv_provider) television
+    - [peo](tv_provider) TV connection
+    - [Dialog](tv_provider) TV
+    - [peo](tv_provider) television
+    - [peo](tv_provider) TV
+    - [dialog](tv_provider) TV connection

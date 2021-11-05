@@ -1,0 +1,34 @@
+[
+  {
+    "text": "How to check to whom my sim is registered for?",
+    "intent": "check_ownership",
+    "intent_prediction": {
+      "name": "check_other_connections",
+      "confidence": 0.42161306738853455
+    }
+  },
+  {
+    "text": "Check sim registration details",
+    "intent": "check_ownership",
+    "intent_prediction": {
+      "name": "data_package_info",
+      "confidence": 0.8366672396659851
+    }
+  },
+  {
+    "text": "I want to change my sim registration details",
+    "intent": "change_ownership",
+    "intent_prediction": {
+      "name": "change_plan",
+      "confidence": 0.2793194651603699
+    }
+  },
+  {
+    "text": "Is it possible to change my sim registration details?",
+    "intent": "change_ownership",
+    "intent_prediction": {
+      "name": "change_plan",
+      "confidence": 0.37158676981925964
+    }
+  }
+]
