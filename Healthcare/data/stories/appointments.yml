@@ -8,8 +8,6 @@ stories:
   - action: utter_ask_name
   - intent: inform_patient_name
   - action: utter_ask_wether_doct_specialist
-  - intent: affirm
-  - action: act_list_specilizations
   - checkpoint: asked_wether_specialist
 
 
@@ -44,4 +42,6 @@ stories:
   - intent: inform_time
   - action: act_list_doctors
   - intent: inform_docthash
+
+
  # - checkpoint: before_final_appointment_placement

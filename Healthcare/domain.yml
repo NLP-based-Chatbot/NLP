@@ -22,6 +22,7 @@ intents:
   - inform_userhash
   - inform_reporthash
   - inform_docthash
+  - inform
 
 
 entities:
@@ -67,6 +68,8 @@ slots:
     type: text
   entry_id:
     type: text
+  current_intent:
+    type: text
 
 actions:
   - act_list_specilizations
@@ -99,7 +102,7 @@ responses:
 
   utter_ask_wether_doct_specialist:
   - text: "Do you want to meet a specialist ?"
-  - buttons:
+    buttons:
     - title: Yes
       payload: /affirm
     - title: No
