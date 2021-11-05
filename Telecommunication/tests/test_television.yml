@@ -1,0 +1,56 @@
+version: "2.0"
+stories:
+
+- story: Ask for new television connection provider given
+  steps:
+  - user: |
+      I want a [dialog](tv_provider) TV connection
+    intent: get_tv_connection
+  - action: get_tv_connection_details
+
+- story: Ask for new television connection
+  steps:
+  - user: |
+      I want to get a TV connection
+    intent: get_tv_connection
+  - action: utter_ask_preferable_tv_provider
+  - user: |
+      [peo](tv_provider) TV
+    intent: ans_tv_provider
+  - action: get_tv_connection_details
+
+- story: Ask for check television bill provider given
+  steps:
+  - user: |
+      I want a check my [dialog](tv_provider) TV bill
+    intent: check_bill
+  - action: get_tv_check_bill_details
+
+- story: Ask for check television bill
+  steps:
+  - user: |
+      I want check my television bill
+    intent: check_bill
+  - action: utter_ask_tv_provider
+  - user: |
+      [dialog](tv_provider) TV
+    intent: ans_tv_provider
+  - action: get_tv_check_bill_details
+
+- story: Ask for tv package details provider given
+  steps:
+  - user: |
+      Show me [dialog](tv_provider) TV packages
+    intent: tv_packages
+  - action: get_tv_package_details
+
+- story: Ask for tv package details
+  steps:
+  - user: |
+      Televison package details?
+    intent: tv_packages
+  - action: utter_ask_tv_provider
+  - user: |
+      [dialog](tv_provider) TV
+    intent: ans_tv_provider
+  - action: get_tv_package_details

@@ -9,6 +9,7 @@ intents:
   - mood_unhappy
   - bot_challenge
   - thanking
+  - stop
 #genaral
   - new_connection
   - change_plan
@@ -22,7 +23,7 @@ intents:
   - sim_lost
   - check_coverage
   - ans_service_provider
-  - ans_connection_type
+  - add_complaint
 #broadband
   - new_broadband_conection
   - compatible_devices
@@ -32,68 +33,174 @@ intents:
   - damaged_unit
   - return_unit
 #packages
-  - package_info
-  - package_activate
+  - data_package_info
   - package_balance
   - deactivate_package
+  - data_package_info_inform
+  - ans_payment_method
+  - ans_package_type
+  - ans_package_value
 #television
   - get_tv_connection
   - check_bill
   - tv_packages
-  - ans_preferable_tv_provider
+  - ans_tv_provider
 
 
 entities:
+#genaral
+
+
+#broadband
+#  - preferable_service_provider 
+
+#packages
   - package_type
   - package_value
   - service_provider
-  - television_service_provider
-  - connection_type
+  - payment_method
+
+#television
+  - tv_provider
+  - preferable_tv_provider
 
 slots:
+#genaral
+  title:
+    type: text
+    influence_conversation: true
+  description:
+    type: text
+    influence_conversation: true
+  fullname:
+    type: text
+    influence_conversation: true
+  contactnum:
+    type: text
+    influence_conversation: true
+  email:
+    type: text
+    influence_conversation: true
+  
+  
+#broadband
+
+#packages
   package_type:
-    type: any
+    type: text
+    influence_conversation: true
+  package_value:
+    type: text
+    influence_conversation: true
   service_provider:
     type: text
     influence_conversation: true
-  connection_type:
+  payment_method:
     type: text
     influence_conversation: true
-  television_service_provider:
+
+#television
+  tv_provider:
     type: text
     influence_conversation: true
+
 
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
+#cross questions
+#genaral
+  utter_ask_new_connection_form_payment_method:
+    - text: What is your connection type? Prepaid or Postpaid?
+  utter_ask_new_connection_form_service_provider:
+    - text: Who is your preferable service provider?
+  utter_ask_title:
+    - text: Okay! What is the issue that you are facing?
+  utter_ask_description:
+    - text: Please explain your issue shortly.
+  utter_ask_fullname:
+    - text: Please give the full name of you.
+  utter_ask_contactnum:
+    - text: Please give the contact number of you.
+  utter_ask_email:
+    - text: Please give the email address of you.
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+#broadband
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+#packages
+  utter_ask_package_type:
+    - text: What type of package do you prefer? Data card, time based, content based, anytime or unlimited?
+  utter_ask_package_value:
+    - text: What is the cost you can spend on the package?
+  utter_ask_data_package_form_service_provider:
+    - text: Who is your service provider?
+  utter_ask_data_package_form_payment_method:
+    - text: Are you using prepaid or postpaid connection?
+  utter_submit_data_package_form:
+    - text: form submitted
 
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+#television
+  utter_ask_preferable_tv_provider:
+    - text: What is your preferable television connection? 
+  utter_ask_tv_provider:
+    - text: Are you using dialog TV or peo TV? 
+forms:
+  data_package_form:
+    required_slots:
+      service_provider:
+        - type: from_entity
+          entity: service_provider
+          intent: ans_service_provider
+      payment_method:
+        - type: from_entity
+          entity: payment_method  
+          intent: ans_payment_method  
+      package_type: 
+        - type: from_entity
+          entity: package_type
+          intent: ans_package_type
   
-  utter_thanking:
-  - text: "You're welcome"
+  complaint_form:
+    required_slots:
+      title:
+        - type: from_text
+      description:
+        - type: from_text
+      fullname:
+        - type: from_text
+      contactnum:
+        - type: from_text
+      email:
+        - type: from_text
+  
+  new_connection_form:
+    required_slots:
+      service_provider:
+        - type: from_entity
+          entity: service_provider
+          intent: ans_service_provider
+      payment_method:
+        - type: from_entity
+          entity: payment_method  
+          intent: ans_payment_method  
 
-  utter_package:
-  - text: "You want Rs.{package_value} package right?"
-  
-  utter_service_provider:
-  - text: "Who is your service provider?"
-  
-  utter_activate_package:
-  - text: "Activating {service_provider} Rs. {package_value} data package."
+
+actions:
+  - validate_data_package_form
+  - get_package_details
+  - make_complaint
+  - validate_complaint_form
+  - get_new_broadband_connection
+  - get_new_connection
+  - validate_new_connection_form
+  - get_change_plan_details
+  - get_loan_details
+  - get_check_balance_details
+  - get_sim_lost_details
+  - get_recharge_details
+  - get_signal_lost_details
+  - get_coverage_details
+  - get_tv_connection_details
+  - get_tv_check_bill_details
+  - get_tv_package_details
 
 session_config:
   session_expiration_time: 60

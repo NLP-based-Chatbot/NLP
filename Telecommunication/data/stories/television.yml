@@ -7,30 +7,30 @@ stories:
   steps:
   - intent: get_tv_connection
   - slot_was_set:
-    - television_service_provider: peo
-  - action: utter_get_tv_connection
+    - tv_provider: peo
+  - action: get_tv_connection_details
 
 - story: Getting a new tv connection service provider not given
   steps:
   - intent: get_tv_connection
   - action: utter_ask_preferable_tv_provider
-  - intent: ans_preferable_tv_provider
-  - action: utter_get_tv_connection
+  - intent: ans_tv_provider
+  - action: get_tv_connection_details
 
 #check_bill
 - story: Check tv connection bill service provider given
   steps:
   - intent: check_bill
   - slot_was_set:
-    - television_service_provider: peo
-  - action: utter_check_bill
+    - tv_provider: peo
+  - action: get_tv_check_bill_details
 
-- story: Getting a new tv connection service provider not given
+- story: Check tv connection bill service provider not given
   steps:
   - intent: check_bill
-  - action: utter_ask_preferable_tv_provider
-  - intent: ans_preferable_tv_provider
-  - action: utter_check_bill
+  - action: utter_ask_tv_provider
+  - intent: ans_tv_provider
+  - action: get_tv_check_bill_details
 
 #tv_packages
 
@@ -38,12 +38,12 @@ stories:
   steps:
   - intent: tv_packages
   - slot_was_set:
-    - television_service_provider: peo
-  - action: utter_tv_packages
+    - tv_provider: peo
+  - action: get_tv_package_details
 
-- story: Getting a new tv connection service provider not given
+- story: Tv package details service provider not given
   steps:
   - intent: tv_packages
-  - action: utter_ask_preferable_tv_provider
-  - intent: ans_preferable_tv_provider
-  - action: utter_tv_packages
+  - action: utter_ask_tv_provider
+  - intent: ans_tv_provider
+  - action: get_tv_package_details

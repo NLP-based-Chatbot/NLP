@@ -7,11 +7,11 @@ stories:
   - intent: new_broadband_conection
   - slot_was_set:
     - service_provider: mobitel
-  - action: utter_new_broadband_conection
+  - action: get_new_broadband_connection
 
 - story: new_broadband_connection_provider_not_given
   steps:
   - intent: new_broadband_conection
-  - action: utter_ask_preferable_service_provider
+  - action: utter_ask_new_connection_form_service_provider
   - intent: ans_service_provider
-  - action: utter_new_broadband_conection
+  - action: get_new_broadband_connection

@@ -3,29 +3,39 @@ version: "2.0"
 nlu:
 - intent: get_tv_connection
   examples: |
-    - What are the requrements to buy [dialog](television_service_provider) TV
-    - How to get a [peo](television_service_provider) TV connection?
-    - I want to get [peo](television_service_provider) TV connection
-    - I want [dialog](television_service_provider) TV
-    - How to obtain a [dialog](television_service_provider) TV connection?
+    - What are the requrements to buy [dialog](tv_provider) TV
+    - How to get a [peo](tv_provider) TV connection?
+    - I want to get [peo](tv_provider) TV connection
+    - I want to get TV connection
+    - I want [dialog](tv_provider) TV
+    - How to obtain a [dialog](tv_provider) TV connection?
+    - How to obtain a television connections?
 
 - intent: check_bill
   examples: |
-    - How do I check my [dialog](television_service_provider) TV Bill?
-    - I want to check my [peo](television_service_provider) TV bill 
+    - How do I check my [dialog](tv_provider) TV Bill?
+    - I want to check my [peo](tv_provider) TV bill 
     - How to check the TV bill
     - I need to check the TV bill
 
 - intent: tv_packages
   examples: |
-    - What are the peo TV packages available?
+    - What are the [peo](tv_provider) TV packages available?
     - Television package details?
-    - [Dialog](television_service_provider) TV package details?
-    - I want [peo](television_service_provider) TV package details?
+    - [Dialog](tv_provider) TV package details?
+    - I want [peo](tv_provider) TV package details?
+    - I want [dialog](tv_provider) TV package details?
+    - Show me [dialog](tv_provider) TV packages
+    - Show me [peo](tv_provider) TV packages
 
 # Answer questions
-- intent: ans_preferable_tv_provider
+- intent: ans_tv_provider
   examples: |
-    - [peo](television_service_provider) TV
-    - [Dialog](television_service_provider) TV
-    - I want [Dialog](television_service_provider) TV
+    - [peo](tv_provider) TV
+    - [Dialog](tv_provider) TV
+    - [Dialog](tv_provider) television
+    - [peo](tv_provider) TV connection
+    - [Dialog](tv_provider) TV
+    - [peo](tv_provider) television
+    - [peo](tv_provider) TV
+    - [dialog](tv_provider) TV connection

@@ -1,17 +1,26 @@
 version: "2.0"
 
-stories:
-
-- story: activate_data_package_service_provider_given
+stroies:
+- story: Interactive story package form submit
   steps:
-  - intent: package_activate
+  - intent: greet
+  - action: utter_greet
+  - intent: data_package_info
+  - action: data_package_form
+  - active_loop: data_package_form
   - slot_was_set:
-    - service_provider: mobitel
-  - action: utter_activate_package
-
-- story: activate_data_package_service_provider_not_given
-  steps:
-  - intent: package_activate
-  - action: utter_service_provider
-  - intent: ans_service_provider
-  - action: utter_activate_package
+    - requested_slot: service_provider
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - action: data_package_form
+  - slot_was_set:
+    - requested_slot: service_provider
+  - intent: stop
+  - action: utter_ask_continue
+  - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - intent: goodbye
+  - action: utter_goodbye

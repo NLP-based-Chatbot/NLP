@@ -19,7 +19,6 @@ nlu:
 
 - intent: goodbye
   examples: |
-    - good afternoon
     - cu
     - good by
     - cee you later
@@ -39,6 +38,8 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - yeah
+    - yep
 
 - intent: deny
   examples: |
@@ -66,6 +67,7 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - I am fine
 
 - intent: mood_unhappy
   examples: |
@@ -98,7 +100,38 @@ nlu:
     - Thank you very much
     - Thank you so much
 
+- intent: stop
+  examples: |
+    - stop
+    - I don't need
+    - Please stop that
+    - I don't want
 
+responses:
+  utter_greet:
+  - text: "Hey Wingman here! How are you?"
 
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
 
+  utter_did_that_help:
+  - text: "Did that help you?"
 
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot called wingman and I here to assist you."
+  
+  utter_thanking:
+  - text: "You're welcome"
+  
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+
+  utter_ask_continue:
+  - text: Are you sure?
