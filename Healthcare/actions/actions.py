@@ -219,7 +219,7 @@ class AskFor_USERNAME(Action):
                  provide your user hash here")
 
         if userhash:
-            response = requests.post(POSTURL,data={"function":"clientdata", "data":{"userhash":userhash}})
+            response = requests.post(POSTURL,json={"function":"clientdata", "data":{"userhash":userhash}})
             patients = response.json()
             client_person = patients[0]["fields"]["username"]
             return[SlotSet("client_person",client_person)]
@@ -242,7 +242,7 @@ class AskFor_USERHASH(Action):
                  provide your user hash here")
 
         if userhash:
-            response = requests.post(POSTURL,data={"function":"clientdata", "data":{"userhash":userhash}})
+            response = requests.post(POSTURL,json={"function":"clientdata", "data":{"userhash":userhash}})
             patients = response.json()
             client_person = patients[0]["fields"]["username"]
             return [SlotSet("client_person",client_person)]
@@ -256,17 +256,18 @@ class newPatient(Action):
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
-        client_person = tracker.get_slot("client_person")
+        client_person = tracker.get_slot("person_name")
 
-        response = requests.post(POSTURL,data={"function":"newpatient","data":{"username":client_person}})
+        response = requests.post(POSTURL,json={"function":"newpatient","data":{"username":client_person}})
         patient = response.json()
+        print(patient)
 
         if patient[0]["fields"]["query_success"]==0:
             dispatcher.utter_message("Couldn't add a new user")
         else:
             if patient[0]["fields"]["userhash"]:
                 dispatcher.utter_message("Your userhash is "+patient[0]["fields"]["userhash"]+". Remember this userhash for access your data")
-        return []
+        return {"userhash":userhash}
 
 class promptUserdata(Action):
     def name(self) -> Text:
@@ -277,7 +278,7 @@ class promptUserdata(Action):
     ) -> List[EventType]:
         userhash = tracker.get_slot("userhash")
         
-        response = requests.post(POSTURL,data={"function":"clientdata", "data":{"userhash":userhash}})
+        response = requests.post(POSTURL,json={"function":"clientdata", "data":{"userhash":userhash}})
         patients = response.json()
         try:
             username = patients[0]["fields"]["username"]
