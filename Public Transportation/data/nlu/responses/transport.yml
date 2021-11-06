@@ -1,0 +1,17 @@
+version: '2.0'
+
+responses:
+  utter_ask_booking:
+    - text: Yes, you can book a seat.
+
+  utter_ask_schedule:
+    - text: Yes. Let me search the schedules.
+
+  utter_ask_path:
+    - text: Let me find the path.
+
+  utter_searching:
+    - text: searching
+    - text: Yes, working on it
+    - text: Give me few seconds
+    - text: Yes, let me search

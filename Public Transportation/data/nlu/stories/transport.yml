@@ -1,0 +1,39 @@
+version: '2.0'
+
+stories:
+  - story: Activate schedule form
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_schedule
+      - action: utter_searching
+      - action: schedule_form
+      - active_loop: schedule_form
+      - active_loop: null
+      - action: utter_slots_schedule
+      - action: action_get_schedule
+      - action: action_reset_transport_slots
+
+  - story: Activate booking form
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_booking
+      - action: utter_searching
+      - action: schedule_form
+      - active_loop: schedule_form
+      - active_loop: null
+      - action: utter_slots_booking
+      - action: action_reset_transport_slots
+
+  - story: Ask for best path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_path
+      - action: utter_searching
+      - action: path_form
+      - active_loop: path_form
+      - active_loop: null
+      - action: utter_path
+      - action: action_reset_transport_slots

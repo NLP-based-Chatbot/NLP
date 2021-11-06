@@ -1,0 +1,44 @@
+version: '2.0'
+
+nlu:
+  - intent: ask_booking
+    examples: |
+      - Can I make a booking?
+      - Can I book a [bus](vehical) seat?
+      - I need to book a [train](vehical) seat.
+      - I need to book a [bus](vehical) seat from [Bandarawela]{"entity": "city", "role": "departure"} to [Badulla]{"entity": "city", "role": "destination"}
+      - Need to book a [train](vehical) seat to [Gampaha]{"entity": "city", "role": "destination"}
+      - Book a seat from [Bandarawela]{"entity": "city", "role": "departure"} to [Badulla]{"entity": "city", "role": "destination"}
+
+  - intent: ask_schedule
+    examples: |
+      - Can I get the [bus](vehical) schedule?
+      - Let me know the [train](vehical) schedule
+      - Can I get he [bus](vehical) schedule from [Balangoda]{"entity": "city", "role": "departure"} to [Pandura]{"entity": "city", "role": "destination"}?
+      - I need the [train](vehical) schedule to [Badulla]{"entity": "city", "role": "destination"} from [Ratnapura]{"entity": "city", "role": "departure"}.
+
+  - intent: location
+    examples: |
+      - My destination is [Colombo]{"entity": "city", "role": "destination"}
+      - My location is [Kelaniya]{"entity": "city", "role": "destination"}
+      - I am in [Kelaniya]{"entity": "city", "role": "departure"}
+      - My depature location is [Kandy]{"entity": "city", "role": "departure"}
+      - I need to go to [Panadura]{"entity": "city", "role": "destination"}
+      - [Kelaniya](city)
+
+  - intent: vehical
+    examples: |
+      - [bus](vehical)
+      - [train](vehical)
+      - [3 wheel](vehical)
+      - [car](vehical)
+      - [van](vehical)
+
+  - intent: ask_path
+    examples: |
+      - Find me the best route from [Balangoda]{"entity": "city", "role": "departure"} to [Colombo]{"entity": "city", "role": "destination"}
+      - I need to find the best path to [Colombo]{"entity": "city", "role": "destination"}
+      - Drive me to [Pandura]{"entity": "city", "role": "destination"}
+      - I need to go to [Galle]{"entity": "city", "role": "destination"}
+      - Can I find the path to [Bandarawela]{"entity": "city", "role": "destination"}
+      - Can I find the best route to [Bandarawela]{"entity": "city", "role": "destination"}

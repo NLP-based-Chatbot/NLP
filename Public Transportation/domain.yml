@@ -1,0 +1,122 @@
+version: '2.0'
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - transport
+  - ask_booking
+  - ask_schedule
+  - location
+  - vehical
+  - ask_path
+  - searching
+
+entities:
+  - vehical
+  - city
+
+slots:
+  location_departure:
+    type: text
+    influence_conversation: false
+  location_destination:
+    type: text
+    influence_conversation: false
+  travelling_mode:
+    type: text
+    influence_conversation: false
+
+responses:
+  utter_greet:
+    - text: 'Hey! How are you?'
+
+  utter_cheer_up:
+    - text: 'Here is something to cheer you up:'
+      image: 'https://i.imgur.com/nGF1K8f.jpg'
+
+  utter_did_that_help:
+    - text: 'Did that help you?'
+
+  utter_happy:
+    - text: 'Great, carry on!'
+
+  utter_goodbye:
+    - text: 'Bye'
+
+  utter_iamabot:
+    - text: 'I am a bot, powered by Rasa.'
+
+  # New responses
+
+  utter_rephrase:
+    - text: Sorry I didn't get the message. Can you rephrase it?
+
+  utter_default:
+    - text: Sorry can you rephrase it again?
+
+  utter_ask_location_departure:
+    - text: What is the departure location?
+
+  utter_ask_location_destination:
+    - text: What is the destination location?
+
+  utter_ask_travelling_mode:
+    - text: What is the travelling mode?
+
+  utter_slots_booking:
+    - text: "Booking details,\n
+        - From: {location_departure}\n
+        - To: {location_destination}\n
+        - Travelling Method: {travelling_mode}"
+
+  utter_path:
+    - text: Use the following link to find the best route
+      image: https://www.google.lk/maps/dir/{location_departure}/{location_destination}
+
+actions:
+  - action_trigger_response_selector
+  - action_reset_transport_slots
+  - action_get_schedule
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+forms:
+  schedule_form:
+    required_slots:
+      location_departure:
+        - type: from_entity
+          entity: city
+          role: departure
+        - type: from_entity
+          entity: city
+      location_destination:
+        - type: from_entity
+          entity: city
+          role: destination
+        - type: from_entity
+          entity: city
+      travelling_mode:
+        - type: from_entity
+          entity: vehical
+
+  path_form:
+    required_slots:
+      location_departure:
+        - type: from_entity
+          entity: city
+          role: departure
+        - type: from_entity
+          entity: city
+      location_destination:
+        - type: from_entity
+          entity: city
+          role: destination
+        - type: from_entity
+          entity: city
