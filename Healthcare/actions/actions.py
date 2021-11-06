@@ -4,6 +4,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet,EventType
 from rasa_sdk.forms import FormAction,FormValidationAction
+from rasa_sdk.types import DomainDict
 
 import json
 import requests
@@ -48,7 +49,7 @@ class SpecList(Action):
         buttons = []
 
         for row in specs:
-            buttons.append({"title":row["fields"]["spec_name"],"payload":"/inform{\"entry_id\": \""+str(row["pk"])+"\"}"})
+            buttons.append({"title":row["fields"]["spec_name"],"payload":"/inform{\"spec_id\": \""+str(row["pk"])+"\"}"})
 
         dispatcher.utter_button_message("Select the specialization you want", buttons)
 
@@ -63,7 +64,7 @@ class DoctorList(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        spec_id = tracker.get_slot("entry_id")
+        spec_id = tracker.get_slot("spec_id")
         doctor_list = []
 
         if spec_id != "" and spec_id != None:
@@ -131,12 +132,17 @@ class PlaceAppointment(Action):
         time = tracker.get_slot("time")
         docthash = tracker.get_slot("docthash")
         username = tracker.get_slot("person_name")
+        userhash = tracker.get_slot("userhash")
 
         response_doctor = requests.post(POSTURL,json={"function":"docbyhash","data":{"docthash":docthash}})
         doctor = response_doctor.json()[0]
 
-        response_patient = requests.post(POSTURL,json={"function":"newpatient","data":{"username":username}})
-        patient = response_patient.json()[0]
+        if userhash:
+            response_patient = requests.post(POSTURL,json={"function":"clientdata","data":{"userhash":userhash}})
+            patient = response_patient.json()[0]
+        else:
+            response_patient = requests.post(POSTURL,json={"function":"newpatient","data":{"username":username}})
+            patient = response_patient.json()[0]
 
         doct_id = doctor["pk"]
         cust_id = patient["pk"]
@@ -148,77 +154,115 @@ class PlaceAppointment(Action):
 class PreprocessAppointmentData(FormValidationAction):
 
     def name(self) -> Text:
-        return "act_set_appoint_data"
+        return "validate_place_appointment"
 
-    async def relativedateTOdate(self, dispatcher: CollectingDispatcher,
+    async def validate_relativedate(self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            domain: DomainDict,
+        ) -> Dict[Text, Any]:
 
         date = tracker.get_slot("date")
+        reldate = tracker.get_slot("relativedate")
 
-        if date==None:
-            reldate = tracker.get_slot("relativedate")
+        if (date==None or date=="") and (reldate!=None and reldate!=""):
             if reldate=="today":
                 date = str(datetime.date.today())
             elif reldate=="tomorrow":
                 date = str(datetime.date.today()+datetime.timedelta(days=1))
 
-        # response = requests.post(POSTURL,json={"function":"docbyhash","data":{"docthash":docthash}})
-        # doctor = response.json()[0]
+            dispatcher.utter_message(text="Appointment is placed on "+reldate+" "+date)
 
+        return [SlotSet("date",date)]
 
-        return {"date":date}
-                
+    async def validate_date_replace_slash(self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+        ) -> Dict[Text, Any]:
 
-    
+        date = tracker.get_slot("date")
+
+        if "/" in date:
+            date = date.split("/")
+            date= "-".join(date)
+            return [SlotSet("date",date)]
+        elif "\\" in date:
+            date = date.split("\\")
+            date= "-".join(date)
+            return [SlotSet("date",date)]
+
+        return []
+                    
 class AskFor_DOCTHASH(Action):
     def name(self) -> Text:
-        return "action_ask_docthash"
+        return "action_ask_form_place_appointment_docthash"
 
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
+
+        print("executed action_ask_form_place_appointment_docthash")
+
         dispatcher.utter_message(text="You haven't selected a doctor")
         return []
     
 class AskFor_DATE(Action):
     def name(self) -> Text:
-        return "action_ask_date"
+        return "action_ask_form_place_appointment_date"
 
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
 
-        relative_date = tracker.get_slot("relativedate")
-        dispatcher.utter_message(text="Provide a date please [YYYY-MM-DD]")
+        print("executed action_ask_form_place_appointment_date")
+
+        relativedate = tracker.get_slot("relativedate")
+        
+        if relativedate==None or relativedate=="":
+            dispatcher.utter_message(text="Provide a date please [YYYY-MM-DD]")
+        else:
+            if reldate=="today":
+                date = str(datetime.date.today())
+            elif reldate=="tomorrow":
+                date = str(datetime.date.today()+datetime.timedelta(days=1))
+            return [SlotSet("date",date)]
+
         return []
 
 class AskFor_TIME(Action):
     def name(self) -> Text:
-        return "action_ask_time"
+        return "action_ask_form_place_appointment_time"
 
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
+
+        print("executed action_ask_form_place_appointment_time")
+
         dispatcher.utter_message(text="Provide a comfortable  time for you [HH:mm]")
         return []
 
-class AskFor_USERNAME(Action):
+class AskFor_CLIENTPERSON(Action):
     def name(self) -> Text:
-        return "action_ask_client_person"
+        return "action_ask_form_place_appointment_client_person"
 
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
+
+        print("executed action_ask_form_place_appointment_client_person")
 
         client_person = tracker.get_slot("client_person")
         userhash = tracker.get_slot("userhash")
 
-        if not client_person and userhash:
+        if not(client_person or userhash):
             dispatcher.utter_message(text="It looks like you are a new client. Please tell your name to register as a new client. If you are already a client\
                  provide your user hash here")
 
-        if userhash:
+        elif userhash:
             response = requests.post(POSTURL,json={"function":"clientdata", "data":{"userhash":userhash}})
             patients = response.json()
             client_person = patients[0]["fields"]["username"]
@@ -228,24 +272,24 @@ class AskFor_USERNAME(Action):
 
 class AskFor_USERHASH(Action):
     def name(self) -> Text:
-        return "action_ask_userhash"
+        return "action_ask_form_place_appointment_userhash"
 
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
 
+        print("executed action_ask_form_place_appointment_userhash")
+
         client_person = tracker.get_slot("client_person")
         userhash = tracker.get_slot("userhash")
 
-        if not client_person and userhash:
+        if not(client_person or userhash):
             dispatcher.utter_message(text="It looks like you are a new client. Please tell your name to register as a new client. If you are already a client\
                  provide your user hash here")
-
-        if userhash:
-            response = requests.post(POSTURL,json={"function":"clientdata", "data":{"userhash":userhash}})
-            patients = response.json()
-            client_person = patients[0]["fields"]["username"]
-            return [SlotSet("client_person",client_person)]
+            return []
+        elif client_person and not(userhash):
+            dispatcher.utter_message(text="It looks like you are a new client. If you are already a client provide your user hash here")
+            return []
 
         return []
 
@@ -259,15 +303,18 @@ class newPatient(Action):
         client_person = tracker.get_slot("person_name")
 
         response = requests.post(POSTURL,json={"function":"newpatient","data":{"username":client_person}})
+        print(response)
         patient = response.json()
         print(patient)
 
-        if patient[0]["fields"]["query_success"]==0:
-            dispatcher.utter_message("Couldn't add a new user")
-        else:
+        try:
+            if patient[0]["fields"]["query_success"]==0:
+                dispatcher.utter_message("Couldn't add a new user")
+        except KeyError:
             if patient[0]["fields"]["userhash"]:
+                userhash = patient[0]["fields"]["userhash"]
                 dispatcher.utter_message("Your userhash is "+patient[0]["fields"]["userhash"]+". Remember this userhash for access your data")
-        return {"userhash":userhash}
+                return [SlotSet("userhash",userhash)]
 
 class promptUserdata(Action):
     def name(self) -> Text:
@@ -283,7 +330,7 @@ class promptUserdata(Action):
         try:
             username = patients[0]["fields"]["username"]
             dispatcher.utter_message(text="Welcome "+username+". You can now access your appointments, reports and other reservations details")
-
+            return [Slotset("client_person",username)]
         except Exception:
             dispatcher.utter_message(text="Sorry, No client was found with the given userhash. Please try again")
         return []

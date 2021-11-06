@@ -1,7 +1,7 @@
 version: "2.0"
 
 rules:
-- rule: Activate form
+- rule: Activate place appointment form
   steps:
   - intent: make_appiontment
   - action: form_place_appointment
@@ -9,16 +9,12 @@ rules:
 
 
   
-- rule: Submit form
+- rule: Submit place appointment form
   condition:
-  # Condition that form is active.
-  - active_loop: form_place_appointment
+    - active_loop: form_place_appointment
   steps:
-  # Form is deactivated
   - action: form_place_appointment
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  # The actions we want to run when the form is submitted.
-  - action: act_set_appoint_data
   - action: act_place_appointment

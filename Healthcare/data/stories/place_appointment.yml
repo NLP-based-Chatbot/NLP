@@ -8,91 +8,82 @@ stories:
   - slot_was_set:
     - spec_id: 2
   - action: act_list_doctors
+  - action: action_listen
 
 - story: get doctor list - spec is not provided
   steps:
   - intent: get_doctor_list
+  - slot_was_set:
+    - spec_id: null
   - action: act_list_doctors
+  - action: action_listen
 
-- story: select time - doctor is selected
+- story: get time - doctor is selected
   steps:
   - intent: get_time_slot
   - slot_was_set:
     - docthash: doc_4h24kh23344hj342k5fhj2f5h1
   - action: act_show_timerange
+  - action: action_listen
 
-- story: select time - doctor is not selected
+- story: get time - doctor is not selected
   steps:
   - intent: get_time_slot
   - slot_was_set:
     - docthash: null
-  - action: utter_ask_toselect_docotor
+  - action: utter_ask_toselect_doctor
+  - action: action_listen
 
 - story: get spec list
   steps:
   - intent: get_spec_list
   - action: act_list_specilizations
+  - action: action_listen
 
-- story: select date
+- story: provide date
   steps:
   - or:
     - intent: inform_relativetime
     - intent: inform_date
   - action: utter_date_selection_success
 
+- story: provide time - doctor is not selected
+  steps:
+  - intent: inform_time
+  - slot_was_set:
+    - docthash: null
+  - action: utter_ask_toselect_doctor
+  - action: action_listen
+
+- story: provide time - doctor is selected
+  steps:
+  - intent: inform_time
+  - slot_was_set:
+    - docthash: doc_hk4423kh5k235h2k3542k5k234
+  - action: utter_time_selection_success
+  - action: action_listen
+
 - story: provide user name
   steps:
   - intent: inform_patient_name
   - action: act_new_patient
+  - action: action_listen
 
 - story: provide user hash
   steps:
   - intent: inform_userhash
   - action: act_prompt_userdata  
+  - action: action_listen
 
+- story: provide doct hash
+  steps:
+  - intent: inform_docthash
+  - action: utter_doct_selection_success
+  - action: action_listen
 
-# - story: provide doct hash 
-#   steps:
-#   - intent: inform_docthash
-#   - action: 
-
-# - story: inform doctor hash 
-#   steps:
-#   - intent:
-
-# - story: place an appiontment 
-#   steps:
-#   - intent: inform_patient_name
-#   - action: utter_ask_wether_doct_specialist
-#   - checkpoint: asked_is_specialist
-
-# - story: place appointment specialist 
-#   steps:
-#   - checkpoint: asked_is_specialist
-#   - intent: affirm
-#   - action: act_list_specilizations
-#   - intent: inform
-#     entities:
-#     - spec_id: 12
-#   - slot_was_set:
-#     - spec_id: 12
-#   - checkpoint: end_of_select_specilization_phase
-
-# - story: place appointment not specialist 
-#   steps:
-#   - checkpoint: asked_is_specialist
-#   - intent: deny
-#   - checkpoint: end_of_select_specilization_phase
-
-# - story: after specialization phase
-#   steps:
-#   - checkpoint: end_of_select_specilization_phase
-#   - action: act_list_doctors
-#   - intent: inform_docthash
-#   - action: utter_ask_date
-#   - or:
-#     - intent: inform_relativetime
-#     - intent: inform_date
-#   - action: act_show_timerange
-#   - action: utter_ask_time
-#   - intent: inform_time
+- story: inform spec id
+  steps:
+  - intent: inform
+  - slot_was_set:
+    - spec_id: 2
+  - action: action_listen
