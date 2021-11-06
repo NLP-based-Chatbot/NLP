@@ -1,127 +1,145 @@
-version: "2.0"
-
+version: '2.0'
+session_config:
+  session_expiration_time: 120
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - make_appiontment
-  - change_appiontment
-  - delete_appointment
-  - check_appointment
-  - get_report
-  - inform_doct_name
-  - inform_patient_name
-  - inform_usertype
-  - inform_date
-  - inform_time
-  - inform_relativetime
-  - inform_userhash
-  - inform_reporthash
-  - inform_docthash
-  - inform
-
-
+- make_appiontment
+- affirm
+- inform_patient_name
+- inform_date
+- inform
+- inform_time
+- inform_docthash
+- greet
+- goodbye
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- change_appiontment
+- delete_appointment
+- check_appointment
+- get_report
+- inform_relativetime
+- inform_userhash
+- inform_reporthash
 entities:
-  - reservation
-  - option
-  - service_person
-  - date
-  - person_name
-  - sp_name
-  - time
-  - userhash
-  - docthash
-  - reporthash
-  - client_person
-  - relativedate
-  - refer_after
-  - refer_before
-  - deliverable
-  - entry_id
-
+- client_person
+- date
+- deliverable
+- docthash
+- entry_id
+- option
+- person_name
+- refer_after
+- refer_before
+- relativedate
+- reporthash
+- reservation
+- service_person
+- sp_name
+- spec_id
+- time
+- userhash
 slots:
   option:
     type: text
+    influence_conversation: true
   date:
     type: text
+    influence_conversation: true
   relativedate:
     type: text
+    influence_conversation: true
   person_name:
     type: text
+    influence_conversation: true
   sp_name:
     type: text
+    influence_conversation: true
   time:
     type: text
+    influence_conversation: true
   refer_after:
     type: text
+    influence_conversation: true
   refer_before:
     type: text
+    influence_conversation: true
   userhash:
     type: text
+    influence_conversation: true
   docthash:
     type: text
+    influence_conversation: true
   reporthash:
     type: text
+    influence_conversation: true
   entry_id:
     type: text
+    influence_conversation: true
+  spec_id:
+    type: text
+    influence_conversation: true
   current_intent:
     type: text
-
-actions:
-  - act_list_specilizations
-  - act_list_doctors
-  - act_show_timerange
-
-
+    influence_conversation: true
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
+  - text: Hey! How are you?
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
-  - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_happy:
-  - text: "Great, carry on!"
-
+  - text: Great, carry on!
   utter_goodbye:
-  - text: "Bye"
-
+  - text: Bye
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+  - text: I am a bot, powered by Rasa.
   utter_ask_name:
-  - text: "Tell me your name first"
-
+  - text: Tell me your name first
   utter_ask_wether_doct_specialist:
-  - text: "Do you want to meet a specialist ?"
+  - text: Do you want to meet a specialist ?
     buttons:
     - title: Yes
       payload: /affirm
     - title: No
       payload: /deny
-
   utter_ask_date:
-  - text: "What is the day do you prefer?"
-
+  - text: What is the day do you prefer?
   utter_ask_time:
-  - text: "Tell me a time comfortable for you"
-
+  - text: Tell me a time comfortable for you
   utter_thank:
-  - text: "Thank you"
-
+  - text: Thank you
   utter_thank_service:
-  - text: "Thank you for using our service"
-
-  
-
-session_config:
-  session_expiration_time: 120
-  carry_over_slots_to_new_session: true
+  - text: Thank you for using our service
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+actions:
+- act_list_doctors
+- act_list_specilizations
+- act_place_appointment
+- act_set_intent
+- act_show_timerange
+- act_place_appointment
+- utter_ask_date
+- utter_ask_name
+- utter_ask_time
+- utter_ask_wether_doct_specialist
+forms:
+  form_place_appointment:
+    required_slots:
+      docthash:
+      - type: from_entity
+        entity: docthash
+      userhash:
+      - type: from_entity
+        entity: userhash
+      date:
+      - type: from_entity
+        entity: date
+      time:
+      - type: from_entity
+        entity: time

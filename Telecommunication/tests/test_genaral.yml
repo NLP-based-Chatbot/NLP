@@ -165,3 +165,56 @@ stories:
       Thank you
     intent: thanking
   - action: utter_thanking
+
+
+- story: Sim card lost 
+  steps:
+  - user: |
+      My sim is damaged
+    intent: sim_lost
+  - action: utter_ask_data_package_form_service_provider
+  - user: |
+      [airtel](service_provider)
+    intent: ans_service_provider
+  - action: get_sim_lost_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: Sim card lost provider given
+  steps:
+  - user: |
+      My [dialog](service_provider) sim is missplaced
+    intent: sim_lost
+  - action: get_sim_lost_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: Ask for Recharge Account
+  steps:
+  - user: |
+      How to recharge my account
+    intent: recharge_account
+  - action: utter_ask_data_package_form_service_provider
+  - user: |
+      [airtel](service_provider)
+    intent: ans_service_provider
+  - action: get_recharge_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: Ask for Recharge Account provider given
+  steps:
+  - user: |
+      I want to recharge my [hutch](service_provider) sim
+    intent: recharge_account
+  - action: get_recharge_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
