@@ -3,6 +3,7 @@ session_config:
   session_expiration_time: 120
   carry_over_slots_to_new_session: true
 intents:
+- inform_userhash
 - inform_date
 - inform_time
 - make_appiontment
@@ -24,17 +25,17 @@ intents:
 - check_appointment
 - get_report
 - inform_relativetime
-- inform_userhash
 - inform_reporthash
 - get_time_slot
 entities:
 - client_person
+- appointment_id
 - date
 - deliverable
 - docthash
 - entry_id
 - list_items
-- option
+- appointment_option
 - person_name
 - refer_after
 - refer_before
@@ -47,7 +48,7 @@ entities:
 - time
 - userhash
 slots:
-  option:
+  appointment_option:
     type: text
     influence_conversation: true
   date:
@@ -90,6 +91,9 @@ slots:
     type: text
     influence_conversation: true
   current_intent:
+    type: text
+    influence_conversation: true
+  appointment_id:
     type: text
     influence_conversation: true
 responses:
@@ -135,6 +139,8 @@ responses:
   - text: I'm sorry, I didn't quite understand that. Could you rephrase?
   utter_out_of_scope:
   - text: I'm sorry, I can't understand what are you saying?
+  utter_ask_userhash_for_proceed:
+  - text: Provide you userhash to access your data
 actions:
 - act_list_doctors
 - act_list_specilizations
@@ -143,6 +149,15 @@ actions:
 - act_prompt_userdata
 - act_set_intent
 - act_show_timerange
+- action_ask_client_person
+- action_ask_date
+- action_ask_docthash
+- action_ask_time
+- action_ask_userhash
+- action_prompt_appointment_options
+- act_check_appointment
+- act_change_appointment
+- act_delete_appointment
 - utter_ask_date
 - utter_ask_name
 - utter_ask_time
@@ -171,6 +186,36 @@ forms:
       - type: from_entity
         entity: time
         intent: inform_time
+
+  form_change_appointment:
+    required_slots:
+      userhash:
+      - type: from_entity
+        entity: userhash
+        intent: inform_userhash
+      appointment_id:
+      - type: from_entity
+        entity: appointment_id
+        intent: inform
+      date:
+      - type: from_entity
+        entity: date
+        intent: inform_date
       - type: from_entity
         entity: relativedate
         intent: inform_relativetime
+      time:
+      - type: from_entity
+        entity: time
+        intent: inform_time
+
+  form_delete_appointment:
+    required_slots:
+      userhash:
+      - type: from_entity
+        entity: userhash
+        intent: inform_userhash
+      appointment_id:
+      - type: from_entity
+        entity: appointment_id
+        intent: inform

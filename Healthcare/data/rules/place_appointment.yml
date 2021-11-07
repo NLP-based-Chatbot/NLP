@@ -1,14 +1,23 @@
 version: "2.0"
 
 rules:
-- rule: Activate place appointment form
+- rule: Activate place appointment form - docthash PROVIDED
+  condition:
+  - slot_was_set:
+    - docthash
   steps:
   - intent: make_appiontment
   - action: form_place_appointment
   - active_loop: form_place_appointment
 
+- rule: Activate place appointment form - docthash NOT PROVIDED
+  condition:
+  - slot_was_set:
+    - docthash: null
+  steps:
+  - intent: make_appiontment
+  - action: utter_ask_toselect_doctor
 
-  
 - rule: Submit place appointment form
   condition:
     - active_loop: form_place_appointment
@@ -18,3 +27,222 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: act_place_appointment
+
+########################################################################
+
+- rule: Activate change appointment form
+  condition:
+  - slot_was_set:
+    - appointment_id
+  steps:
+  - intent: change_appiontment
+  - action: form_change_appointment
+  - active_loop: form_change_appointment
+
+- rule: Submit change appointment form
+  condition:
+    - active_loop: form_change_appointment
+  steps:
+  - action: form_change_appointment
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: act_change_appointment
+
+########################################################################
+
+- rule: Activate delete appointment form
+  condition:
+  - slot_was_set:
+    - appointment_id
+  steps:
+  - intent: delete_appointment
+  - action: form_delete_appointment
+  - active_loop: form_delete_appointment
+
+- rule: Submit delete appointment form
+  condition:
+    - active_loop: form_delete_appointment
+  steps:
+  - action: form_delete_appointment
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: act_delete_appointment
+
+########################################################################
+
+- rule: get doctor list - spec is provided
+  condition:
+  - slot_was_set:
+    - spec_id
+  steps:
+  - intent: get_doctor_list
+  - action: act_list_doctors
+
+
+- rule: get doctor list - spec is not provided
+  condition:
+  - slot_was_set:
+    - spec_id: null
+  steps:
+  - intent: get_doctor_list
+  - action: act_list_doctors
+
+
+- rule: get time - doctor is selected
+  condition:
+  - slot_was_set:
+    - docthash
+  steps:
+  - or:
+    - intent: get_time_slot
+    - intent: get_time_range
+  - action: act_show_timerange
+  - action: action_listen
+
+- rule: get time - doctor is not selected
+  condition:
+  - slot_was_set:
+    - docthash: null
+  steps:
+  - or:
+    - intent: get_time_slot
+    - intent: get_time_range
+  - action: utter_ask_toselect_doctor
+  - action: action_listen
+
+- rule: get spec list
+  steps:
+  - intent: get_spec_list
+  - slot_was_set:
+    - spec_id
+  - action: act_list_specilizations
+
+#  - action: action_listen
+
+- rule: provide date
+  steps:
+  - or:
+    - intent: inform_relativetime
+    - intent: inform_date
+  - action: utter_date_selection_success
+  - action: action_listen
+
+- rule: provide time - doctor is not selected
+  steps:
+  - intent: inform_time
+  - slot_was_set:
+    - docthash: null
+  - action: utter_ask_toselect_doctor
+  - action: action_listen
+
+- rule: provide time - doctor is selected
+  steps:
+  - intent: inform_time
+  - slot_was_set:
+    - docthash
+  - action: utter_time_selection_success
+  - action: action_listen
+
+- rule: provide user name
+  steps:
+  - intent: inform_patient_name
+  - action: act_new_patient
+  - action: action_listen
+
+- rule: provide user hash
+  steps:
+  - intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - action: act_prompt_userdata
+  - slot_was_set:
+    - client_person
+  - action: action_listen
+
+- rule: provide doct hash
+  steps:
+  - intent: inform_docthash
+  - action: utter_doct_selection_success
+  - action: action_listen
+
+- rule: inform spec id
+  steps:
+  - intent: inform
+    entities:
+    - spec_id
+  - slot_was_set:
+    - spec_id
+  - action: action_listen
+
+# - rule: inform spec id
+#   steps:
+#   - intent: inform
+#     entities:
+#     - appointment_id
+#   - slot_was_set:
+#     - appointment_id
+#   - action: action_listen
+
+- rule: get appointment list - userhash provided
+  steps:
+  - intent: check_appointment
+  - slot_was_set:
+    - userhash
+  - action: act_check_appointment
+
+- rule: get appointment list - userhash not provided
+  steps:
+  - intent: check_appointment
+  - slot_was_set:
+    - userhash: null
+  - action: utter_ask_userhash_for_proceed
+  - action: action_listen
+
+- rule: inform appointment id
+  steps:
+  - intent: inform
+    entities:
+    - appointment_id
+  - slot_was_set:
+    - appointment_id
+    - appointment_option: null
+  - action: action_prompt_appointment_options
+
+# - rule: inform appointment id
+#   steps:
+#   - intent: inform
+#     entities:
+#     - appointment_id
+#   - slot_was_set:
+#     - appointment_option
+#   - action: action_listen
+
+# - rule: act delete appointment - appointment id provided
+#   steps:
+#   - intent: delete_appointment
+#   - slot_was_set:
+#     - appointment_id
+# #  - action: action_listen
+
+# - rule: act delete appointment - appointment id not provided
+#   steps:
+#   - intent: delete_appointment
+#   - slot_was_set:
+#     - appointment_id: null
+# #  - action: action_listen
+
+# - rule: act change appointment - appointment id provided
+#   steps:
+#   - intent: change_appiontment
+#   - slot_was_set:
+#     - appointment_id
+# #  - action: action_listen
+
+# - rule: act change appointment - appointment id not provided
+#   steps:
+#   - intent: change_appiontment
+#   - slot_was_set:
+#     - appointment_id: null
+# #  - action: action_listen
