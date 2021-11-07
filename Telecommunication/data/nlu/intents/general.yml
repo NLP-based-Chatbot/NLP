@@ -88,6 +88,14 @@ nlu:
     - My sim card is damaged
     - I need a new sim because by sim card is damaged
     - I lost my sim card
+    - My sim card is missplaced
+    - My sim card is missplaced
+    - I need a new sim because by sim card is missplaced
+    - I lost my [dialog](service_provider) sim card
+    - My [mobitel](service_provider) sim card is lost
+    - My [hutch](service_provider) sim card is damaged
+    - I need a new sim because my [airtel](service_provider) sim card is damaged
+    - I lost my [dialog](service_provider) sim card
 
 - intent: recharge_account
   examples: |
@@ -95,6 +103,12 @@ nlu:
     - How to recharge my account?
     - I need to recharge
     - Recharge my account
+    - I want to recharge my sim
+    - How to recharge my sim?
+    - I want to recharge my [hutch](service_provider) account
+    - How to recharge my [airtel](service_provider) account?
+    - I need to recharge my [dialog](service_provider) sim
+    - Recharge my [mobitel](service_provider) account
 
 - intent: signal_lost
   examples: |
