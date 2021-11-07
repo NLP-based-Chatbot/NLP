@@ -4,8 +4,16 @@ nlu:
 - intent: new_broadband_conection
   examples: |
     - How to get a router?
+    - How to get a [hutch](service_provider) router?
     - I want a wifi router
+    - How to get a new [dialog](service_provider) wifi router?
+    - I want a [dialog](service_provider) 4G wifi router
+    - How to get a wifi router
+    - How to get a new wifi router?
+    - I want a [hutch](service_provider) wifi router
+    - I want a [airtel](service_provider) wifi router
     - How to get a [dialog](service_provider) 4G router.
+    - How to get a [mobitel](service_provider) 4G router.
     - I want to get a [mobitel](service_provider) wifi router
 
 - intent: compatible_devices

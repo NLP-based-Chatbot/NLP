@@ -5,25 +5,40 @@ nlu:
   examples: |
     - How do I apply for a new [Postpaid](payment_method) plan
     - I need a new [prepaid](payment_method) connection
+    - I want to get a new [mobitel](service_provider) [prepaid](payment_method) connection
     - How to get a new [postpaid](payment_method) connection
     - I want new [postpaid](payment_method) connection
     - How to obtain a new connection?
-    - I want new [dialog](preferable_service_provider) [postpaid](payment_method) connection
+    - I want to get a new [dialog](service_provider) [postpaid](payment_method) connection
     - I need to get a new connection
+    - How to obtain a new [postpaid](payment_method) connection?
+    - How do I apply for a new [airtel](service_provider) plan
+    - How to obtain a new [Hutch](service_provider) connection?
+    - I want new [postpaid](payment_method) [dialog](service_provider) connection
 
 - intent: change_plan
   examples: |
     - Can I change my existing [postpaid](payment_method) to one of these plans
-    - Can I change my connection plan
-    - How to change my [prepaid]{"entity": "payment_method", "role": "current_payment_method"} plan to [postpaid]{"entity": "payment_method", "role": "new_preferable_payment_method"} plan 
-    - Is it possible to change my connection type
+    - Can I change my connection plan [postpaid](payment_method)
+    - How to change my [prepaid](payment_method) connection to [postpaid](payment_method) [postpaid](payment_method)
+    - Is it possible to change my [postpaid](payment_method) [dialog](service_provider) connection to [prepaid](payment_method)
+    - Can I change my existing [airtel](service_provider) [postpaid](payment_method) plan
+    - Can I change my existing [mobitel](service_provider) [postpaid](payment_method) plan
+    - Is it possible to change my [prepaid](payment_method) [hutch](service_provider) connection to [postpaid](payment_method)
+    - Can I change the connection plan of my [dialog](service_provider) sim 
+    - Is it possible to change connection plan of my [airtel](service_provider) sim
 
 - intent: check_ownership
   examples: |
     - How to confirm ownership for my mobile connection?
     - How to get ownership details for my connection
+    - How to check the registration details for my sim card
     - I need to check the ownership of my sim
     - How to check ownership of sim
+    - How to get my sim registration details
+    - How to check to whom my sim is registered for?
+    - Check the person my sim is registered for
+    - Check sim registration details
 
 - intent: check_other_connections
   examples: |
@@ -36,8 +51,11 @@ nlu:
   examples: |
     - How to correct my ownership details?
     - How to change my ownership details?
+    - I want to change my sim registration details
     - Is it possible to change ownership details?
+    - Is it possible to change my sim registration details?
     - My ownership details are wrong, How to change?
+    - My registration details of the sim are wrong, How to change?
 
 - intent: get_loan
   examples: |
@@ -45,6 +63,13 @@ nlu:
     - Can I get a load?
     - Is it possible to get a loan?
     - I need to get a loan?
+    - How to get a load from my [dialog](service_provider) sim?
+    - I need to get a loan from my [mobitel](service_provider) sim?
+    - Is it possible to get a loan from [hutch](service_provider) connection?
+    - Can I get a load from [airtel](service_provider) connection?
+    - How to obtain a loan?
+    - I want to get a loan
+    - I want to get a loan from my [airtel](service_provider) connection?
 
 - intent: check_balance
   examples: |
@@ -52,6 +77,10 @@ nlu:
     - Account balance?
     - How much balance available on my account?
     - I want to get my account balance?
+    - How to check my [airtel](service_provider) account balance?
+    - Account balance of my [mobitel](service_provider) connection?
+    - How much balance available on my [mobitel](service_provider) sim?
+    - I want to get account balance of my [mobitel](service_provider) sim?
 
 - intent: sim_lost
   examples: |
@@ -59,6 +88,14 @@ nlu:
     - My sim card is damaged
     - I need a new sim because by sim card is damaged
     - I lost my sim card
+    - My sim card is missplaced
+    - My sim card is missplaced
+    - I need a new sim because by sim card is missplaced
+    - I lost my [dialog](service_provider) sim card
+    - My [mobitel](service_provider) sim card is lost
+    - My [hutch](service_provider) sim card is damaged
+    - I need a new sim because my [airtel](service_provider) sim card is damaged
+    - I lost my [dialog](service_provider) sim card
 
 - intent: recharge_account
   examples: |
@@ -66,6 +103,12 @@ nlu:
     - How to recharge my account?
     - I need to recharge
     - Recharge my account
+    - I want to recharge my sim
+    - How to recharge my sim?
+    - I want to recharge my [hutch](service_provider) account
+    - How to recharge my [airtel](service_provider) account?
+    - I need to recharge my [dialog](service_provider) sim
+    - Recharge my [mobitel](service_provider) account
 
 - intent: signal_lost
   examples: |
@@ -83,5 +126,13 @@ nlu:
     - Coverage areas on the map
 
 
-# Answer to questions
+# add complaint intent
+
+- intent: add_complaint
+  examples: |
+    - I want to make a complaint
+    - Can I make a complaint
+    - How to make a complaint
+    - I need to log a complaint
+    - How can I make a complaint
 

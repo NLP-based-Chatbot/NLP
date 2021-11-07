@@ -1,0 +1,130 @@
+version: "2.0"
+nlu:
+- intent: ans_preferable_tv_provider
+  examples: |
+    - [peo](preferable_tv_provider) TV
+- intent: new_broadband_conection
+  examples: |
+    - I want a wifi router
+- intent: purpose_wps_btn
+  examples: |
+    - Purpose of the WPS button
+- intent: device_count
+  examples: |
+    - How many number of devices can be conneced to my router?
+- intent: return_unit
+  examples: |
+    - I need to return my router
+- intent: change_plan
+  examples: |
+    - Can I change my connection plan [postpaid](payment_method)
+- intent: check_ownership
+  examples: |
+    - How to confirm ownership for my mobile connection?
+- intent: check_other_connections
+  examples: |
+    - Are there more connection to my id number?
+- intent: change_ownership
+  examples: |
+    - How to correct my ownership details?
+- intent: get_loan
+  examples: |
+    - Can I get a load?
+- intent: check_balance
+  examples: |
+    - How to check my account balance?
+- intent: sim_lost
+  examples: |
+    - My sim card is damaged
+- intent: recharge_account
+  examples: |
+    - I need to recharge
+- intent: check_coverage
+  examples: |
+    - I want to know whether I’m in Fixed LTE coverage area or not?
+- intent: bot_challenge
+  examples: |
+    - are you a human?
+- intent: thanking
+  examples: |
+    - Thank you so much
+- intent: ans_package_value
+  examples: |
+    - [100](package_value)
+- intent: package_balance
+  examples: |
+    - How much data available?
+- intent: deactivate_package
+  examples: |
+    - How to deactivate my [daily](package_type) package
+- intent: check_bill
+  examples: |
+    - I want to check my [peo](tv_provider) TV bill
+- intent: tv_packages
+  examples: |
+    - Television package details?
+- intent: wifi_coverage
+  examples: |
+    - How far the wifi signal will work?
+- intent: damaged_unit
+  examples: |
+    - My router is damaged
+- intent: signal_lost
+  examples: |
+    - My data connection is very slow
+- intent: add_complaint
+  examples: |
+    - How can I make a complaint
+- intent: compatible_devices
+  examples: |
+    - Can I connect my mobile phone to the router?
+- intent: affirm
+  examples: |
+    - y
+- intent: ans_service_provider
+  examples: |
+    - My service provider is [Dialog](service_provider)
+- intent: ans_payment_method
+  examples: |
+    - I have a [prepaid](payment_method) connection
+- intent: ans_package_type
+  examples: |
+    - [Unlimited](package_type) data packages
+- intent: new_connection
+  examples: |
+    - How to obtain a new connection?
+- intent: deny
+  examples: |
+    - no way
+- intent: get_tv_connection
+  examples: |
+    - I want to get [peo](preferable_tv_provider) TV connection
+- intent: goodbye
+  examples: |
+    - good night
+- intent: greet
+  examples: |
+    - hey there
+    - hey
+- intent: data_package_info
+  examples: |
+    - I want details about [dialog](service_provider) data packages
+    - Could you please give me details about data packages?
+- intent: mood_unhappy
+  examples: |
+    - so sad
+    - I am sad
+    - I am disappointed
+- intent: mood_great
+  examples: |
+    - I am great
+    - I am feeling very good
+    - super stoked
+- synonym: time-based
+  examples: |
+    - time based
+    - timebased
+- synonym: content-based
+  examples: |
+    - content based
+    - contentbased

@@ -1,0 +1,220 @@
+version: "2.0"
+
+stories:
+- story: ask for new connection
+  steps:
+  - user: |
+      how to get a new connection
+    intent: new_connection
+  - action: new_connection_form
+  - active_loop: new_connection_form
+  - user: |
+      [mobitel](service_provider)
+    intent: ans_service_provider
+  - action: new_connection_form
+  - user: |
+      [prepaid](payment_method)
+    intent: ans_payment_method
+  - action: new_connection_form
+  - active_loop: null
+  - action: get_new_connection
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for new connection provider given
+  steps:
+  - user: |
+      how to get a new [dialog](service_provider) connection
+    intent: new_connection
+  - action: new_connection_form
+  - active_loop: new_connection_form
+  - user: |
+      I prefer [prepaid](payment_method) connection
+    intent: ans_payment_method
+  - action: new_connection_form
+  - active_loop: null
+  - action: get_new_connection
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+
+- story: ask for new connection provider given payment method given
+  steps:
+  - user: |
+      how to get a new [dialog](service_provider) [prepaid](payment_method) connection
+    intent: new_connection
+  - action: new_connection_form
+  - active_loop: null
+  - action: get_new_connection
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for check ownership
+  steps:
+  - user: |
+      How to get my sim registration details
+    intent: check_ownership
+  - action: utter_check_ownership
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for other connections under my identification
+  steps:
+  - user: |
+      What are the connections registered under my id?
+    intent: check_other_connections
+  - action: utter_check_other_connections
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for change the ownership of my sim
+  steps:
+  - user: |
+      How to change my ownership details because current details are wrong
+    intent: change_ownership
+  - action: utter_change_ownership
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for get a loan
+  steps:
+  - user: |
+      I want to get a loan
+    intent: get_loan
+  - action: utter_ask_data_package_form_service_provider
+  - user: |
+      [dialog](service_provider)
+    intent: ans_service_provider
+  - action: get_loan_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for get a loan provider given
+  steps:
+  - user: |
+      Can I take a loan from my [dialog](service_provider) sim
+    intent: get_loan
+  - action: get_loan_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for change the plan
+  steps:
+  - user: |
+      I want change my current [prepaid](payment_method) plan to a [postpaid](payment_method) plan
+    intent: change_plan
+  - action: utter_ask_data_package_form_service_provider
+  - user: |
+      [dialog](service_provider)
+    intent: ans_service_provider
+  - action: get_change_plan_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for change the plan provider given
+  steps:
+  - user: |
+      I want change my current [dialog](service_provider) [prepaid](payment_method) plan to a [postpaid](payment_method) plan
+    intent: change_plan
+  - action: get_change_plan_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for check balance
+  steps:
+  - user: |
+      I want to check my account balance
+    intent: check_balance
+  - action: utter_ask_data_package_form_service_provider
+  - user: |
+      [dialog](service_provider)
+    intent: ans_service_provider
+  - action: get_check_balance_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: ask for check balance provider given
+  steps:
+  - user: |
+      I want to check my [airtel](service_provider) account balance
+    intent: check_balance
+  - action: get_check_balance_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+
+- story: Sim card lost 
+  steps:
+  - user: |
+      My sim is damaged
+    intent: sim_lost
+  - action: utter_ask_data_package_form_service_provider
+  - user: |
+      [airtel](service_provider)
+    intent: ans_service_provider
+  - action: get_sim_lost_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: Sim card lost provider given
+  steps:
+  - user: |
+      My [dialog](service_provider) sim is missplaced
+    intent: sim_lost
+  - action: get_sim_lost_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: Ask for Recharge Account
+  steps:
+  - user: |
+      How to recharge my account
+    intent: recharge_account
+  - action: utter_ask_data_package_form_service_provider
+  - user: |
+      [airtel](service_provider)
+    intent: ans_service_provider
+  - action: get_recharge_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: Ask for Recharge Account provider given
+  steps:
+  - user: |
+      I want to recharge my [hutch](service_provider) sim
+    intent: recharge_account
+  - action: get_recharge_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
