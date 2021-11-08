@@ -392,9 +392,9 @@ class changeAppointment(Action):
         change_response = requests.post(POSTURL,json={"function":"changeappoint","data":{"cust_id":user[0]["pk"],"appoint_id":appoint_id,"date":date,"time":time}})
         change_status = change_response.json()
 
-        if change_status[0]["query_success"]==1:
+        if change_status[0]["query_success"]=="1":
             dispatcher.utter_message(text="Appointment was changed successfully")
-        elif change_status[0]["query_success"]==0:
+        elif change_status[0]["query_success"]=="0":
             dispatcher.utter_message(text="Couldn't change the appointment matched with provided data because of "+delete_status[0]["error"])
         
         return [SlotSet("appointment_option",None),
@@ -418,9 +418,9 @@ class deleteAppointment(Action):
         delete_response = requests.post(POSTURL,json={"function":"deleteappoint","data":{"cust_id":user[0]["pk"],"appoint_id":appoint_id}})
         delete_status = delete_response.json()
 
-        if delete_status[0]["query_success"]==1:
+        if delete_status[0]["query_success"]=="1":
             dispatcher.utter_message(text="Appointment was deleted successfully")
-        elif delete_status[0]["query_success"]==0:
+        elif delete_status[0]["query_success"]=="0":
             dispatcher.utter_message(text="Couldn't delete the appointment matched with provided data because of "+delete_status[0]["error"])
         
         return [SlotSet("appointment_option",None),

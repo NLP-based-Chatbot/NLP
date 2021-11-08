@@ -115,8 +115,6 @@ rules:
 - rule: get spec list
   steps:
   - intent: get_spec_list
-  - slot_was_set:
-    - spec_id
   - action: act_list_specilizations
 
 #  - action: action_listen
