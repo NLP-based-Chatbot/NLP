@@ -1,13 +1,25 @@
 version: "2.0"
 
 rules:
-- rule: place medtest form
+- rule: Activate place medtest form - userhash provided
+  condition:
+  - slot_was_set:
+    - userhash
   steps:
   - intent: place_medtest
   - action: form_place_medtest
   - active_loop: form_place_medtest
 
-- rule: place medtest form submit
+- rule: Activate place medtest form - userhash NOT provided
+  condition:
+  - slot_was_set:
+    - userhash: null
+  steps:
+  - intent: place_medtest
+  - action: utter_ask_userhash_for_proceed
+  - action: action_listen
+
+- rule: Submit place medtest form 
   condition:
   - active_loop: form_place_medtest
   steps:
