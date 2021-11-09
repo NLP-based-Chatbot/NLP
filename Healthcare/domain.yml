@@ -141,6 +141,10 @@ responses:
   - text: I'm sorry, I can't understand what are you saying?
   utter_ask_userhash_for_proceed:
   - text: Provide you userhash to access your data
+  utter_ask_appointment_id:
+  - text: Select an appointment please
+  utter_ask_reportshash:
+  - text: Select the report you want to get first please
 actions:
 - act_list_doctors
 - act_list_specilizations
@@ -164,6 +168,8 @@ actions:
 - utter_ask_wether_doct_specialist
 - utter_doct_selection_success
 - validate_place_appointment
+- act_list_reports
+- action_download_report
 forms:
   form_place_appointment:
     required_slots:

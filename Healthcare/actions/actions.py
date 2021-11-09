@@ -447,15 +447,62 @@ class promptAppointmentOptions(Action):
             dispatcher.utter_message(text="You havent selected an appointment yet. Select an appointment first")
         return []
 
-class AskFor_TIME(Action):
+class listReports(Action):
     def name(self) -> Text:
-        return "action_ask_time"
+        return "act_list_reports"
 
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
 
-        print("executed action_ask_time")
+        print("executed act_list_reports")
 
-        dispatcher.utter_message(text="Provide a comfortable  time for you [HH:mm]")
+        userhash = tracker.get_slot("userhash")
+
+        user_response = requests.post(POSTURL,json={"function":"clientdata","data":{"userhash":userhash}})
+        user = user_response.json()
+        cust_id = user[0]["pk"]
+
+        reports_response = requests.post(POSTURL,json = {"function":"listreports","data":{"cust_id":cust_id}})
+        reports_list = download_response.json()
+
+        if len(reports_list)==0:
+            dispatcher.utter_message("No reports are found with your detailes")
+            return []
+
+        buttons = []
+
+        for report in reports_list:
+            buttons.append({"title":report["fields"]["report_filename"],"payload":report["fields"]["reporthash"]})
+
+        dispatcher.utter_button_message("here are your reports",buttons)
+
         return []
+
+class downloadReport(Action):
+    def name(self) -> Text:
+        return "action_download_report"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+
+        print("executed action_download_report")
+
+        userhash = tracker.get_slot("userhash")
+        reporthash = tracker.get_slot("reporthash")
+
+        user_response = requests.post(POSTURL,json={"function":"clientdata","data":{"userhash":userhash}})
+        user = user_response.json()
+
+        cust_id = user[0]["pk"]
+
+        download_response = requests.post(POSTURL,json = {"function":"downloadreport","data":{"cust_id":cust_id,"reporthash":reporthash}})
+        download_status = download_response.json()
+
+        if download_status[0]["query_success"]=="1":
+            dispatcher.utter_message(text="Here is your Report. Click here to download")
+        elif download_status[0]["query_success"]=="0":
+            dispatcher.utter_message(text="Couldn't find a report with given detailes or an internal erro has occured because of "+download_status[0]["error"])
+        
+        return [SlotSet("reporthash",None)]

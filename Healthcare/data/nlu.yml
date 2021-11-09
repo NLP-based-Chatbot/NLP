@@ -242,6 +242,12 @@ nlu:
     - [usr_45889gfg9834u987gdt83reg](userhash)
     - [usr_feoguow3thogotoirgw5f67](userhash)
     - [usr_bqsbf5ebby4suntoqvcu6aeli](userhash)
+    - [usr_h5h3gkh2kl3g5256g5gk22lk6](userhash)
+    - [usr_j25k6kk32oi9g9080r9egs09ggsd](userhash)
+    - [usr_5kk345kk62kk62l62jjhj2](userhash)
+    - [usr_45889gfg9834u987gdt83reg](userhash)
+    - [usr_feoguow3thogotoirgw5f67](userhash)
+    - [usr_bqsbf5ebby4suntoqvcu6aeli](userhash)
 - intent: inform_docthash
   examples: |
     - [doc_h5h3gkh2kl3g5256g5gk26](docthash)
@@ -259,6 +265,16 @@ nlu:
     - [doc_45h34h5g3hj56gk6346k56h46jfg](docthash)
 - intent: inform_reporthash
   examples: |
+    - [report_h5h3gkh2kl3g5256g5gk22lk6](reporthash)
+    - [report_j25k6kk32oi9g9080r9egs09ggsd](reporthash)
+    - [report_5kk345kk62kk62l62jjhj2](reporthash)
+    - [report_45889gfg9834u987gdt83reg](reporthash)
+    - [report_feoguow3thogotoirgw5f67](reporthash)
+    - [report_h5h3gkh2kl3g5256g5gk22lk6](reporthash)
+    - [report_j25k6kk32oi9g9080r9egs09ggsd](reporthash)
+    - [report_5kk345kk62kk62l62jjhj2](reporthash)
+    - [report_45889gfg9834u987gdt83reg](reporthash)
+    - [report_feoguow3thogotoirgw5f67](reporthash)
     - [report_h5h3gkh2kl3g5256g5gk22lk6](reporthash)
     - [report_j25k6kk32oi9g9080r9egs09ggsd](reporthash)
     - [report_5kk345kk62kk62l62jjhj2](reporthash)

@@ -39,6 +39,14 @@ rules:
   - action: form_change_appointment
   - active_loop: form_change_appointment
 
+- rule: Activate change appointment form - appointment is NOT selected
+  condition:
+  - slot_was_set:
+    - appointment_id: null
+  steps:
+  - intent: change_appiontment
+  - action: utter_ask_appointment_id
+
 - rule: Submit change appointment form
   condition:
     - active_loop: form_change_appointment
@@ -59,6 +67,14 @@ rules:
   - intent: delete_appointment
   - action: form_delete_appointment
   - active_loop: form_delete_appointment
+
+- rule: Activate delete appointment form - appointment is NOT selected
+  condition:
+  - slot_was_set:
+    - appointment_id: null
+  steps:
+  - intent: delete_appointment
+  - action: utter_ask_appointment_id
 
 - rule: Submit delete appointment form
   condition:
@@ -208,39 +224,3 @@ rules:
     - appointment_option: null
   - action: action_prompt_appointment_options
 
-# - rule: inform appointment id
-#   steps:
-#   - intent: inform
-#     entities:
-#     - appointment_id
-#   - slot_was_set:
-#     - appointment_option
-#   - action: action_listen
-
-# - rule: act delete appointment - appointment id provided
-#   steps:
-#   - intent: delete_appointment
-#   - slot_was_set:
-#     - appointment_id
-# #  - action: action_listen
-
-# - rule: act delete appointment - appointment id not provided
-#   steps:
-#   - intent: delete_appointment
-#   - slot_was_set:
-#     - appointment_id: null
-# #  - action: action_listen
-
-# - rule: act change appointment - appointment id provided
-#   steps:
-#   - intent: change_appiontment
-#   - slot_was_set:
-#     - appointment_id
-# #  - action: action_listen
-
-# - rule: act change appointment - appointment id not provided
-#   steps:
-#   - intent: change_appiontment
-#   - slot_was_set:
-#     - appointment_id: null
-# #  - action: action_listen
