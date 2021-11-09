@@ -20,8 +20,10 @@ environ.Env.read_env()
 
 CBOTBACKEND = env('CBOTBACKEND')
 QUERYURL = env('QUERYURL')
+REPORTURL = env('REPORTURL')
 
 POSTURL = "http://" + CBOTBACKEND + QUERYURL
+REPORTURL = "http://" + CBOTBACKEND + REPORTURL
 
 class SetIntent(Action):
 
@@ -498,11 +500,11 @@ class downloadReport(Action):
         cust_id = user[0]["pk"]
 
         download_response = requests.post(POSTURL,json = {"function":"downloadreport","data":{"cust_id":cust_id,"reporthash":reporthash}})
-        download_status = download_response.json()
+        download_report = download_response.json()
 
-        if download_status[0]["query_success"]=="1":
-            dispatcher.utter_message(text="Here is your Report. Click here to download")
-        elif download_status[0]["query_success"]=="0":
-            dispatcher.utter_message(text="Couldn't find a report with given detailes or an internal erro has occured because of "+download_status[0]["error"])
+        if len(download_report)>0:
+            dispatcher.utter_message(text="Here is your Report. Check Downloads",attachment=REPORTURL+download_report[0]["fields"]["report_filename"])
+        else:
+            dispatcher.utter_message(text="Couldn't find a report with given detailes.")
         
         return [SlotSet("reporthash",None)]

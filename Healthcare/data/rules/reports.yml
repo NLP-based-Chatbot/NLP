@@ -2,26 +2,13 @@ version: "2.0"
 
 rules:
 
-- rule: list of reports - userhash provided & reporthash provided
+- rule: list of reports - userhash provided 
   condition:
   - slot_was_set:
     - userhash
   steps:
   - intent: get_report
-  - slot_was_set:
-    - reporthash
   - action: act_list_reports
-
-- rule: list of reports - userhash provided & reporthash NOT provided
-  condition:
-  - slot_was_set:
-    - userhash
-  steps:
-  - intent: get_report
-  - slot_was_set:
-    - reporthash: null
-  - action: utter_ask_reportshash
-  - action: action_listen
 
 - rule: list of reports - userhash not provided
   condition:

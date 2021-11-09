@@ -112,11 +112,6 @@ nlu:
     - list my [appoinment](reservation)
     - are there any [appoinment](reservation)
     - are there any [appoinments](reservation)
-#    - show me my [appointment](reservation) on [2021/11/12](date)
-#    - show me my [appointments](reservation) [today](relativedate)
-#    - do i have [appointments](reservation) at [14.00](time)
-#    - is there any [appoinment](reservation) on [2022-9-8](date)
-#    - are there [appoinments](reservation) on [2022-9-8](date)
 - intent: get_report
   examples: |
     - i need my [report](deliverable)
@@ -242,12 +237,7 @@ nlu:
     - [usr_45889gfg9834u987gdt83reg](userhash)
     - [usr_feoguow3thogotoirgw5f67](userhash)
     - [usr_bqsbf5ebby4suntoqvcu6aeli](userhash)
-    - [usr_h5h3gkh2kl3g5256g5gk22lk6](userhash)
-    - [usr_j25k6kk32oi9g9080r9egs09ggsd](userhash)
-    - [usr_5kk345kk62kk62l62jjhj2](userhash)
-    - [usr_45889gfg9834u987gdt83reg](userhash)
-    - [usr_feoguow3thogotoirgw5f67](userhash)
-    - [usr_bqsbf5ebby4suntoqvcu6aeli](userhash)
+    - [usr_7ar59cmu3d404rgshy26hnvfm](userhash)
 - intent: inform_docthash
   examples: |
     - [doc_h5h3gkh2kl3g5256g5gk26](docthash)
@@ -265,16 +255,6 @@ nlu:
     - [doc_45h34h5g3hj56gk6346k56h46jfg](docthash)
 - intent: inform_reporthash
   examples: |
-    - [report_h5h3gkh2kl3g5256g5gk22lk6](reporthash)
-    - [report_j25k6kk32oi9g9080r9egs09ggsd](reporthash)
-    - [report_5kk345kk62kk62l62jjhj2](reporthash)
-    - [report_45889gfg9834u987gdt83reg](reporthash)
-    - [report_feoguow3thogotoirgw5f67](reporthash)
-    - [report_h5h3gkh2kl3g5256g5gk22lk6](reporthash)
-    - [report_j25k6kk32oi9g9080r9egs09ggsd](reporthash)
-    - [report_5kk345kk62kk62l62jjhj2](reporthash)
-    - [report_45889gfg9834u987gdt83reg](reporthash)
-    - [report_feoguow3thogotoirgw5f67](reporthash)
     - [report_h5h3gkh2kl3g5256g5gk22lk6](reporthash)
     - [report_j25k6kk32oi9g9080r9egs09ggsd](reporthash)
     - [report_5kk345kk62kk62l62jjhj2](reporthash)

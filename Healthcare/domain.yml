@@ -28,14 +28,14 @@ intents:
 - inform_reporthash
 - get_time_slot
 entities:
-- client_person
 - appointment_id
+- appointment_option
+- client_person
 - date
 - deliverable
 - docthash
 - entry_id
 - list_items
-- appointment_option
 - person_name
 - refer_after
 - refer_before
@@ -146,7 +146,11 @@ responses:
   utter_ask_reportshash:
   - text: Select the report you want to get first please
 actions:
+- act_change_appointment
+- act_check_appointment
+- act_delete_appointment
 - act_list_doctors
+- act_list_reports
 - act_list_specilizations
 - act_new_patient
 - act_place_appointment
@@ -158,18 +162,14 @@ actions:
 - action_ask_docthash
 - action_ask_time
 - action_ask_userhash
+- action_download_report
 - action_prompt_appointment_options
-- act_check_appointment
-- act_change_appointment
-- act_delete_appointment
 - utter_ask_date
 - utter_ask_name
 - utter_ask_time
 - utter_ask_wether_doct_specialist
 - utter_doct_selection_success
 - validate_place_appointment
-- act_list_reports
-- action_download_report
 forms:
   form_place_appointment:
     required_slots:
@@ -192,7 +192,6 @@ forms:
       - type: from_entity
         entity: time
         intent: inform_time
-
   form_change_appointment:
     required_slots:
       userhash:
@@ -214,7 +213,6 @@ forms:
       - type: from_entity
         entity: time
         intent: inform_time
-
   form_delete_appointment:
     required_slots:
       userhash:
