@@ -376,6 +376,43 @@ class checkAppointment(Action):
 
         return []
 
+class checkMedicaltest(Action):
+    def name(self) -> Text:
+        return "act_check_medtest"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+        userhash = tracker.get_slot("userhash")
+
+        if userhash:
+            client_response = requests.post(POSTURL,json={"function":"clientdata","data":{"userhash":userhash}})
+            client = client_response.json()
+            cust_id = client[0]["pk"]
+            medtest_response = requests.post(POSTURL,json={"function":"listmedtest","data":{"cust_id":cust_id}})
+            medtests = medtest_response.json()
+
+            #buttons=[]
+
+            if len(medtests)==0:
+                dispatcher.utter_message("No Medical tests are found")
+
+            for mdt in medtests:
+                date = mdt["fields"]["date"]
+                time = mdt["fields"]["time_slot"]
+                test_type = mdt["fields"]["test_type"]
+                #buttons.append({"title":"appointment on "+date+" at "+time+"."  ,"payload":"/inform{\"appointment_id\":\""+str(appoint["pk"])+"\"}"})
+                dispatcher.utter_message(text=test_type+" test on "+date+" at "+time+".")
+
+
+            # if len(buttons)==0:
+            #     dispatcher.utter_message("No Appointment has been found")
+            #     return []
+
+            # dispatcher.utter_button_message("Your Appointments", buttons)
+
+        return []
+
 class changeAppointment(Action):
     def name(self) -> Text:
         return "act_change_appointment"
@@ -557,6 +594,7 @@ class PlaceMedtest(Action):
 
         date = tracker.get_slot("date")
         time = tracker.get_slot("time")
+        test_type = tracker.get_slot("test_type")
         username = tracker.get_slot("person_name")
         userhash = tracker.get_slot("userhash")
 
@@ -569,7 +607,7 @@ class PlaceMedtest(Action):
 
         cust_id = patient["pk"]
 
-        response = requests.post(POSTURL,json={"function":"placemedtest","data":{"cust_id":cust_id,"date":date,"time":time}})
+        response = requests.post(POSTURL,json={"function":"placemedtest","data":{"cust_id":cust_id,"date":date,"time":time,"test_type":test_type}})
         response_status= response.json()
 
         if response_status[0]["query_success"]=="1":
@@ -581,4 +619,22 @@ class PlaceMedtest(Action):
         SlotSet("date",None),
         SlotSet("relativedate",None),
         SlotSet("time",None),
+        SlotSet("test_type",None),
         ]
+
+class listTesttypes(Action):
+    def name(self) -> Text:
+        return "act_list_test_types"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+
+        print("executed act_list_test_types")
+        test_types = ["ecg","eeg","diabetic","prenancy","screening"]
+        buttons =[]
+        for tt in test_types:
+            buttons.append({"title":tt,"payload":"/inform_testtype{\"test_type\":\""+tt+"\"}"})
+
+        dispatcher.utter_button_message("Here are the available Medical tests",buttons)
+        return []

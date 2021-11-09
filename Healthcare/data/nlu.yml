@@ -65,22 +65,6 @@ nlu:
     - i want to [place](appointment_option) an [appointment](reservation) to meet a [dr](service_person)
     - i want to  [make](appointment_option) n [appointment](reservation)
     - [appintment](reservation)
-- intent: place_medtest
-  examples: |
-    - [medical test](reservation)
-    - [medicaltest](reservation)
-    - [medtest](reservation)
-    - new [medtest](reservation)
-    - new [medicaltest](reservation)
-    - new [medical test](reservation)
-    - [make](appointment_option) [medtest](reservation)
-    - [make](appointment_option) [medicaltest](reservation)
-    - [make](appointment_option) [medical test](reservation)
-    - [place](appointment_option) [medtest](reservation)
-    - i want an [medical test](reservation)
-    - i want a new [medicaltest](reservation)
-    - i need an [medtest](reservation)
-    - i need a new [medical test](reservation)
 - intent: change_appiontment
   examples: |
     - [change](appointment_option) [appointment](reservation)
@@ -128,6 +112,48 @@ nlu:
     - list my [appoinment](reservation)
     - are there any [appoinment](reservation)
     - are there any [appoinments](reservation)
+- intent: place_medtest
+  examples: |
+    - [medical test](reservation)
+    - [medicaltest](reservation)
+    - [medtest](reservation)
+    - new [medtest](reservation)
+    - new [medicaltest](reservation)
+    - new [medical test](reservation)
+    - [make](appointment_option) [medtest](reservation)
+    - [make](appointment_option) [medicaltest](reservation)
+    - [make](appointment_option) [medical test](reservation)
+    - [place](appointment_option) [medtest](reservation)
+    - i want an [medical test](reservation)
+    - i want a new [medicaltest](reservation)
+    - i need an [medtest](reservation)
+    - i need a new [medical test](reservation)
+- intent: check_medtests
+  examples: |
+    - show me my [medicaltest](reservation)
+    - do i have [medtest](reservation)
+    - is there any [med test](reservation)
+    - are there [medicaltest](reservation)
+    - show me my [medtest](reservation)
+    - do i have [med test](reservation)
+    - is there any [medicaltest](reservation)
+    - are there [med test](reservation)
+    - list [medicaltest](reservation)
+    - list my [medtest](reservation)
+    - list [med test](reservation)
+    - list my [medtest](reservation)
+    - are there any [med test](reservation)
+    - are there any [medicaltest](reservation)
+- intent: list_test_types
+  examples: |
+    - what are the [medical test types](list_items)
+    - what are the available [medicaltest types](list_items)
+    - availble [medical test types](list_items)
+    - list [medtest types](list_items)
+    - [medtest types](list_items) list
+    - list of [medicaltest types](list_items)
+    - show me list of [medical test types](list_items)
+
 - intent: get_report
   examples: |
     - i need my [report](deliverable)

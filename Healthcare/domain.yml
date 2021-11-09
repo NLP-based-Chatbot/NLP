@@ -29,6 +29,9 @@ intents:
 - get_time_slot
 - add_complaint
 - place_medtest
+- check_medtests
+- list_test_types
+- inform_testtype
 entities:
 - appointment_id
 - appointment_option
@@ -54,6 +57,7 @@ entities:
 - cmpl_fullname
 - cmpl_contactnum
 - cmpl_email
+- test_type
 slots:
   appointment_option:
     type: text
@@ -118,6 +122,9 @@ slots:
   cmpl_email:
     type: text
     influence_conversation: true
+  test_type:
+    type: text
+    influence_conversation: true
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -177,6 +184,10 @@ responses:
     - text: Please give the contact number of you.
   utter_ask_cmpl_email:
     - text: Please give the email address of you.
+  utter_ask_test_type:
+    - text: Please select a test type to proceed
+  utter_testtype_selected:
+    - text: Test is selected 
 actions:
 - act_change_appointment
 - act_check_appointment
@@ -204,6 +215,8 @@ actions:
 - validate_place_appointment
 - action_make_complain
 - action_place_medtest
+- act_check_medtest
+- act_list_test_types
 forms:
   form_place_appointment:
     required_slots:
@@ -286,3 +299,7 @@ forms:
       - type: from_entity
         entity: time
         intent: inform_time
+      test_type:
+      - type: from_entity
+        entity: test_type
+        intent: inform_testtype

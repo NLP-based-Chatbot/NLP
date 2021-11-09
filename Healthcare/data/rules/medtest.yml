@@ -28,3 +28,32 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: action_place_medtest
+
+###########################################################################
+
+- rule: check upcoming medical tests -  ureshash provided
+  condition:
+  - slot_was_set:
+    - userhash
+  steps:
+  - intent: check_medtests
+  - action: act_check_medtest
+
+- rule: check upcoming medical tests -  ureshash provided
+  condition:
+  - slot_was_set:
+    - userhash: null
+  steps:
+  - intent: check_medtests
+  - action: utter_ask_userhash_for_proceed
+  - action: action_listen
+
+- rule: get list of medical tests
+  steps:
+  - intent: list_test_types
+  - action: act_list_test_types
+
+- rule: select test type
+  steps:
+  - intent: inform_testtype
+  - action: utter_testtype_selected
