@@ -508,3 +508,77 @@ class downloadReport(Action):
             dispatcher.utter_message(text="Couldn't find a report with given detailes.")
         
         return [SlotSet("reporthash",None)]
+
+class ActionMakeComplaint(Action):
+
+    def name(self) -> Text:
+        return "action_make_complain"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        title = tracker.get_slot('cmpl_title')
+        description = tracker.get_slot('cmpl_description')
+        fullname = tracker.get_slot('cmpl_fullname')
+        contactnum = tracker.get_slot('cmpl_contactnum')
+        email = tracker.get_slot('cmpl_email')
+
+        complaint_data = {
+            "title" : title,
+            "description" : description,
+            "name" : fullname,
+            "contact_no" : contactnum,
+            "email" : email
+        }
+
+        results = requests.post(POSTURL, json={"function":"makecomplain","data":complaint_data})
+
+        if results[0]["query_success"]=="1":
+            dispatcher.utter_message(text = "You have succesfully made a complaint")
+            dispatcher.utter_message(text = f"Name of the complainer: {fullname}")
+            dispatcher.utter_message(text = f"Contact number of the complainer: {contactnum}")
+            dispatcher.utter_message(text = f"Email address of the complainer: {email}")
+            dispatcher.utter_message(text = f"Complaint title: {title}")
+            dispatcher.utter_message(text = f"Complaint description: {description}")     
+        else:
+            dispatcher.utter_message(text="Sorry, Complainet wasn't placed because of an error")
+
+        return [SlotSet("title", None), SlotSet("description", None)]
+
+class PlaceMedtest(Action):
+
+    def name(self) -> Text:
+        return "action_place_medtest"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        date = tracker.get_slot("date")
+        time = tracker.get_slot("time")
+        username = tracker.get_slot("person_name")
+        userhash = tracker.get_slot("userhash")
+
+        if userhash:
+            response_patient = requests.post(POSTURL,json={"function":"clientdata","data":{"userhash":userhash}})
+            patient = response_patient.json()[0]
+        else:
+            response_patient = requests.post(POSTURL,json={"function":"newpatient","data":{"username":username}})
+            patient = response_patient.json()[0]
+
+        cust_id = patient["pk"]
+
+        response = requests.post(POSTURL,json={"function":"placemedtest","data":{"cust_id":cust_id,"date":date,"time":time}})
+        response_status= response.json()
+
+        if response_status[0]["query_success"]=="1":
+            dispatcher.utter_message(text="Medical test was placed successfully")
+        elif response_status[0]["query_success"]=="0":
+            dispatcher.utter_message(text="Couldn't place Medical test with provided data because of "+response_status[0]["error"])
+
+        return [
+        SlotSet("date",None),
+        SlotSet("relativedate",None),
+        SlotSet("time",None),
+        ]

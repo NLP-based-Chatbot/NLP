@@ -65,6 +65,22 @@ nlu:
     - i want to [place](appointment_option) an [appointment](reservation) to meet a [dr](service_person)
     - i want to  [make](appointment_option) n [appointment](reservation)
     - [appintment](reservation)
+- intent: place_medtest
+  examples: |
+    - [medical test](reservation)
+    - [medicaltest](reservation)
+    - [medtest](reservation)
+    - new [medtest](reservation)
+    - new [medicaltest](reservation)
+    - new [medical test](reservation)
+    - [make](appointment_option) [medtest](reservation)
+    - [make](appointment_option) [medicaltest](reservation)
+    - [make](appointment_option) [medical test](reservation)
+    - [place](appointment_option) [medtest](reservation)
+    - i want an [medical test](reservation)
+    - i want a new [medicaltest](reservation)
+    - i need an [medtest](reservation)
+    - i need a new [medical test](reservation)
 - intent: change_appiontment
   examples: |
     - [change](appointment_option) [appointment](reservation)
@@ -301,3 +317,14 @@ nlu:
 - regex: userhash
   examples: |
     - usr_([0-9]|[a-z]){20-30}
+
+
+# making complain
+
+- intent: add_complaint
+  examples: |
+    - I want to make a complaint
+    - Can I make a complaint
+    - How to make a complaint
+    - I need to log a complaint
+    - How can I make a complaint

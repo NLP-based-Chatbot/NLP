@@ -1,0 +1,18 @@
+version: "2.0"
+
+rules:
+- rule: place medtest form
+  steps:
+  - intent: place_medtest
+  - action: form_place_medtest
+  - active_loop: form_place_medtest
+
+- rule: place medtest form submit
+  condition:
+  - active_loop: form_place_medtest
+  steps:
+  - action: form_place_medtest
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_place_medtest
