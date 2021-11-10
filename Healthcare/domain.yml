@@ -205,7 +205,7 @@ actions:
 - action_ask_docthash
 - action_ask_time
 - action_ask_userhash
-- action_download_report
+- action_status_report
 - action_prompt_appointment_options
 - utter_ask_date
 - utter_ask_name

@@ -503,7 +503,7 @@ class listReports(Action):
         cust_id = user[0]["pk"]
 
         reports_response = requests.post(POSTURL,json = {"function":"listreports","data":{"cust_id":cust_id}})
-        reports_list = download_response.json()
+        reports_list = reports_response.json()
 
         if len(reports_list)==0:
             dispatcher.utter_message("No reports are found with your detailes")
@@ -512,21 +512,49 @@ class listReports(Action):
         buttons = []
 
         for report in reports_list:
-            buttons.append({"title":report["fields"]["report_filename"],"payload":report["fields"]["reporthash"]})
+            buttons.append({"title":report["fields"]["report_name"],"payload":report["fields"]["reporthash"]})
 
         dispatcher.utter_button_message("here are your reports",buttons)
 
         return []
 
-class downloadReport(Action):
+# class getreport(Action):
+#     def name(self) -> Text:
+#         return "action_download_report"
+
+#     def run(
+#         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+#     ) -> List[EventType]:
+
+#         print("executed action_download_report")
+
+#         userhash = tracker.get_slot("userhash")
+#         reporthash = tracker.get_slot("reporthash")
+
+#         user_response = requests.post(POSTURL,json={"function":"clientdata","data":{"userhash":userhash}})
+#         user = user_response.json()
+
+#         cust_id = user[0]["pk"]
+
+#         download_response = requests.post(POSTURL,json = {"function":"getreport","data":{"cust_id":cust_id,"reporthash":reporthash}})
+#         download_report = download_response.json()
+
+#         if len(download_report)>0:
+#             dispatcher.utter_message(text="Here is your Report. Check Downloads",attachment=REPORTURL+download_report[0]["fields"]["report_filename"])
+#         else:
+#             dispatcher.utter_message(text="Couldn't find a report with given detailes.")
+        
+#         return [SlotSet("reporthash",None)]
+
+class statReport(Action):
     def name(self) -> Text:
-        return "action_download_report"
+        return "action_status_report"
 
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
 
-        print("executed action_download_report")
+        print("executed action_status_report")
 
         userhash = tracker.get_slot("userhash")
         reporthash = tracker.get_slot("reporthash")
@@ -536,11 +564,11 @@ class downloadReport(Action):
 
         cust_id = user[0]["pk"]
 
-        download_response = requests.post(POSTURL,json = {"function":"downloadreport","data":{"cust_id":cust_id,"reporthash":reporthash}})
-        download_report = download_response.json()
+        stat_response = requests.post(POSTURL,json = {"function":"getreport","data":{"cust_id":cust_id,"reporthash":reporthash}})
+        stat_report = stat_response.json()
 
-        if len(download_report)>0:
-            dispatcher.utter_message(text="Here is your Report. Check Downloads",attachment=REPORTURL+download_report[0]["fields"]["report_filename"])
+        if len(stat_report)>0:
+            dispatcher.utter_message(text="You can get your report from "+ stat_report[0]["fields"]["available_on"] +" onwards. Ask for your report from the hospital. Thank you.")
         else:
             dispatcher.utter_message(text="Couldn't find a report with given detailes.")
         
@@ -607,8 +635,17 @@ class PlaceMedtest(Action):
 
         cust_id = patient["pk"]
 
-        response = requests.post(POSTURL,json={"function":"placemedtest","data":{"cust_id":cust_id,"date":date,"time":time,"test_type":test_type}})
-        response_status= response.json()
+        report_name= str(cust_id) + "-" + test_type + "-" + date
+        available_on = str(datetime.datetime.strptime(date,"%Y-%m-%d").date()+datetime.timedelta(days=3))
+ 
+        newreport_response = requests.post(POSTURL,json={"function":"newreport","data":{"cust_id":cust_id,"report_name":report_name,"available_on":available_on}})
+        print(newreport_response.content)
+        newreport = newreport_response.json()
+
+        report_id = newreport[0]["pk"]
+
+        response = requests.post(POSTURL,json={"function":"placemedtest","data":{"cust_id":cust_id,"date":date,"time":time,"test_type":test_type,"report_id":report_id}})
+        response_status = response.json()
 
         if response_status[0]["query_success"]=="1":
             dispatcher.utter_message(text="Medical test was placed successfully")
