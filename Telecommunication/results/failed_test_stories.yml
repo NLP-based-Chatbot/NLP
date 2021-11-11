@@ -1,1 +1,19 @@
-# None of the test stories failed - all good!
+version: "2.0"
+stories:
+- story: ask for change the plan (.\tests\test_genaral.yml)
+  steps:
+  - intent: change_plan
+    entities:
+    - payment_method: prepaid
+    - payment_method: postpaid
+  - slot_was_set:
+    - payment_method: postpaid
+  - action: utter_ask_data_package_form_service_provider
+  - intent: ans_service_provider
+    entities:
+    - service_provider: dialog
+  - slot_was_set:
+    - service_provider: dialog
+  - action: get_change_plan_details  # predicted: get_signal_lost_details
+  - intent: thanking
+  - action: utter_thanking

@@ -16,15 +16,19 @@ nlu:
     - I want details about data packages.
     - What are the data packages available?
     - Data package details?
+    - [dialog](service_provider) data package details?
+    - [mobitel](service_provider) [content based](package_type) data package details?
     - Could you please give me details about data packages?
     - Can I get data package details?
+    - [hutch](service_provider) [unlimited](package_type) data package details?
     - Show me data package details?
     - What are the [mobitel](service_provider) packages available?
     - What are the [time-based](package_type) data packages available?
-    - [Content-based](package_type) data package details?
+    - [dialog](service_provider) [prepaid](payment_method) [unlimited](package_type) data package details?
+    - [content based](package_type) data package details?
     - I want details about [dialog](service_provider) data packages
     - What are [prepaid](payment_method) data packages available for [mobitel](service_provider)?
-    - I want details about [dialog](service_provider) Rs. [99](package_value) data package
+    - I want details about [dialog](service_provider) data package
 
 - intent: ans_service_provider
   examples: |
@@ -48,11 +52,11 @@ nlu:
   examples: |
     - [time based](package_type) data packages
     - [Unlimited](package_type)
-    - [time-based](package_type)
+    - [time based](package_type)
     - [Unlimited](package_type) data packages
-    - [content-based](package_type) package
+    - [content based](package_type) package
     - [anytime](package_type) 
-    - [data-card](package_type)
+    - [data card](package_type)
 
 - intent: ans_package_value
   examples: |
@@ -76,19 +80,6 @@ nlu:
     - Remove my [time based](package_type) package
     - How to remove my [daily](package_type) package
 
-- synonym: time-based
-  examples: |
-    - time based
-    - timebased
 
-- synonym: content-based
-  examples: |
-    - content based
-    - contentbased
-
-- synonym: data-card
-  examples: |
-    - data card
-    - datacard
 
 

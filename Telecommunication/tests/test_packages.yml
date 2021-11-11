@@ -26,4 +26,44 @@ stories:
       Thank you
     intent: thanking
   - action: utter_thanking
-  
+
+- story: Ask about data package details provider given
+  steps:
+  - user: |
+      I want to details about [dialog](service_provider) data packages
+    intent: data_package_info
+  - action: data_package_form
+  - active_loop: data_package_form
+  - user: |
+      [prepaid](payment_method)
+    intent: ans_payment_method
+  - action: data_package_form
+  - user: |
+      [unlimited](package_type)
+    intent: ans_package_type
+  - action: data_package_form
+  - active_loop: null
+  - action: get_package_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+
+- story: Ask about data package details provider, payment method given
+  steps:
+  - user: |
+      I want to details about [dialog](service_provider) [prepaid](payment_method) data packages
+    intent: data_package_info
+  - action: data_package_form
+  - active_loop: data_package_form
+  - user: |
+      [unlimited](package_type)
+    intent: ans_package_type
+  - action: data_package_form
+  - active_loop: null
+  - action: get_package_details
+  - user: |
+      Thank you
+    intent: thanking
+  - action: utter_thanking
+   

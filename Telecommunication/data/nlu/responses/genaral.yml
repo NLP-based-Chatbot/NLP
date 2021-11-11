@@ -6,8 +6,8 @@ responses:
     - text: Simply dial '#132#' on your phone and select option 1 for SIM ownership. To confirm your address select option 3.
   
   utter_check_other_connections:
-    - text: All connections registered under your identification can be identified by dialing '#132#' and selecting option 4.
-  
+    - text : All connections registered under your identification can be identified by dialing '#132#' and selecting option 4.
+
   utter_change_ownership:
     - text: "You need to visit and outlet to update your ownership.
 	      The below needs to be provided to confirm your ownership
