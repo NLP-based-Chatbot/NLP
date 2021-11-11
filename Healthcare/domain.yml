@@ -3,13 +3,17 @@ session_config:
   session_expiration_time: 120
   carry_over_slots_to_new_session: true
 intents:
-- make_appiontment
-- affirm
-- inform_patient_name
+- inform_userhash
 - inform_date
-- inform
 - inform_time
+- make_appiontment
+- get_doctor_list
 - inform_docthash
+- inform_patient_name
+- get_time_range
+- get_spec_list
+- inform
+- affirm
 - greet
 - goodbye
 - deny
@@ -21,28 +25,41 @@ intents:
 - check_appointment
 - get_report
 - inform_relativetime
-- inform_userhash
 - inform_reporthash
+- get_time_slot
+- add_complaint
+- place_medtest
+- check_medtests
+- list_test_types
+- inform_testtype
 entities:
+- appointment_id
+- appointment_option
 - client_person
 - date
 - deliverable
 - docthash
 - entry_id
-- option
+- list_items
 - person_name
 - refer_after
 - refer_before
 - relativedate
 - reporthash
 - reservation
-- service_person
+- service_persongget_time_rangeet_time_range
 - sp_name
 - spec_id
 - time
 - userhash
+- cmpl_title
+- cmpl_description
+- cmpl_fullname
+- cmpl_contactnum
+- cmpl_email
+- test_type
 slots:
-  option:
+  appointment_option:
     type: text
     influence_conversation: true
   date:
@@ -52,6 +69,9 @@ slots:
     type: text
     influence_conversation: true
   person_name:
+    type: text
+    influence_conversation: true
+  client_person:
     type: text
     influence_conversation: true
   sp_name:
@@ -84,6 +104,27 @@ slots:
   current_intent:
     type: text
     influence_conversation: true
+  appointment_id:
+    type: text
+    influence_conversation: true
+  cmpl_title:
+    type: text
+    influence_conversation: true
+  cmpl_description:
+    type: text
+    influence_conversation: true
+  cmpl_fullname:
+    type: text
+    influence_conversation: true
+  cmpl_contactnum:
+    type: text
+    influence_conversation: true
+  cmpl_email:
+    type: text
+    influence_conversation: true
+  test_type:
+    type: text
+    influence_conversation: true
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -111,35 +152,154 @@ responses:
   - text: What is the day do you prefer?
   utter_ask_time:
   - text: Tell me a time comfortable for you
+  utter_ask_toselect_doctor:
+  - text: You must select a Doctor first
+  utter_date_selection_success:
+  - text: Date selection is successfull
+  utter_time_selection_success:
+  - text: Time selection is successfull
+  utter_doct_selection_success:
+  - text: Doctor is selected successfull
   utter_thank:
   - text: Thank you
   utter_thank_service:
   - text: Thank you for using our service
   utter_please_rephrase:
   - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_out_of_scope:
+  - text: I'm sorry, I can't understand what are you saying?
+  utter_ask_userhash_for_proceed:
+  - text: Provide you userhash to access your data
+  utter_ask_appointment_id:
+  - text: Select an appointment please
+  utter_ask_reportshash:
+  - text: Select the report you want to get first please
+  utter_ask_cmpl_title:
+    - text: Okay! What is the issue that you are facing?
+  utter_ask_cmpl_description:
+    - text: Please explain your issue shortly.
+  utter_ask_cmpl_fullname:
+    - text: Please give the full name of you.
+  utter_ask_cmpl_contactnum:
+    - text: Please give the contact number of you.
+  utter_ask_cmpl_email:
+    - text: Please give the email address of you.
+  utter_ask_test_type:
+    - text: Please select a test type to proceed
+  utter_testtype_selected:
+    - text: Test is selected 
 actions:
+- act_change_appointment
+- act_check_appointment
+- act_delete_appointment
 - act_list_doctors
+- act_list_reports
 - act_list_specilizations
+- act_new_patient
 - act_place_appointment
+- act_prompt_userdata
 - act_set_intent
 - act_show_timerange
-- act_place_appointment
+- action_ask_client_person
+- action_ask_date
+- action_ask_docthash
+- action_ask_time
+- action_ask_userhash
+- action_status_report
+- action_prompt_appointment_options
 - utter_ask_date
 - utter_ask_name
 - utter_ask_time
 - utter_ask_wether_doct_specialist
+- utter_doct_selection_success
+- validate_place_appointment
+- action_make_complain
+- action_place_medtest
+- act_check_medtest
+- act_list_test_types
 forms:
   form_place_appointment:
     required_slots:
-      docthash:
-      - type: from_entity
-        entity: docthash
       userhash:
       - type: from_entity
         entity: userhash
+        intent: inform_userhash
+      docthash:
+      - type: from_entity
+        entity: docthash
+        intent: inform_docthash
       date:
       - type: from_entity
         entity: date
+        intent: inform_date
+      - type: from_entity
+        entity: relativedate
+        intent: inform_relativetime
       time:
       - type: from_entity
         entity: time
+        intent: inform_time
+  form_change_appointment:
+    required_slots:
+      userhash:
+      - type: from_entity
+        entity: userhash
+        intent: inform_userhash
+      appointment_id:
+      - type: from_entity
+        entity: appointment_id
+        intent: inform
+      date:
+      - type: from_entity
+        entity: date
+        intent: inform_date
+      - type: from_entity
+        entity: relativedate
+        intent: inform_relativetime
+      time:
+      - type: from_entity
+        entity: time
+        intent: inform_time
+  form_delete_appointment:
+    required_slots:
+      userhash:
+      - type: from_entity
+        entity: userhash
+        intent: inform_userhash
+      appointment_id:
+      - type: from_entity
+        entity: appointment_id
+        intent: inform
+  form_make_complain:
+    required_slots:
+      cmpl_title:
+        - type: from_text
+      cmpl_description:
+        - type: from_text
+      cmpl_fullname:
+        - type: from_text
+      cmpl_contactnum:
+        - type: from_text
+      cmpl_email:
+        - type: from_text
+  form_place_medtest:
+    required_slots:
+      userhash:
+      - type: from_entity
+        entity: userhash
+        intent: inform_userhash
+      date:
+      - type: from_entity
+        entity: date
+        intent: inform_date
+      - type: from_entity
+        entity: relativedate
+        intent: inform_relativetime
+      time:
+      - type: from_entity
+        entity: time
+        intent: inform_time
+      test_type:
+      - type: from_entity
+        entity: test_type
+        intent: inform_testtype

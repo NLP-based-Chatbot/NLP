@@ -49,61 +49,111 @@ nlu:
   examples: |
     - [appointment](reservation)
     - new [appointment](reservation)
-    - [make](option) [appointment](reservation)
-    - [place](option) [appointment](reservation)
+    - [make](appointment_option) [appointment](reservation)
+    - [place](appointment_option) [appointment](reservation)
     - i want an [appointment](reservation)
     - i want a new [appointment](reservation)
     - i need an [appointment](reservation)
     - i need a new [appointment](reservation)
-    - i want to [make](option) an [appointment](reservation)
-    - i want to [meet](option) a [doctor](service_person)
-    - i want to [make](option) an [appointment](reservation) to meet a [doctor](service_person)
-    - i need to [make](option) an [appointment](reservation)
-    - i need to [meet](option) a [doctor](service_person)
-    - i need to [place](option) an [appointment](reservation) to meet a [dr](service_person)
-    - i want to [place](option) an [appointment](reservation)
-    - i want to [place](option) an [appointment](reservation) to meet a [dr](service_person)
-    - i want to  [make](option) n [appointment](reservation)
-    - [appointment](reservation)
+    - i want to [make](appointment_option) an [appointment](reservation)
+    - i want to [meet](appointment_option) a [doctor](service_person)
+    - i want to [make](appointment_option) an [appointment](reservation) to meet a [doctor](service_person)
+    - i need to [make](appointment_option) an [appointment](reservation)
+    - i need to [meet](appointment_option) a [doctor](service_person)
+    - i need to [place](appointment_option) an [appointment](reservation) to meet a [dr](service_person)
+    - i want to [place](appointment_option) an [appointment](reservation)
+    - i want to [place](appointment_option) an [appointment](reservation) to meet a [dr](service_person)
+    - i want to  [make](appointment_option) n [appointment](reservation)
+    - [appintment](reservation)
 - intent: change_appiontment
   examples: |
-    - [change](option) [appointment](reservation)
-    - [postpone](option) [appointment](reservation)
-    - i want to [change](option) [appointment](reservation)
-    - i need to [postpone](option) [appointment](reservation)
-    - i want to [postpone](option) my [appointment](reservation)
-    - i need to [postpone](option) my [appointment](reservation)
-    - i want to [change](option) my [appointment](reservation) [03/02](date)
-    - i need to [change](option) my [appointment](reservation) [04-13](date)
-    - i want to [postpone](option) my [appointment](reservation) with [4-1](date)
-    - i want to [change](option) my [appointment](reservation) on [2021-5-23](date)
-    - i need to [change](option) my [appointment](reservation) on [2021/11/13](date)
+    - [change](appointment_option) [appointment](reservation)
+    - [postpone](appointment_option) [appointment](reservation)
+    - i want to [change](appointment_option) [appointment](reservation)
+    - i need to [postpone](appointment_option) [appointment](reservation)
+    - i want to [postpone](appointment_option) my [appointment](reservation)
+    - i need to [postpone](appointment_option) my [appointment](reservation)
+    - i want to [change](appointment_option) my [appointment](reservation) [03/02](date)
+    - i need to [change](appointment_option) my [appointment](reservation) [04-13](date)
+    - i want to [postpone](appointment_option) my [appointment](reservation) with [4-1](date)
+    - i want to [change](appointment_option) my [appointment](reservation) on [2021-5-23](date)
+    - i need to [change](appointment_option) my [appointment](reservation) on [2021/11/13](date)
 - intent: delete_appointment
   examples: |
-    - [cancel](option) [appointment](reservation)
-    - [delete](option) [appointment](reservation)
-    - i want to [cancel](option) my [appointment](reservation)
-    - i need to [cancel](option) my [appointment](reservation)
-    - i want to [cancel](option) my [appointment](reservation) with [doctor](service_person)
-    - i want to [cancel](option) my [appointment](reservation) with [dr](service_person)
-    - i need to [cancel](option) my [appointment](reservation) with [doctor](service_person)
-    - i need to [cancel](option) my [appointment](reservation) with [dr](service_person)
-    - i want to [cancel](option) my [appointment](reservation) on [date](date)
-    - i need to [cancel](option) my [appointment](reservation) on [date](date)
-    - i want to [cancel](option) my [appointment](reservation) on [date](date) with [dr](service_person)
-    - i need to [cancel](option) my [appointment](reservation) on [date](date) with [doctor](service_person)
-    - i want to [delete](option) my [appointment](reservation)
-    - i need to [delete](option) my [appointment](reservation)
-    - i want to [delete](option) my [appointment](reservation) with [dr](service_person)
-    - i want to [delete](option) my [appointment](reservation) with [doctor](service_person)
+    - [cancel](appointment_option) [appointment](reservation)
+    - [delete](appointment_option) [appointment](reservation)
+    - i want to [cancel](appointment_option) my [appointment](reservation)
+    - i need to [cancel](appointment_option) my [appointment](reservation)
+    - i want to [cancel](appointment_option) my [appointment](reservation) with [doctor](service_person)
+    - i want to [cancel](appointment_option) my [appointment](reservation) with [dr](service_person)
+    - i need to [cancel](appointment_option) my [appointment](reservation) with [doctor](service_person)
+    - i need to [cancel](appointment_option) my [appointment](reservation) with [dr](service_person)
+    - i want to [cancel](appointment_option) my [appointment](reservation) on [date](date)
+    - i need to [cancel](appointment_option) my [appointment](reservation) on [date](date)
+    - i want to [cancel](appointment_option) my [appointment](reservation) on [date](date) with [dr](service_person)
+    - i need to [cancel](appointment_option) my [appointment](reservation) on [date](date) with [doctor](service_person)
+    - i want to [delete](appointment_option) my [appointment](reservation)
+    - i need to [delete](appointment_option) my [appointment](reservation)
+    - i want to [delete](appointment_option) my [appointment](reservation) with [dr](service_person)
+    - i want to [delete](appointment_option) my [appointment](reservation) with [doctor](service_person)
 - intent: check_appointment
   examples: |
     - show me my [appointment](reservation)
-    - show me my [appointment](reservation) on [2021/11/12](date)
-    - show me my [appointments](reservation) [today](relativedate)
-    - do i have [appointments](reservation) at [14.00](time)
-    - is there any [appoinment](reservation) on [2022-9-8](date)
-    - are there [appoinments](reservation) on [2022-9-8](date)
+    - do i have [appointments](reservation)
+    - is there any [appoinment](reservation)
+    - are there [appoinments](reservation)
+    - show me my [appointments](reservation)
+    - do i have [appointment](reservation)
+    - is there any [appoinments](reservation)
+    - are there [appoinment](reservation)
+    - list [appoinments](reservation)
+    - list my [appoinments](reservation)
+    - list [appoinment](reservation)
+    - list my [appoinment](reservation)
+    - are there any [appoinment](reservation)
+    - are there any [appoinments](reservation)
+- intent: place_medtest
+  examples: |
+    - [medical test](reservation)
+    - [medicaltest](reservation)
+    - [medtest](reservation)
+    - new [medtest](reservation)
+    - new [medicaltest](reservation)
+    - new [medical test](reservation)
+    - [make](appointment_option) [medtest](reservation)
+    - [make](appointment_option) [medicaltest](reservation)
+    - [make](appointment_option) [medical test](reservation)
+    - [place](appointment_option) [medtest](reservation)
+    - i want an [medical test](reservation)
+    - i want a new [medicaltest](reservation)
+    - i need an [medtest](reservation)
+    - i need a new [medical test](reservation)
+- intent: check_medtests
+  examples: |
+    - show me my [medicaltest](reservation)
+    - do i have [medtest](reservation)
+    - is there any [med test](reservation)
+    - are there [medicaltest](reservation)
+    - show me my [medtest](reservation)
+    - do i have [med test](reservation)
+    - is there any [medicaltest](reservation)
+    - are there [med test](reservation)
+    - list [medicaltest](reservation)
+    - list my [medtest](reservation)
+    - list [med test](reservation)
+    - list my [medtest](reservation)
+    - are there any [med test](reservation)
+    - are there any [medicaltest](reservation)
+- intent: list_test_types
+  examples: |
+    - what are the [medical test types](list_items)
+    - what are the available [medicaltest types](list_items)
+    - availble [medical test types](list_items)
+    - list [medtest types](list_items)
+    - [medtest types](list_items) list
+    - list of [medicaltest types](list_items)
+    - show me list of [medical test types](list_items)
+
 - intent: get_report
   examples: |
     - i need my [report](deliverable)
@@ -115,6 +165,15 @@ nlu:
     - where is my [report](deliverable)
     - i want my [report](deliverable)
     - i want to get my [report](deliverable)
+- intent: get_doctor_list
+  examples: |
+    - show [doctors list](list_items)
+    - show [doctors](list_items)
+    - who are the [doctors](list_items)
+    - [doctors names](list_items)
+    - [doctor list](list_items)
+    - [list](list_items) [doctors](list_items)
+    - [doctors list](list_items)
 - intent: inform_patient_name
   examples: |
     - [kavindu](person_name)
@@ -139,6 +198,28 @@ nlu:
     - [sumanasiri](person_name)
     - [selwam](person_name)
     - [kasun](person_name)
+    - [thamalu](person_name)
+    - [kavinduSaman](person_name)
+- intent: get_time_range
+  examples: |
+    - select time
+    - reserve time
+    - select time slot
+    - reserve time slot
+    - get time slot
+    - set time slot
+    - select timeslot
+    - reserve timeslot
+    - get timeslot
+    - set timeslot
+    - time slot
+- intent: get_spec_list
+  examples: |
+    - get [specializations](list_items)
+    - select [specialization](list_items)
+    - what are the [specializations](list_items)
+    - show me [specializations](list_items)
+    - [list](list_items) [specialization](list_items)
 - intent: inform_date
   examples: |
     - [2031-04-05](date)
@@ -154,6 +235,9 @@ nlu:
     - [2021-10-5](date)
     - [2022-01-05](date)
     - [2021-10-11](date)
+    - [2021-11-12](date)
+    - [2021-10-05](date)
+    - [2021-12-11](date)
 - intent: inform_time
   examples: |
     - [04:34](time)
@@ -175,7 +259,6 @@ nlu:
     - [20:50](time)
     - [21.00](time)
     - [20:30](time)
-    - [21.00](time)
 - intent: inform_relativetime
   examples: |
     - [today](relativedate)
@@ -190,11 +273,13 @@ nlu:
     - [before](refer_before) [2021/7/11](date)
 - intent: inform_userhash
   examples: |
-    - [h5h3gkh2kl3g5256g5gk22lk6](userhash)
-    - [j25k6kk32oi9g9080r9egs09ggsd](userhash)
-    - [5kk345kk62kk62l62jjhj2](userhash)
-    - [45889gfg9834u987gdt83reg](userhash)
-    - [feoguow3thogotoirgw5f67](userhash)
+    - [usr_h5h3gkh2kl3g5256g5gk22lk6](userhash)
+    - [usr_j25k6kk32oi9g9080r9egs09ggsd](userhash)
+    - [usr_5kk345kk62kk62l62jjhj2](userhash)
+    - [usr_45889gfg9834u987gdt83reg](userhash)
+    - [usr_feoguow3thogotoirgw5f67](userhash)
+    - [usr_bqsbf5ebby4suntoqvcu6aeli](userhash)
+    - [usr_7ar59cmu3d404rgshy26hnvfm](userhash)
 - intent: inform_docthash
   examples: |
     - [doc_h5h3gkh2kl3g5256g5gk26](docthash)
@@ -217,6 +302,11 @@ nlu:
     - [report_5kk345kk62kk62l62jjhj2](reporthash)
     - [report_45889gfg9834u987gdt83reg](reporthash)
     - [report_feoguow3thogotoirgw5f67](reporthash)
+    - [report_07jha1fqszhybttnu3son3ru1](reporthash)
+    - [report_5kk25v454jm552kk62l62jjhj2](reporthash)
+    - [report_458h8g75hjg757g9j5j83reg](reporthash)
+    - [report_feoguow3jh5gfjr534jkhg5f67](reporthash)
+    - [report_07jha1fqhj43365jhson3ru1](reporthash)
 - intent: inform
   examples: |
     - [1](entry_id)
@@ -228,16 +318,12 @@ nlu:
     - [12](entry_id)
     - [13](entry_id)
     - [16](entry_id)
-
-- regex: date
-
 - intent: out_of_scope
   examples: |
     - I want to order food
     - What is 2 + 2?
     - Who's the US President?
-
-- regex: userhash
+- regex: date
   examples: |
     - ((0[0-9]|[0-9])|1[0-2])-([0-2][0-9]|[3][0-1])
     - ((0[0-9]|[0-9])|1[0-2])/([0-2][0-9]|[3][0-1])
@@ -261,4 +347,15 @@ nlu:
     - ((0[0-9]|[0-9])|1[0-9]|2[0-3]):[0-5][0-9]
 - regex: userhash
   examples: |
-    - ([0-9]|[a-z]){20-30}
+    - usr_([0-9]|[a-z]){20-30}
+
+
+# making complain
+
+- intent: add_complaint
+  examples: |
+    - I want to make a complaint
+    - Can I make a complaint
+    - How to make a complaint
+    - I need to log a complaint
+    - How can I make a complaint

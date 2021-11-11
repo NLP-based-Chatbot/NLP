@@ -75,9 +75,11 @@ class ActionMakeComplaint(Action):
                          "title" : title,
                          "description":description }
             dispatcher.utter_message(text = "You have succesfully made a complaint")
-            dispatcher.utter_message(json_message= {"complaint":  complaint})
-            return [SlotSet("title", None), SlotSet("description", None), SlotSet("fullname", None), SlotSet("contactnum", None), SlotSet("email", None)]     
-
+            dispatcher.utter_message(json_message= {"complaint":  complaint})  
+        else:
+            dispatcher.utter_message(text="Sorry, Complainet wasn't placed because of an error")
+        
+        return [SlotSet("title", None), SlotSet("description", None), SlotSet("fullname", None), SlotSet("contactnum", None), SlotSet("email", None)]   
 
 class ValidateDataPackageForm(FormValidationAction):
 

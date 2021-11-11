@@ -1,0 +1,19 @@
+version: "2.0"
+
+
+rules:
+- rule: complaint details form
+  steps:
+  - intent: add_complaint
+  - action: form_make_complain
+  - active_loop: form_make_complain
+
+- rule: complaint details form submit
+  condition:
+  - active_loop: form_make_complain
+  steps:
+  - action: form_make_complain
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_make_complain

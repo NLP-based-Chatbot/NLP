@@ -1,0 +1,39 @@
+version: "2.0"
+
+rules:
+
+- rule: list of reports - userhash provided 
+  condition:
+  - slot_was_set:
+    - userhash
+  steps:
+  - intent: get_report
+  - action: act_list_reports
+
+- rule: list of reports - userhash not provided
+  condition:
+  - slot_was_set:
+    - userhash: null
+  steps:
+  - intent: get_report
+  - action: utter_ask_userhash_for_proceed
+  - action: action_listen
+
+- rule: inform reporthash - userhash provided
+  condition:
+  - slot_was_set:
+    - userhash
+  steps:
+  - intent: inform_reporthash
+  - action: action_status_report
+  - action: action_listen
+
+- rule: inform reporthash - userhash NOT provided
+  condition:
+  - slot_was_set:
+    - userhash: null
+  steps:
+  - intent: inform_reporthash
+  - action: utter_ask_userhash_for_proceed
+  - action: action_listen
+
