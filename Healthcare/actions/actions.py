@@ -600,16 +600,18 @@ class ActionMakeComplaint(Action):
         results = requests.post(POSTURL, json={"function":"makecomplain","data":complaint_data})
 
         if results[0]["query_success"]=="1":
+            complaint = {"domain" : "healthcare",
+                         "fullname" : fullname,
+                         "contactnum" : contactnum,
+                         "email" : email,
+                         "title" : title,
+                         "description":description }
             dispatcher.utter_message(text = "You have succesfully made a complaint")
-            dispatcher.utter_message(text = f"Name of the complainer: {fullname}")
-            dispatcher.utter_message(text = f"Contact number of the complainer: {contactnum}")
-            dispatcher.utter_message(text = f"Email address of the complainer: {email}")
-            dispatcher.utter_message(text = f"Complaint title: {title}")
-            dispatcher.utter_message(text = f"Complaint description: {description}")     
+            dispatcher.utter_message(json_message= {"complaint":  complaint})    
         else:
             dispatcher.utter_message(text="Sorry, Complainet wasn't placed because of an error")
 
-        return [SlotSet("title", None), SlotSet("description", None)]
+        return [SlotSet("title", None), SlotSet("description", None), SlotSet("fullname", None), SlotSet("contactnum", None), SlotSet("email", None)] 
 
 class PlaceMedtest(Action):
 
