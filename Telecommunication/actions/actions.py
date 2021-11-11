@@ -13,7 +13,7 @@ from rasa_sdk.events import (
 ALLOWD_TV_SERVICE_PROVIDERS = ["dialog", "peo"]
 ALLOWD_SERVICE_PROVIDERS = ["dialog", "mobitel", "hutch", "airtel"]
 PAYMENT_METHODS = ["prepaid", "postpaid"]
-PACKAGE_TYPES = ["data-card", "time-based", "content-based", "anytime", "unlimited"]
+PACKAGE_TYPES = ["data card", "time based", "content based", "anytime", "unlimited"]
 
 class ActionPackageDetails(Action):
 
@@ -33,11 +33,10 @@ class ActionPackageDetails(Action):
         package_type = package_type.lower()
 
         results = requests.get(f"http://127.0.0.1:8000/telecom/packages/{service_provider}/{payment_method}/{package_type}").json()
-        if(results == None):
+        if(len(results)==0):
             dispatcher.utter_message(text = "Sorry, no entries found.")
         else:
-            for result in results:
-                dispatcher.utter_message(text = f"Package name: {result['package_name']} | Rs. {result['value']} | Description: {result['description']} | How to Activate: {result['activation_method']}")
+            dispatcher.utter_message(json_message= {"packages":  results})
 
         return [SlotSet("service_provider", None), SlotSet("payment_method", None), SlotSet("package_type", None)]     
 
@@ -69,13 +68,15 @@ class ActionMakeComplaint(Action):
         results = requests.post(f"http://127.0.0.1:8000/telecom/complaint/", json=complaint_data)
 
         if results.ok:
+            complaint = {"domain" : "telecom",
+                         "fullname" : fullname,
+                         "contactnum" : contactnum,
+                         "email" : email,
+                         "title" : title,
+                         "description":description }
             dispatcher.utter_message(text = "You have succesfully made a complaint")
-            dispatcher.utter_message(text = f"Name of the complainer: {fullname}")
-            dispatcher.utter_message(text = f"Contact number of the complainer: {contactnum}")
-            dispatcher.utter_message(text = f"Email address of the complainer: {email}")
-            dispatcher.utter_message(text = f"Complaint title: {title}")
-            dispatcher.utter_message(text = f"Complaint description: {description}")
-            return [SlotSet("title", None), SlotSet("description", None)]     
+            dispatcher.utter_message(json_message= {"complaint":  complaint})
+            return [SlotSet("title", None), SlotSet("description", None), SlotSet("fullname", None), SlotSet("contactnum", None), SlotSet("email", None)]     
 
 
 class ValidateDataPackageForm(FormValidationAction):
@@ -114,7 +115,7 @@ class ValidateDataPackageForm(FormValidationAction):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
        
         if slot_value.lower() not in PACKAGE_TYPES:
-            dispatcher.utter_message(text=f"We can only give details about Datacard, time-based, content-based, anytime and unlimited plans.")
+            dispatcher.utter_message(text=f"We can only give details about Data card, time based, content based, anytime and unlimited plans.")
             return {"package_type": None}
         dispatcher.utter_message(text=f"OK! you want details about {slot_value} plans.")
         return {"package_type": slot_value}
@@ -201,7 +202,9 @@ class ActionNewBroadbandConnection(Action):
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
-                dispatcher.utter_message(text = f"{results[0]['description']}")
+                dispatcher.utter_message(text = results[0]['description'])
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("service_provider", None)]     
 
 # Genaral details actions
@@ -222,7 +225,9 @@ class ActionNewConnection(Action):
         if(results == None):
             dispatcher.utter_message(text = "Sorry, no entries found.")
         else:
-            dispatcher.utter_message(text = f"{results[0]['description']}")
+            dispatcher.utter_message(text = results[0]['description'])
+            if results[0]['url'] != "none":
+                dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
  
         return [SlotSet("service_provider", None), SlotSet("payment_method", None)]     
 
@@ -279,7 +284,9 @@ class ActionChangePlan(Action):
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
-                dispatcher.utter_message(text = f"{results[0]['description']}")
+                dispatcher.utter_message(text = results[0]['description'])
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("service_provider", None)]     
 
 class ActionGetLoan(Action):
@@ -302,7 +309,9 @@ class ActionGetLoan(Action):
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
-                dispatcher.utter_message(text = f"{results[0]['description']}")
+                dispatcher.utter_message(text = results[0]['description'])
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("service_provider", None)]     
 
 class ActionCheckBalance(Action):
@@ -325,7 +334,9 @@ class ActionCheckBalance(Action):
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
-                dispatcher.utter_message(text = f"{results[0]['description']}")
+                dispatcher.utter_message(text = results[0]['description'])
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("service_provider", None)]     
 
 class ActionSimLost(Action):
@@ -348,7 +359,9 @@ class ActionSimLost(Action):
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
-                dispatcher.utter_message(text = f"{results[0]['description']}")
+                dispatcher.utter_message(text = results[0]['description'])
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("service_provider", None)]     
 
 
@@ -372,7 +385,9 @@ class ActionRechargeDetails(Action):
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
-                dispatcher.utter_message(text = f"{results[0]['description']}")
+                dispatcher.utter_message(text = results[0]['description'])
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("service_provider", None)]     
 
 class ActionSignalLostDetails(Action):
@@ -395,7 +410,9 @@ class ActionSignalLostDetails(Action):
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
-                dispatcher.utter_message(text = f"{results[0]['description']}")
+                dispatcher.utter_message(text = results[0]['description'])
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("service_provider", None)]     
 
 class ActionCoverageDetails(Action):
@@ -418,7 +435,9 @@ class ActionCoverageDetails(Action):
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
-                dispatcher.utter_message(text = f"{results[0]['description']}")
+                dispatcher.utter_message(text = results[0]['description'])
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"See coverage map", "url": results[0]['url']}})
         return [SlotSet("service_provider", None)]     
 
 # Television
@@ -443,7 +462,9 @@ class ActionTvConnectionDetails(Action):
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
-                dispatcher.utter_message(text = f"{results[0]['description']}")
+                dispatcher.utter_message(text = results[0]['description'])
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("tv_provider", None)]   
 
 class ActionCheckTvBillDetails(Action):
@@ -467,6 +488,8 @@ class ActionCheckTvBillDetails(Action):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
                 dispatcher.utter_message(text = f"{results[0]['description']}")
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("tv_provider", None)]   
 
 class ActionTvPackageDetails(Action):
@@ -490,4 +513,6 @@ class ActionTvPackageDetails(Action):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
                 dispatcher.utter_message(text = f"{results[0]['description']}")
+                if results[0]['url'] != "none":
+                    dispatcher.utter_message(json_message={"button" : {"title":"More details", "url": results[0]['url']}})
         return [SlotSet("tv_provider", None)]   

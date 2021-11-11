@@ -2,12 +2,12 @@ digraph  {
 0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
 "-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
 1 [class=active, fontsize=12, label=action_session_start];
-2 [class=active, fontsize=12, label=new_connection_form];
-5 [class=active, fontsize=12, label=get_new_connection];
+2 [class=active, fontsize=12, label=data_package_form];
+5 [class=active, fontsize=12, label=get_package_details];
 6 [class="intent dashed active", label="  ?  ", shape=rect];
-7 [class="intent active", fillcolor=lightblue, label="how to get a new connection", shape=rect, style=filled];
-8 [class="intent active", fillcolor=lightblue, label=mobitel, shape=rect, style=filled];
-9 [class="intent active", fillcolor=lightblue, label="i prefer prepaid connection", shape=rect, style=filled];
+7 [class="intent active", fillcolor=lightblue, label="i want details about dialog data packages", shape=rect, style=filled];
+8 [class="intent active", fillcolor=lightblue, label=prepaid, shape=rect, style=filled];
+9 [class="intent active", fillcolor=lightblue, label=unlimited, shape=rect, style=filled];
 0 -> "-1"  [class="", key=NONE, label=""];
 0 -> 1  [class=active, key=NONE, label=""];
 1 -> 7  [class=active, key=0];

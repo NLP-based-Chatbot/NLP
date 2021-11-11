@@ -110,8 +110,22 @@ responses:
 #genaral
   utter_ask_new_connection_form_payment_method:
     - text: What is your connection type? Prepaid or Postpaid?
+      buttons: 
+      - title: "Prepaid"
+        payload: '/ans_payment_method{{"payment_method":"prepaid"}}'
+      - title: "Postpaid"
+        payload: '/ans_payment_method{{"payment_method":"postpaid"}}'
   utter_ask_new_connection_form_service_provider:
     - text: Who is your preferable service provider?
+      buttons: 
+      - title: "Dialog"
+        payload: '/ans_service_provider{{"service_provider":"dialog"}}'
+      - title: "Mobitel"
+        payload: '/ans_service_provider{{"service_provider":"mobitel"}}'
+      - title: "Hutch"
+        payload: '/ans_service_provider{{"service_provider":"hutch"}}'
+      - title: "Airtel"
+        payload: '/ans_service_provider{{"service_provider":"airtel"}}'
   utter_ask_title:
     - text: Okay! What is the issue that you are facing?
   utter_ask_description:
@@ -128,20 +142,55 @@ responses:
 #packages
   utter_ask_package_type:
     - text: What type of package do you prefer? Data card, time based, content based, anytime or unlimited?
+      buttons: 
+      - title: "Data card"
+        payload: '/ans_package_type{{"package_type":"data card"}}'
+      - title: "Unlimited"
+        payload: '/ans_package_type{{"package_type":"unlimited"}}'
+      - title: "Time Based"
+        payload: '/ans_package_type{{"package_type":"time based"}}'
+      - title: "Anytime"
+        payload: '/ans_package_type{{"package_type":"anytime"}}'
+      - title: "Content Based"
+        payload: '/ans_package_type{{"package_type":"content based"}}'
   utter_ask_package_value:
     - text: What is the cost you can spend on the package?
   utter_ask_data_package_form_service_provider:
     - text: Who is your service provider?
+      buttons: 
+      - title: "Dialog"
+        payload: '/ans_service_provider{{"service_provider":"dialog"}}'
+      - title: "Mobitel"
+        payload: '/ans_service_provider{{"service_provider":"mobitel"}}'
+      - title: "Hutch"
+        payload: '/ans_service_provider{{"service_provider":"hutch"}}'
+      - title: "Airtel"
+        payload: '/ans_service_provider{{"service_provider":"airtel"}}'
   utter_ask_data_package_form_payment_method:
     - text: Are you using prepaid or postpaid connection?
+      buttons: 
+      - title: "Prepaid"
+        payload: '/ans_payment_method{{"payment_method":"prepaid"}}'
+      - title: "Postpaid"
+        payload: '/ans_payment_method{{"payment_method":"postpaid"}}'
   utter_submit_data_package_form:
     - text: form submitted
 
 #television
   utter_ask_preferable_tv_provider:
     - text: What is your preferable television connection? 
+      buttons: 
+      - title: "Peo TV"
+        payload: '/ans_tv_provider{{"tv_provider":"peo"}}'
+      - title: "Dialog TV"
+        payload: '/ans_tv_provider{{"tv_provider":"dialog"}}'
   utter_ask_tv_provider:
-    - text: Are you using dialog TV or peo TV? 
+    - text: Are you using Dialog TV or Peo TV? 
+      buttons: 
+      - title: "Peo TV"
+        payload: '/ans_tv_provider{{"tv_provider":"peo"}}'
+      - title: "Dialog TV"
+        payload: '/ans_tv_provider{{"tv_provider":"dialog"}}'
 forms:
   data_package_form:
     required_slots:
