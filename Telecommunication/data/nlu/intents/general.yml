@@ -88,12 +88,15 @@ nlu:
     - My sim card is damaged
     - I need a new sim because by sim card is damaged
     - I lost my sim card
+    - My sim is lost
+    - My sim is damaged
     - My sim card is missplaced
-    - My sim card is missplaced
+    - My sim is missplaced
     - I need a new sim because by sim card is missplaced
     - I lost my [dialog](service_provider) sim card
     - My [mobitel](service_provider) sim card is lost
     - My [hutch](service_provider) sim card is damaged
+    - My [dialog](service_provider) sim is missplaced
     - I need a new sim because my [airtel](service_provider) sim card is damaged
     - I lost my [dialog](service_provider) sim card
 
@@ -113,10 +116,15 @@ nlu:
 - intent: signal_lost
   examples: |
     - My data connection is very slow
-    - I got disconneted every time
+    - I got disconnected every time
     - My data speed is at a very low level
     - My signal level is low
     - My download speed is very low
+    - This [dialog](service_provider) sim have no signal
+    - My [mobitel](service_provider) connection have very low signal
+    - Data speed of my [hutch](service_provider) sim is at a very low level
+    - My [airtel](service_provider) data connection is very slow
+    - I was experiencing very low signal strength on my [mobitel](service_provider) connection
 
 - intent: check_coverage
   examples: |
@@ -124,6 +132,10 @@ nlu:
     - Am I in Fixed LTE coverage area?
     - Is it possible to get coverage area map?
     - Coverage areas on the map
+    - Am I covered in [mobitel](service_provider) coverage map
+    - Coverage areas of [dialog](service_provider) on the map
+    - Am I in [dialog](service_provider) Fixed LTE coverage area?
+    I want to know whether I’m in [airtel](service_provider) Fixed LTE coverage area or not?
 
 
 # add complaint intent
