@@ -68,14 +68,15 @@ class ActionMakeComplaint(Action):
         results = requests.post(f"http://127.0.0.1:8000/telecom/complaint/", json=complaint_data)
 
         if results.ok:
-            complaint = {"fullname" : fullname,
+            complaint = {"domain" : "telecom",
+                         "fullname" : fullname,
                          "contactnum" : contactnum,
                          "email" : email,
                          "title" : title,
                          "description":description }
             dispatcher.utter_message(text = "You have succesfully made a complaint")
             dispatcher.utter_message(json_message= {"complaint":  complaint})
-            return [SlotSet("title", None), SlotSet("description", None), SlotSet("name", None), SlotSet("contact_no", None), SlotSet("email", None)]     
+            return [SlotSet("title", None), SlotSet("description", None), SlotSet("fullname", None), SlotSet("contactnum", None), SlotSet("email", None)]     
 
 
 class ValidateDataPackageForm(FormValidationAction):
