@@ -4,6 +4,12 @@ responses:
   utter_ask_booking:
     - text: Yes, you can book a seat.
 
+  utter_booking_selection:
+    - text: Please select the number to make a booking
+
+  utter_booking_successful:
+    - text: You have successfully made the booking. Further details will be send.
+
   utter_ask_schedule:
     - text: Yes. Let me search the schedules.
 

@@ -1,0 +1,27 @@
+stories:
+  - story: Searching for a schedule without any slots
+    steps:
+      - user: |
+          Hello
+        intent: greet
+      - action: utter_greet
+      - user: |
+          I need to find a scehdule
+        intent: ask_schedule
+      - action: action_reset_transport_slots
+      - action: utter_searching
+      - action: travelling_form
+      - active_loop: travelling_form
+      - user: |
+          My departure is Balangoda
+        intent: location
+      - action: travelling_form
+      - user: |
+          My destination is Colombo
+        intent: location
+      - action: travelling_form
+      - user: |
+          I am travelling from Bus
+        intent: travelling_mode
+      - action: travelling_form
+      - active_loop: null

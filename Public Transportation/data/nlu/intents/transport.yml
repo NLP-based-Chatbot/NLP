@@ -19,14 +19,17 @@ nlu:
 
   - intent: location
     examples: |
-      - My destination is [Colombo]{"entity": "city", "role": "destination"}
-      - My location is [Kelaniya]{"entity": "city", "role": "destination"}
       - I am in [Kelaniya]{"entity": "city", "role": "departure"}
+      - My depature is from [Galle]{"entity": "city", "role": "departure"}
       - My depature location is [Kandy]{"entity": "city", "role": "departure"}
-      - I need to go to [Panadura]{"entity": "city", "role": "destination"}
-      - [Kelaniya](city)
+      - My location is [Kelaniya]{"entity": "city", "role": "departure"}
 
-  - intent: vehical
+      - I am travelling to [Moratuwa]{"entity": "city", "role": "destination"}
+      - My destination is [Negombo]{"entity": "city", "role": "destination"}
+      - My destination location is [Hambanthota]{"entity": "city", "role": "destination"}   
+      - I need to go to [Panadura]{"entity": "city", "role": "destination"}
+
+  - intent: travelling_mode
     examples: |
       - [bus](vehical)
       - [train](vehical)
@@ -42,3 +45,67 @@ nlu:
       - I need to go to [Galle]{"entity": "city", "role": "destination"}
       - Can I find the path to [Bandarawela]{"entity": "city", "role": "destination"}
       - Can I find the best route to [Bandarawela]{"entity": "city", "role": "destination"}
+
+  - intent: select_trip
+    examples: |
+      - I need to book trip [1](selection)
+      - Book trip [3](selection)
+      - [2](selection)
+
+  - intent: book_seats
+    examples: |
+      - Book [4](seats) seats
+      - Book me [1](seats)
+      - [3](seats)
+
+  - intent: provide_username
+    examples: |
+      - My username is [Yasith](username)
+      - My name is [Chandima](username)
+      - I'm [Yasith](username)
+      - [Kavindu](username)
+
+  - intent: ask_abilities
+    examples: |
+      - What are your capabilities?
+      - What are you capable of?
+      - How can you help me?
+      - What can I expect from you?
+      - What can you do?
+      - What services do you offer?
+      - What can you offer?
+
+  - intent: ask_services_travelling
+    examples: |
+      - What kind of travelling services do you offer?
+      - What are the travelling services?   
+      - Tell me more about travelling services
+      - What are the schedules you provide?
+
+  - intent: ask_services_booking
+    examples: |
+      - What are the booking services you offer?
+      - Explain more on booking services
+      - What can I do with booking services?
+
+  - intent: ask_services_path_finding
+    examples: |
+      - What kind of path finding services do you offer?
+      - What are the routing services?   
+      - Tell me more about route services
+
+  - intent: ask_services_complaint
+    examples: |
+      - What are the complaint services?
+      - What type complaints can I make?
+      - What are the complaint services you offer?
+
+  - intent: ask_complaint
+    examples: |
+      - Can I make a complaint?
+      - I need to make a complaint
+      - How can I make a complaint
+      - I need to file a complaint
+      - Make a complaint for me
+      - How can I file a complaint?
+      - Is it possible to file a complaint?

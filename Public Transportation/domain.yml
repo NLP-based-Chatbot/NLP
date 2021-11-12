@@ -9,31 +9,80 @@ intents:
   - mood_unhappy
   - bot_challenge
   - transport
+  - ask_abilities
   - ask_booking
+  - ask_complaint
   - ask_schedule
   - location
-  - vehical
+  - travelling_mode
   - ask_path
   - searching
+  - ask_services_travelling
+  - ask_services_scheduling
+  - ask_services_path_finding
+  - ask_services_complaint
+  - select_trip
+  - book_seats
+  - provide_username
 
 entities:
   - vehical
   - city
+  - selection
+  - seats
+  - username
 
+# Slot values
 slots:
+  # travelling form related
   location_departure:
     type: text
-    influence_conversation: false
+    influence_conversation: true
   location_destination:
     type: text
-    influence_conversation: false
+    influence_conversation: true
   travelling_mode:
     type: text
-    influence_conversation: false
+    influence_conversation: true
+  selection:
+    type: text
+    influence_conversation: true
+  seats:
+    type: text
+    influence_conversation: true
+  username:
+    type: text
+    influence_conversation: true
 
+  # complaint related
+  complaint_title:
+    type: text
+    influence_conversation: true
+  complaint_description:
+    type: text
+    influence_conversation: true
+  vechical_number:
+    type: text
+    influence_conversation: true
+  driver_id:
+    type: text
+    influence_conversation: true
+
+  # keeps track of the slots form unexpected inputs
+  requested_slot:
+    type: categorical
+    values:
+      - location_departure
+      - location_destination
+      - travelling_mode
+      - complaint_title
+      - complaint_description
+    influence_conversation: true
+
+# responses of the chatbot
 responses:
   utter_greet:
-    - text: 'Hey! How are you?'
+    - text: 'Welcome to the Public Transportation Chatbot. How can I help you?'
 
   utter_cheer_up:
     - text: 'Here is something to cheer you up:'
@@ -51,14 +100,34 @@ responses:
   utter_iamabot:
     - text: 'I am a bot, powered by Rasa.'
 
-  # New responses
-
+  # uncertain response
   utter_rephrase:
     - text: Sorry I didn't get the message. Can you rephrase it?
 
   utter_default:
     - text: Sorry can you rephrase it again?
 
+  # ability finder
+  utter_ask_abilities:
+    - text: "I am capable of providing,\n
+        1. Travelling schedule services,\n
+        2. Booking services,\n
+        3. Path finding services\n
+        4. Complaint logging services"
+
+  utter_ask_service_travelling:
+    - text: Our travelling schedule service allows you to find Bus Schedules, and Train Schedules.
+
+  utter_ask_service_booking:
+    - text: Our booking service allows you to book Bus, and Train seats.
+
+  utter_ask_service_path_finding:
+    - text: Our routing service is integrated with Google Maps and it allows you to find the best route from you desired location to a destination location.
+
+  utter_ask_service_complaint:
+    - text: Our complaint service allows you to add complaints various types of scenarios that can occur in Busses, and Trains.
+
+  # travelling related
   utter_ask_location_departure:
     - text: What is the departure location?
 
@@ -68,39 +137,75 @@ responses:
   utter_ask_travelling_mode:
     - text: What is the travelling mode?
 
+  utter_ask_selection:
+    - text: Please enter the trip id
+
+  utter_ask_seats:
+    - text: Please enter the number of seats
+
+  utter_ask_username:
+    - text: Please enter your preffered name
+
+  # complaint related
+  utter_ask_complaint_title:
+    - text: Please select the complaint type
+
+  utter_ask_complaint_description:
+    - text: Please provide the description for the complaint
+
+  utter_ask_vehical_number:
+    - text: Please provide the number of the vehical
+
+  utter_ask_driver_id:
+    - text: Please provide driver id (Neglect if you don't know)
+
+  utter_ask_conductor_id:
+    - text: Please provide the conductor id (Neglect if you don't know)
+
   utter_slots_booking:
     - text: "Booking details,\n
         - From: {location_departure}\n
         - To: {location_destination}\n
         - Travelling Method: {travelling_mode}"
 
+  # route finder
   utter_path:
-    - text: Use the following link to find the best route
-      image: https://www.google.lk/maps/dir/{location_departure}/{location_destination}
+    - custom:
+        button:
+          title: 'Use the link view the route'
+          url: 'https://www.google.lk/maps/dir/{location_departure}/{location_destination}'
 
 actions:
   - action_trigger_response_selector
   - action_reset_transport_slots
   - action_get_schedule
+  - action_get_booking
+  - action_reset_complaint_slots
+  - action_reset_selection_slots
+  - action_make_booking
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 
+# form data
 forms:
-  schedule_form:
+  # form for requesting travelling details
+  travelling_form:
     required_slots:
       location_departure:
-        - type: from_entity
+        - type: from_text
           entity: city
+          intent: location
           role: departure
-        - type: from_entity
+        - type: from_text
           entity: city
       location_destination:
-        - type: from_entity
+        - type: from_text
           entity: city
+          intent: location
           role: destination
-        - type: from_entity
+        - type: from_text
           entity: city
       travelling_mode:
         - type: from_entity
@@ -112,11 +217,41 @@ forms:
         - type: from_entity
           entity: city
           role: departure
+          intent: location
         - type: from_entity
           entity: city
       location_destination:
         - type: from_entity
           entity: city
           role: destination
+          intent: location
         - type: from_entity
           entity: city
+
+  complaint_form:
+    required_slots:
+      complaint_title:
+        - type: from_text
+      complaint_description:
+        - type: from_text
+      vechical_number:
+        - type: from_text
+      driver_id:
+        - type: from_text
+      conductor_id:
+        - type: from_text
+
+  selection_form:
+    required_slots:
+      username:
+        - type: from_entity
+          entity: username
+          intent: provide_username
+      selection:
+        - type: from_entity
+          entity: selection
+          intent: selection
+      seats:
+        - type: from_entity
+          entity: seats
+          intent: seat

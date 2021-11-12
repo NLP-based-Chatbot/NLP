@@ -1,39 +1,58 @@
 version: '2.0'
 
 stories:
-  - story: Activate schedule form
+  - story: Ask Abilities
     steps:
       - intent: greet
       - action: utter_greet
+      - intent: ask_abilities
+      - action: utter_ask_abilities
+
+  - story: Abilities + Travelling
+    steps:
+      - intent: ask_services_travelling
+      - action: utter_ask_service_travelling
+
+  - story: Ask schedule (Happy Path)
+    steps:
       - intent: ask_schedule
+      - action: action_reset_transport_slots
       - action: utter_searching
-      - action: schedule_form
-      - active_loop: schedule_form
+      - action: travelling_form
+      - active_loop: travelling_form
       - active_loop: null
-      - action: utter_slots_schedule
       - action: action_get_schedule
-      - action: action_reset_transport_slots
 
-  - story: Activate booking form
+  - story: Ask booking (Happy Path)
     steps:
-      - intent: greet
-      - action: utter_greet
       - intent: ask_booking
-      - action: utter_searching
-      - action: schedule_form
-      - active_loop: schedule_form
-      - active_loop: null
-      - action: utter_slots_booking
       - action: action_reset_transport_slots
+      - action: action_reset_selection_slots
+      - action: utter_searching
+      - action: travelling_form
+      - active_loop: travelling_form
+      - active_loop: null
+      - action: action_get_booking
+      - action: utter_booking_selection
+      - action: selection_form
+      - active_loop: selection_form
+      - active_loop: null
+      - action: action_make_booking
 
-  - story: Ask for best path
+  - story: Find route (Happy Path)
     steps:
-      - intent: greet
-      - action: utter_greet
       - intent: ask_path
+      - action: action_reset_transport_slots
       - action: utter_searching
       - action: path_form
       - active_loop: path_form
       - active_loop: null
       - action: utter_path
-      - action: action_reset_transport_slots
+
+  - story: Add complaint (Happy Path)
+    steps:
+      - intent: ask_complaint
+      - action: action_reset_complaint_slots
+      - action: complaint_form
+      - active_loop: complaint_form
+      - active_loop: null
