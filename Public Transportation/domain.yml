@@ -24,6 +24,9 @@ intents:
   - select_trip
   - book_seats
   - provide_username
+  - thank
+  - find_office
+  - ans_office
 
 entities:
   - vehical
@@ -31,6 +34,7 @@ entities:
   - selection
   - seats
   - username
+  - office_type
 
 # Slot values
 slots:
@@ -67,6 +71,9 @@ slots:
   driver_id:
     type: text
     influence_conversation: true
+  conductor_id:
+    type: text
+    influence_conversation: true
 
   # keeps track of the slots form unexpected inputs
   requested_slot:
@@ -75,8 +82,14 @@ slots:
       - location_departure
       - location_destination
       - travelling_mode
+      - username
+      - seats
+      - selection
       - complaint_title
       - complaint_description
+      - vehical_number
+      - driver_id
+      - conductor_id
     influence_conversation: true
 
 # responses of the chatbot
@@ -99,6 +112,9 @@ responses:
 
   utter_iamabot:
     - text: 'I am a bot, powered by Rasa.'
+
+  utter_welcome:
+    - text: 'You are Welcome. Thanks for using our Chatbot.'
 
   # uncertain response
   utter_rephrase:
@@ -162,6 +178,11 @@ responses:
   utter_ask_conductor_id:
     - text: Please provide the conductor id (Neglect if you don't know)
 
+  utter_complaint:
+    - text: "Complaint Details,\n
+        Title: {complaint_title}\n
+        Description: {complaint_description}"
+
   utter_slots_booking:
     - text: "Booking details,\n
         - From: {location_departure}\n
@@ -214,19 +235,13 @@ forms:
   path_form:
     required_slots:
       location_departure:
-        - type: from_entity
+        - type: from_text
           entity: city
           role: departure
-          intent: location
-        - type: from_entity
-          entity: city
       location_destination:
-        - type: from_entity
+        - type: from_text
           entity: city
           role: destination
-          intent: location
-        - type: from_entity
-          entity: city
 
   complaint_form:
     required_slots:

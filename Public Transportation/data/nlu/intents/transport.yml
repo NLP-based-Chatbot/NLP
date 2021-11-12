@@ -37,6 +37,16 @@ nlu:
       - [car](vehical)
       - [van](vehical)
 
+  - intent: find_office
+    examples: |
+      - I need to find an office
+      - Need to find a office
+
+  - intent: ans_office
+    examples: |
+      - [depot](office_type)
+      - [regional](office_type)
+
   - intent: ask_path
     examples: |
       - Find me the best route from [Balangoda]{"entity": "city", "role": "departure"} to [Colombo]{"entity": "city", "role": "destination"}
