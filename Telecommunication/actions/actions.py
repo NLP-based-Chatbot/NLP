@@ -14,6 +14,7 @@ ALLOWD_TV_SERVICE_PROVIDERS = ["dialog", "peo"]
 ALLOWD_SERVICE_PROVIDERS = ["dialog", "mobitel", "hutch", "airtel"]
 PAYMENT_METHODS = ["prepaid", "postpaid"]
 PACKAGE_TYPES = ["data card", "time based", "content based", "anytime", "unlimited"]
+BASE_URL = "http://127.0.0.1:8000"
 
 class ActionPackageDetails(Action):
 
@@ -32,7 +33,7 @@ class ActionPackageDetails(Action):
         payment_method = payment_method.lower()
         package_type = package_type.lower()
 
-        results = requests.get(f"http://127.0.0.1:8000/telecom/packages/{service_provider}/{payment_method}/{package_type}").json()
+        results = requests.get(f"{BASE_URL}/telecom/packages/{service_provider}/{payment_method}/{package_type}").json()
         if(len(results)==0):
             dispatcher.utter_message(text = "Sorry, no entries found.")
         else:
@@ -65,7 +66,7 @@ class ActionMakeComplaint(Action):
             "email" : email
         }
 
-        results = requests.post(f"http://127.0.0.1:8000/telecom/complaint/", json=complaint_data)
+        results = requests.post(f"{BASE_URL}/telecom/complaint/", json=complaint_data)
 
         if results.ok:
             complaint = {"domain" : "telecom",
@@ -200,7 +201,7 @@ class ActionNewBroadbandConnection(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about service providers Dialog, Mobitel, Hutch and Airtel")
             return [SlotSet("service_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/broadband/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/broadband/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -222,7 +223,7 @@ class ActionNewConnection(Action):
         service_provider = tracker.get_slot('service_provider').lower()
         payment_method = tracker.get_slot('payment_method').lower()
 
-        results = requests.get(f"http://127.0.0.1:8000/telecom/details/new_connection/{service_provider}/{payment_method}").json()
+        results = requests.get(f"{BASE_URL}/telecom/details/new_connection/{service_provider}/{payment_method}").json()
 
         if(results == None):
             dispatcher.utter_message(text = "Sorry, no entries found.")
@@ -282,7 +283,7 @@ class ActionChangePlan(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about service providers Dialog, Mobitel, Hutch and Airtel")
             return [SlotSet("service_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/change_plan/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/change_plan/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -307,7 +308,7 @@ class ActionGetLoan(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about service providers Dialog, Mobitel, Hutch and Airtel")
             return [SlotSet("service_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/loan/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/loan/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -332,7 +333,7 @@ class ActionCheckBalance(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about service providers Dialog, Mobitel, Hutch and Airtel")
             return [SlotSet("service_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/check_balance/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/check_balance/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -357,7 +358,7 @@ class ActionSimLost(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about service providers Dialog, Mobitel, Hutch and Airtel")
             return [SlotSet("service_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/sim_lost/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/sim_lost/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -383,7 +384,7 @@ class ActionRechargeDetails(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about service providers Dialog, Mobitel, Hutch and Airtel")
             return [SlotSet("service_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/recharge/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/recharge/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -408,7 +409,7 @@ class ActionSignalLostDetails(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about service providers Dialog, Mobitel, Hutch and Airtel")
             return [SlotSet("service_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/signal_lost/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/signal_lost/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -433,7 +434,7 @@ class ActionCoverageDetails(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about service providers Dialog, Mobitel, Hutch and Airtel")
             return [SlotSet("service_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/coverage/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/coverage/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -460,7 +461,7 @@ class ActionTvConnectionDetails(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about Dialog TV and Peo TV")
             return [SlotSet("tv_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/tv/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/tv/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -485,7 +486,7 @@ class ActionCheckTvBillDetails(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about Dialog TV and Peo TV")
             return [SlotSet("tv_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/tv_check_bill/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/tv_check_bill/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
@@ -510,7 +511,7 @@ class ActionTvPackageDetails(Action):
             dispatcher.utter_message(text = "Sorry, We can only provide details about Dialog TV and Peo TV")
             return [SlotSet("tv_provider", None)] 
         else:
-            results = requests.get(f"http://127.0.0.1:8000/telecom/details/tv_packages/{provider}/none").json()
+            results = requests.get(f"{BASE_URL}/telecom/details/tv_packages/{provider}/none").json()
             if(results == None):
                 dispatcher.utter_message(text = "Sorry, no entries found.")
             else:
