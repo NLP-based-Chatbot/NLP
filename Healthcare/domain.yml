@@ -20,7 +20,7 @@ intents:
 - mood_great
 - mood_unhappy
 - bot_challenge
-- change_appiontment
+- change_appointment
 - delete_appointment
 - check_appointment
 - get_report
@@ -52,11 +52,11 @@ entities:
 - spec_id
 - time
 - userhash
-- cmpl_title
-- cmpl_description
-- cmpl_fullname
-- cmpl_contactnum
-- cmpl_email
+- title
+- description
+- fullname
+- contactnum
+- email
 - test_type
 slots:
   appointment_option:
@@ -107,19 +107,19 @@ slots:
   appointment_id:
     type: text
     influence_conversation: true
-  cmpl_title:
+  title:
     type: text
     influence_conversation: true
-  cmpl_description:
+  description:
     type: text
     influence_conversation: true
-  cmpl_fullname:
+  fullname:
     type: text
     influence_conversation: true
-  cmpl_contactnum:
+  contactnum:
     type: text
     influence_conversation: true
-  cmpl_email:
+  email:
     type: text
     influence_conversation: true
   test_type:
@@ -174,13 +174,13 @@ responses:
   - text: Select an appointment please
   utter_ask_reportshash:
   - text: Select the report you want to get first please
-  utter_ask_cmpl_title:
+  utter_ask_title:
     - text: Okay! What is the issue that you are facing?
-  utter_ask_cmpl_description:
+  utter_ask_description:
     - text: Please explain your issue shortly.
-  utter_ask_cmpl_fullname:
+  utter_ask_fullname:
     - text: Please give the full name of you.
-  utter_ask_cmpl_contactnum:
+  utter_ask_contactnum:
     - text: Please give the contact number of you.
   utter_ask_cmpl_email:
     - text: Please give the email address of you.
@@ -272,15 +272,15 @@ forms:
         intent: inform
   form_make_complain:
     required_slots:
-      cmpl_title:
+      title:
         - type: from_text
-      cmpl_description:
+      description:
         - type: from_text
-      cmpl_fullname:
+      fullname:
         - type: from_text
-      cmpl_contactnum:
+      contactnum:
         - type: from_text
-      cmpl_email:
+      email:
         - type: from_text
   form_place_medtest:
     required_slots:

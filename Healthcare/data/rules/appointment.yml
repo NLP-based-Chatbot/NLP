@@ -35,7 +35,7 @@ rules:
   - slot_was_set:
     - appointment_id
   steps:
-  - intent: change_appiontment
+  - intent: change_appointment
   - action: form_change_appointment
   - active_loop: form_change_appointment
 
@@ -44,7 +44,7 @@ rules:
   - slot_was_set:
     - appointment_id: null
   steps:
-  - intent: change_appiontment
+  - intent: change_appointment
   - action: utter_ask_appointment_id
 
 - rule: Submit change appointment form

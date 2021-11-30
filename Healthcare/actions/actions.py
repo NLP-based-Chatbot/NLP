@@ -175,9 +175,9 @@ class PreprocessAppointmentData(FormValidationAction):
         reldate = tracker.get_slot("relativedate")
 
         if (date==None or date=="") and (reldate!=None and reldate!=""):
-            if reldate=="today":
+            if reldate.lower()=="today":
                 date = str(datetime.date.today())
-            elif reldate=="tomorrow":
+            elif reldate.lower()=="tomorrow":
                 date = str(datetime.date.today()+datetime.timedelta(days=1))
 
             dispatcher.utter_message(text="Appointment is placed on "+reldate+" "+date)
@@ -475,7 +475,7 @@ class promptAppointmentOptions(Action):
         appoint_id = tracker.get_slot("appointment_id")
 
         if appoint_id:
-            buttons = [{"title":"chanege appointment","payload":"/change_appiontment"},
+            buttons = [{"title":"change appointment","payload":"/change_appointment"},
             {"title":"cancel appointment","payload":"/delete_appointment"},
             {"title":"nothing","payload":"/nlu_fallback"}
             ]
@@ -583,11 +583,11 @@ class ActionMakeComplaint(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        title = tracker.get_slot('cmpl_title')
-        description = tracker.get_slot('cmpl_description')
-        fullname = tracker.get_slot('cmpl_fullname')
-        contactnum = tracker.get_slot('cmpl_contactnum')
-        email = tracker.get_slot('cmpl_email')
+        title = tracker.get_slot('title')
+        description = tracker.get_slot('description')
+        fullname = tracker.get_slot('fullname')
+        contactnum = tracker.get_slot('contactnum')
+        email = tracker.get_slot('email')
 
         complaint_data = {
             "title" : title,
@@ -598,6 +598,7 @@ class ActionMakeComplaint(Action):
         }
 
         results = requests.post(POSTURL, json={"function":"makecomplain","data":complaint_data})
+        results = results.json()
 
         if results[0]["query_success"]=="1":
             complaint = {"domain" : "healthcare",
