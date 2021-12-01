@@ -24,23 +24,23 @@ stories:
   - intent: nlu_fallback
   - slot_was_set:
     - title: filled
-  - action: action_listen  # predicted: action_default_fallback
+  - action: action_listen  # predicted: utter_happy
   - intent: nlu_fallback
   - slot_was_set:
     - description: filled
-  - action: action_listen  # predicted: action_default_fallback
+  - action: action_listen  # predicted: utter_happy
   - intent: nlu_fallback
   - slot_was_set:
     - fullname: filled
-  - action: action_listen  # predicted: action_default_fallback
+  - action: action_listen  # predicted: utter_happy
   - intent: nlu_fallback  # predicted: inform: [0112222222](entry_id)
   - slot_was_set:
     - contactnum: filled
-  - action: action_listen  # predicted: action_default_fallback
+  - action: action_listen  # predicted: utter_happy
   - intent: nlu_fallback
   - slot_was_set:
     - email: filled
-  - action: form_make_complain  # predicted: action_default_fallback
+  - action: form_make_complain  # predicted: utter_happy
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
@@ -64,12 +64,10 @@ stories:
   - action: act_prompt_userdata
   - slot_was_set:
     - client_person: filled
-  - action: action_listen  # predicted: action_default_fallback
   - intent: inform_date
   - slot_was_set:
     - date: filled
   - action: utter_date_selection_success
-  - action: action_listen  # predicted: action_default_fallback
   - intent: inform_time
   - slot_was_set:
     - time: filled
@@ -87,11 +85,10 @@ stories:
   - action: utter_ask_appointment_id
 - story: change appointment - with userhash + no doctor is selected (./tests/test_appointment.yml)
   steps:
-  - intent: inform_userhash
+  - intent: inform_userhash  # predicted: nlu_fallback: [usr_5g2h4j5g24k5g245245k45352](userhash)
   - slot_was_set:
     - userhash: filled
   - action: act_prompt_userdata
-  - action: action_listen  # predicted: action_default_fallback
   - intent: inform{"appointment_id":5}  # predicted: inform: /inform{"appointment_id":5}
     entities:
     - appointment_id: 5
@@ -99,7 +96,7 @@ stories:
     - appointment_id: 5
   - slot_was_set:
     - appointment_id: filled
-  - action: action_listen  # predicted: action_default_fallback
+  - action: action_listen  # predicted: utter_goodbye
   - intent: change_appointment
   - slot_was_set:
     - appointment_id: filled
@@ -109,10 +106,8 @@ stories:
   - slot_was_set:
     - date: filled
   - action: utter_date_selection_success
-  - action: action_listen  # predicted: action_default_fallback
   - intent: inform_time
   - action: utter_ask_toselect_doctor
-  - action: action_listen  # predicted: action_default_fallback
   - intent: inform_docthash
   - slot_was_set:
     - docthash: filled
@@ -124,11 +119,10 @@ stories:
   - action: act_change_appointment
 - story: change appointment - with userhash + doctor is selected (./tests/test_appointment.yml)
   steps:
-  - intent: inform_userhash
+  - intent: inform_userhash  # predicted: nlu_fallback: [usr_5g2h4j5g24k5g245245k45352](userhash)
   - slot_was_set:
     - userhash: filled
   - action: act_prompt_userdata
-  - action: action_listen  # predicted: action_default_fallback
   - intent: inform_docthash
   - slot_was_set:
     - docthash: filled
@@ -140,7 +134,7 @@ stories:
     - appointment_id: 5
   - slot_was_set:
     - appointment_id: filled
-  - action: action_listen  # predicted: action_default_fallback
+  - action: action_listen  # predicted: utter_goodbye
   - intent: change_appointment
   - slot_was_set:
     - appointment_id: filled
@@ -150,7 +144,6 @@ stories:
   - slot_was_set:
     - date: filled
   - action: utter_date_selection_success
-  - action: action_listen  # predicted: action_default_fallback
   - intent: inform_time
   - slot_was_set:
     - time: filled
@@ -168,11 +161,10 @@ stories:
   - action: utter_ask_appointment_id
 - story: delete appointment - appointment id + userhash (./tests/test_appointment.yml)
   steps:
-  - intent: inform_userhash
+  - intent: inform_userhash  # predicted: nlu_fallback: [usr_5g2h4j5g24k5g245245k45352](userhash)
   - slot_was_set:
     - userhash: filled
   - action: act_prompt_userdata
-  - action: action_listen  # predicted: action_default_fallback
   - intent: inform{"appointment_id":5}  # predicted: inform: /inform{"appointment_id":5}
     entities:
     - appointment_id: 5
@@ -180,7 +172,7 @@ stories:
     - appointment_id: 5
   - slot_was_set:
     - appointment_id: filled
-  - action: action_listen  # predicted: action_default_fallback
+  - action: action_listen  # predicted: utter_goodbye
   - intent: delete_appointment
   - slot_was_set:
     - appointment_id: filled
