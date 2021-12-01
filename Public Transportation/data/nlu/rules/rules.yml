@@ -11,62 +11,63 @@ rules:
       - intent: bot_challenge
       - action: utter_iamabot
 
+  - rule: Utter thank you
+    steps:
+      - intent: thank
+      - action: utter_welcome
+
   # New Rules
+  - rule: Utter greet when greeted
+    steps:
+      - intent: greet
+      - action: utter_greet
 
   - rule: Rephrase unexpacted intent
     steps:
       - intent: nlu_fallback
       - action: utter_rephrase
 
-  - rule: Schedule form
-    steps:
-      - intent: ask_schedule
-      - action: utter_searching
-      - action: schedule_form
-      - active_loop: schedule_form
-      - active_loop: null
-      - action: action_get_schedule
-      - action: action_reset_transport_slots
-
-  - rule: Booking form
-    steps:
-      - intent: ask_booking
-      - action: utter_searching
-      - action: schedule_form
-      - active_loop: schedule_form
-      - active_loop: null
-      - action: utter_slots_booking
-      - action: action_reset_transport_slots
-
-  - rule: Find path
-    steps:
-      - intent: ask_path
-      - action: utter_searching
-      - action: path_form
-      - active_loop: path_form
-      - active_loop: null
-      - action: utter_path
-      - action: action_reset_transport_slots
-
-  # - rule: Respond to transport
+  # - rule: Schedule form
   #   steps:
-  #     - intent: transport
-  #     - action: utter_transport
-
-  # - rule: Activate schedule form
-  #   steps:
-  #     - intent: transport/ask_schedule
-  #     - action: utter_transport/ask_schedule
+  #     - intent: ask_schedule
+  #     - action: action_reset_transport_slots
+  #     - action: utter_searching
   #     - action: schedule_form
   #     - active_loop: schedule_form
   #     - active_loop: null
-  #     - action: utter_slots_schedule
+  #     - action: action_get_schedule
 
-  # - rule: Activate booking form
+  # - rule: Booking form
   #   steps:
-  #     - intent: transport/ask_booking
-  #     - action: utter_transport/ask_booking
+  #     - intent: ask_booking
+  #     - action: action_reset_transport_slots
+  #     - action: utter_searching
   #     - action: schedule_form
   #     - active_loop: schedule_form
   #     - active_loop: null
-  #     - action: utter_slots_booking
+  #     - action: action_get_booking
+  #     - action: utter_booking_selection
+
+  # - rule: Make booking
+  #   steps:
+  #     - intent: make_booking
+  #     - action: utter_booking_successful
+
+  # - rule: Find path
+  #   steps:
+  #     - intent: ask_path
+  #     - action: action_reset_transport_slots
+  #     - action: utter_searching
+  #     - action: path_form
+  #     - active_loop: path_form
+  #     - active_loop: null
+  #     - action: utter_path
+
+  # - rule: Add complaint
+  #   steps:
+  #     - intent: ask_complaint
+  #     - action: action_reset_complaint_slots
+  #     - action: complaint_form
+  #     - active_loop: complaint_form
+  #     - active_loop: null
+  #     - action: utter_complaint

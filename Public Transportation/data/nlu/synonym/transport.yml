@@ -10,3 +10,5 @@ nlu:
   - synonym: route
     examples: |
       - path
+      - path finding
+      - routing
