@@ -1,0 +1,63 @@
+stories:
+- story: Activate place medtest form - userhash provided
+  steps:
+  - user: |
+      usr_y52t4j5gf42jh54k5h24h5
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - action: act_prompt_userdata
+  - user: |
+      i want to place a medical test
+    intent: place_medtest
+  - action: form_place_medtest
+  - active_loop: form_place_medtest
+
+- story: Activate place medtest form - userhash NOT provided
+  steps:
+  - user: |
+      i want to place a medical test
+    intent: place_medtest
+  - slot_was_set:
+    - userhash: null
+  - action: utter_ask_userhash_for_proceed
+  - action: action_listen
+
+# - story: Submit place medtest form 
+#   condition:
+#   - active_loop: form_place_medtest
+#   steps:
+#   - action: form_place_medtest
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_place_medtest
+
+###########################################################################
+
+# - story: check upcoming medical tests -  ureshash provided
+#   condition:
+#   - slot_was_set:
+#     - userhash
+#   steps:
+#   - intent: check_medtests
+#   - action: act_check_medtest
+
+# - story: check upcoming medical tests -  ureshash provided
+#   condition:
+#   - slot_was_set:
+#     - userhash: null
+#   steps:
+#   - intent: check_medtests
+#   - action: utter_ask_userhash_for_proceed
+#   - action: action_listen
+
+# - story: get list of medical tests
+#   steps:
+#   - intent: list_test_types
+#   - action: act_list_test_types
+
+# - story: select test type
+#   steps:
+#   - intent: inform_testtype
+#   - action: utter_testtype_selected

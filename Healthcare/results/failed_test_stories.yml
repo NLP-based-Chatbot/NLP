@@ -45,10 +45,107 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - action: action_make_complain
+- story: get doctor list - spec is provided (./tests/test_general.yml)
+  steps:
+  - intent: inform
+    entities:
+    - spec_id: 2
+  - slot_was_set:
+    - spec_id: 2
+  - slot_was_set:
+    - spec_id: filled
+  - user: |-
+      list of doctors
+  - slot_was_set:
+    - spec_id: filled
+  - action: action_listen  # predicted: action_default_fallback
+  - intent: get_doctor_list
+  - action: act_list_doctors
+- story: get doctor list - spec is not provided (./tests/test_general.yml)
+  steps:
+  - user: |-
+      list of doctors
+  - slot_was_set:
+    - spec_id: filled
+  - intent: get_doctor_list
+  - action: act_list_doctors
+- story: get time - doctor is selected (./tests/test_general.yml)
+  steps:
+  - intent: inform_docthash
+  - slot_was_set:
+    - docthash: filled
+  - action: utter_doct_selection_success
+  - intent: get_time_range
+  - action: act_show_timerange
+- story: get spec list (./tests/test_general.yml)
+  steps:
+  - intent: get_spec_list
+  - action: act_list_specilizations
+- story: provide date (./tests/test_general.yml)
+  steps:
+  - intent: inform_date
+  - slot_was_set:
+    - date: filled
+  - action: utter_date_selection_success
+- story: provide time - doctor is not selected (./tests/test_general.yml)
+  steps:
+  - intent: inform_time
+  - slot_was_set:
+    - docthash: null
+  - action: utter_ask_toselect_doctor
 - story: place appointment - doctor not selected (./tests/test_appointment.yml)
   steps:
   - intent: make_appiontment
   - action: utter_ask_toselect_doctor
+- story: provide time - doctor is selected (./tests/test_general.yml)
+  steps:
+  - intent: inform_docthash
+  - slot_was_set:
+    - docthash: filled
+  - action: utter_doct_selection_success
+  - intent: inform_time
+  - slot_was_set:
+    - docthash: filled
+  - action: utter_time_selection_success
+- story: provide user name (./tests/test_general.yml)
+  steps:
+  - intent: inform_patient_name
+  - slot_was_set:
+    - person_name: filled
+  - action: act_new_patient
+- story: provide user hash (./tests/test_general.yml)
+  steps:
+  - intent: inform_userhash
+  - slot_was_set:
+    - userhash: filled
+  - action: act_prompt_userdata
+  - slot_was_set:
+    - client_person: filled
+- story: provide doct hash (./tests/test_general.yml)
+  steps:
+  - intent: inform_docthash
+  - action: utter_doct_selection_success
+- story: inform spec id (./tests/test_general.yml)
+  steps:
+  - intent: inform
+  - slot_was_set:
+    - spec_id: filled
+  - action: action_listen  # predicted: utter_happy
+- story: Activate place medtest form - userhash provided (./tests/test_medtest.yml)
+  steps:
+  - intent: inform_userhash
+  - slot_was_set:
+    - userhash: filled
+  - action: act_prompt_userdata
+  - intent: place_medtest
+  - action: form_place_medtest
+  - active_loop: form_place_medtest
+- story: Activate place medtest form - userhash NOT provided (./tests/test_medtest.yml)
+  steps:
+  - intent: place_medtest
+  - slot_was_set:
+    - userhash: null
+  - action: utter_ask_userhash_for_proceed
 - story: place appointment - doctor selected (./tests/test_appointment.yml)
   steps:
   - intent: inform_docthash
