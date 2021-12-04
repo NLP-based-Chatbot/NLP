@@ -1,1 +1,38 @@
+<<<<<<< HEAD
 {}
+=======
+{
+  "city": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 2,
+    "confused_with": {}
+  },
+  "vehical": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "micro avg": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 3
+  },
+  "macro avg": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 3
+  },
+  "weighted avg": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 3
+  }
+}
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419

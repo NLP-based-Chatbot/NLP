@@ -14,7 +14,7 @@ ALLOWD_TV_SERVICE_PROVIDERS = ["dialog", "peo"]
 ALLOWD_SERVICE_PROVIDERS = ["dialog", "mobitel", "hutch", "airtel"]
 PAYMENT_METHODS = ["prepaid", "postpaid"]
 PACKAGE_TYPES = ["data card", "time based", "content based", "anytime", "unlimited"]
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "http://localhost:8000"
 
 class ActionPackageDetails(Action):
 

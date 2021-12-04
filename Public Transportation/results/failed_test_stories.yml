@@ -4,10 +4,18 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+<<<<<<< HEAD
   - intent: ask_schedule  # predicted: nlu_fallback: I need to find a scehdule
+=======
+  - intent: ask_schedule
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
   - action: action_reset_transport_slots
   - action: utter_searching
   - action: travelling_form
   - active_loop: travelling_form
   - active_loop: null
+<<<<<<< HEAD
   - action: action_listen  # predicted: action_get_schedule
+=======
+  - action: action_get_schedule
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419

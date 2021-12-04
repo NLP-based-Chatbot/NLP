@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "utter_greet": {
     "precision": 1.0,
     "recall": 1.0,
@@ -24,16 +25,12 @@
     "support": 6
   },
   "action_reset_transport_slots": {
+=======
+  "utter_goodbye": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 1
-  },
-  "utter_cheer_up": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 3
+    "support": 4
   },
   "utter_happy": {
     "precision": 1.0,
@@ -41,11 +38,63 @@
     "f1-score": 1.0,
     "support": 3
   },
+  "action_reset_transport_slots": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "action_get_schedule": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "ask_schedule": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+<<<<<<< HEAD
+=======
+  "travelling_form": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4
+  },
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
+  "utter_cheer_up": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+<<<<<<< HEAD
+  "utter_happy": {
+=======
+  "utter_did_that_help": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+<<<<<<< HEAD
   "utter_iamabot": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 1
+=======
+  "action_listen": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 21
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
   },
   "deny": {
     "precision": 1.0,
@@ -53,6 +102,7 @@
     "f1-score": 1.0,
     "support": 2
   },
+<<<<<<< HEAD
   "ask_schedule": {
     "precision": 0.0,
     "recall": 0.0,
@@ -64,6 +114,31 @@
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 2
+=======
+  "mood_great": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "[Bus](vehical)": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "affirm": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "utter_iamabot": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
   },
   "mood_unhappy": {
     "precision": 1.0,
@@ -71,6 +146,7 @@
     "f1-score": 1.0,
     "support": 3
   },
+<<<<<<< HEAD
   "None": {
     "precision": 0.0,
     "recall": 0.0,
@@ -84,10 +160,12 @@
     "support": 1
   },
   "mood_great": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
+=======
+  "travelling_mode": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1
   },
   "location": {
     "precision": 1.0,
@@ -95,6 +173,24 @@
     "f1-score": 1.0,
     "support": 2
   },
+  "goodbye": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+<<<<<<< HEAD
+  "location": {
+=======
+  "[Balangoda](city)": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+<<<<<<< HEAD
   "utter_searching": {
     "precision": 1.0,
     "recall": 1.0,
@@ -142,6 +238,49 @@
     "recall": 0.9154929577464789,
     "f1-score": 0.9223634489866025,
     "support": 71
+=======
+  "utter_greet": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6
+  },
+  "bot_challenge": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "utter_searching": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "greet": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6
+  },
+  "micro avg": {
+    "precision": 1.0,
+    "recall": 0.9861111111111112,
+    "f1-score": 0.993006993006993,
+    "support": 72
+  },
+  "macro avg": {
+    "precision": 0.9565217391304348,
+    "recall": 0.9565217391304348,
+    "f1-score": 0.9565217391304348,
+    "support": 72
+  },
+  "weighted avg": {
+    "precision": 0.9861111111111112,
+    "recall": 0.9861111111111112,
+    "f1-score": 0.9861111111111112,
+    "support": 72
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
   },
   "conversation_accuracy": {
     "accuracy": 0.875,

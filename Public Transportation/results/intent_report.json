@@ -1,11 +1,16 @@
 {
+<<<<<<< HEAD
   "bot_challenge": {
+=======
+  "ask_services_travelling": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 4,
     "confused_with": {}
   },
+<<<<<<< HEAD
   "ask_path": {
     "precision": 1.0,
     "recall": 1.0,
@@ -20,6 +25,8 @@
     "support": 13,
     "confused_with": {}
   },
+=======
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
   "ask_services_complaint": {
     "precision": 1.0,
     "recall": 1.0,
@@ -27,6 +34,7 @@
     "support": 3,
     "confused_with": {}
   },
+<<<<<<< HEAD
   "ask_complaint": {
     "precision": 1.0,
     "recall": 1.0,
@@ -58,12 +66,23 @@
     "confused_with": {}
   },
   "provide_username": {
+=======
+  "ask_services_booking": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3,
+    "confused_with": {}
+  },
+  "ask_schedule": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 4,
     "confused_with": {}
   },
+<<<<<<< HEAD
   "ask_services_path_finding": {
     "precision": 1.0,
     "recall": 1.0,
@@ -72,19 +91,34 @@
     "confused_with": {}
   },
   "deny": {
+=======
+  "ask_path": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6,
+    "confused_with": {}
+  },
+  "ask_complaint": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 7,
     "confused_with": {}
   },
+<<<<<<< HEAD
   "ask_schedule": {
+=======
+  "provide_username": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 4,
     "confused_with": {}
   },
+<<<<<<< HEAD
   "goodbye": {
     "precision": 1.0,
     "recall": 0.9090909090909091,
@@ -102,6 +136,16 @@
     "confused_with": {}
   },
   "ask_services_booking": {
+=======
+  "deny": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 7,
+    "confused_with": {}
+  },
+  "ask_services_path_finding": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
@@ -115,11 +159,19 @@
     "support": 7,
     "confused_with": {}
   },
+<<<<<<< HEAD
   "find_office": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 2,
+=======
+  "mood_great": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 14,
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     "confused_with": {}
   },
   "affirm": {
@@ -129,18 +181,37 @@
     "support": 6,
     "confused_with": {}
   },
+<<<<<<< HEAD
   "mood_great": {
+=======
+  "book_seats": {
+    "precision": 0.75,
+    "recall": 1.0,
+    "f1-score": 0.8571428571428571,
+    "support": 3,
+    "confused_with": {}
+  },
+  "mood_unhappy": {
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 14,
     "confused_with": {}
   },
+<<<<<<< HEAD
   "ask_booking": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 6,
+=======
+  "travelling_mode": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 5,
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     "confused_with": {}
   },
   "location": {
@@ -150,6 +221,7 @@
     "support": 8,
     "confused_with": {}
   },
+<<<<<<< HEAD
   "thank": {
     "precision": 1.0,
     "recall": 1.0,
@@ -183,5 +255,58 @@
     "recall": 0.9859154929577465,
     "f1-score": 0.9856770251136447,
     "support": 142
+=======
+  "goodbye": {
+    "precision": 1.0,
+    "recall": 0.9090909090909091,
+    "f1-score": 0.9523809523809523,
+    "support": 11,
+    "confused_with": {
+      "greet": 1
+    }
+  },
+  "bot_challenge": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4,
+    "confused_with": {}
+  },
+  "select_trip": {
+    "precision": 1.0,
+    "recall": 0.6666666666666666,
+    "f1-score": 0.8,
+    "support": 3,
+    "confused_with": {
+      "book_seats": 1
+    }
+  },
+  "greet": {
+    "precision": 0.9285714285714286,
+    "recall": 1.0,
+    "f1-score": 0.962962962962963,
+    "support": 13,
+    "confused_with": {}
+  },
+  "ask_booking": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6,
+    "confused_with": {}
+  },
+  "accuracy": 0.9851851851851852,
+  "macro avg": {
+    "precision": 0.9846938775510203,
+    "recall": 0.9797979797979799,
+    "f1-score": 0.9796422272612749,
+    "support": 135
+  },
+  "weighted avg": {
+    "precision": 0.9875661375661374,
+    "recall": 0.9851851851851852,
+    "f1-score": 0.9849343523417599,
+    "support": 135
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
   }
 }

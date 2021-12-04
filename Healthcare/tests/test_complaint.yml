@@ -1,0 +1,40 @@
+stories:
+- story: make a complaint 
+  steps:
+  - user: |
+      i want to make a complaint
+    intent: add_complaint
+  - action: form_make_complain
+  - active_loop: form_make_complain
+  - user: |
+      this is the title
+    intent: nlu_fallback
+  - slot_was_set:
+    - title
+  - user: |
+      this is the description
+    intent: nlu_fallback
+  - slot_was_set:
+    - description
+  - user: |
+      full name
+    intent: nlu_fallback
+  - slot_was_set:
+    - fullname
+  - user: |
+      0112222222
+    intent: nlu_fallback
+  - slot_was_set:
+    - contactnum
+  - user: |
+      user@mail.com
+    intent: nlu_fallback
+  - slot_was_set:
+    - email
+  - action: form_make_complain
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_make_complain
+
+###############################################################

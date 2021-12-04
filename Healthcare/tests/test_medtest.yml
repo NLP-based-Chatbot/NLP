@@ -1,0 +1,25 @@
+stories:
+- story: Activate place medtest form - userhash provided
+  steps:
+  - user: |
+      usr_y52t4j5gf42jh54k5h24h5
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - action: act_prompt_userdata
+  - user: |
+      i want to place a medical test
+    intent: place_medtest
+  - action: form_place_medtest
+  - active_loop: form_place_medtest
+
+- story: Activate place medtest form - userhash NOT provided
+  steps:
+  - user: |
+      i want to place a medical test
+    intent: place_medtest
+  - slot_was_set:
+    - userhash: null
+  - action: utter_ask_userhash_for_proceed
+  - action: action_listen
+

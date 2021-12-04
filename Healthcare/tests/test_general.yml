@@ -1,0 +1,137 @@
+stories:
+- story: get doctor list - spec is provided
+  steps:
+  - user: |
+      /inform{"spec_id":2}
+    intent: inform
+  - slot_was_set:
+    - spec_id
+  - action: action_listen
+  - user: |
+      list of doctors
+  - slot_was_set:
+    - spec_id
+  - intent: get_doctor_list
+  - action: act_list_doctors
+
+- story: get doctor list - spec is not provided
+  steps:
+  - user: |
+      list of doctors
+  - slot_was_set:
+    - spec_id
+  - intent: get_doctor_list
+  - action: act_list_doctors
+
+########################################################################################
+
+
+- story: get time - doctor is selected
+  steps:
+  - user: |
+      doc_5j4h3254325kg345gk5243kj52k5
+    intent: inform_docthash
+  - slot_was_set:
+    - docthash
+  - action: utter_doct_selection_success
+  - user: |
+      availble time slots
+    intent: get_time_range
+  - action: act_show_timerange
+  - action: action_listen
+
+- story: get time - doctor is not selected
+  steps:
+  - user: |
+      availble time slots
+    intent: get_time_range
+  - slot_was_set:
+    - docthash: null
+  - action: utter_ask_toselect_doctor
+  - action: action_listen
+
+########################################################################################
+
+- story: get spec list
+  steps:
+  - user: |
+      show doctors specialization list
+    intent: get_spec_list
+  - action: act_list_specilizations
+
+- story: provide date
+  steps:
+  - user: |
+      2021-12-10
+    intent: inform_date
+  - slot_was_set:
+    - date
+  - action: utter_date_selection_success
+  - action: action_listen
+
+- story: provide time - doctor is not selected
+  steps:
+  - user: |
+      20:30
+    intent: inform_time
+  - slot_was_set:
+    - docthash: null
+  - action: utter_ask_toselect_doctor
+  - action: action_listen
+
+- story: provide time - doctor is selected
+  steps:
+  - user: |
+      doc_4jk5h234kjg54jk24lk464654kl2
+    intent: inform_docthash
+  - slot_was_set:
+    - docthash
+  - action: utter_doct_selection_success
+  - user: |
+      20:30
+    intent: inform_time
+  - slot_was_set:
+    - docthash
+  - action: utter_time_selection_success
+  - action: action_listen
+
+- story: provide user name
+  steps:
+  - user: |
+      kavindu
+    intent: inform_patient_name
+  - slot_was_set:
+    - person_name
+  - action: act_new_patient
+  - action: action_listen
+
+- story: provide user hash
+  steps:
+  - user: | 
+      usr_h45234lk5g346h34lkk63h45h2
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - action: act_prompt_userdata
+  - slot_was_set:
+    - client_person
+  - action: action_listen
+
+- story: provide doct hash
+  steps:
+  - user: |
+      doc_h54jk5h2l35h243k5h3k45l2k5
+    intent: inform_docthash
+  - action: utter_doct_selection_success
+  - action: action_listen
+
+- story: inform spec id
+  steps:
+  - user: |
+      3
+    intent: inform
+    entities:
+    - spec_id
+  - slot_was_set:
+    - spec_id
+  - action: action_listen

@@ -65,7 +65,7 @@ nlu:
     - i want to [place](appointment_option) an [appointment](reservation) to meet a [dr](service_person)
     - i want to  [make](appointment_option) n [appointment](reservation)
     - [appintment](reservation)
-- intent: change_appiontment
+- intent: change_appointment
   examples: |
     - [change](appointment_option) [appointment](reservation)
     - [postpone](appointment_option) [appointment](reservation)

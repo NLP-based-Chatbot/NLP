@@ -4,7 +4,11 @@
     "intent": "goodbye",
     "intent_prediction": {
       "name": "greet",
+<<<<<<< HEAD
       "confidence": 0.5220791697502136
+=======
+      "confidence": 0.712193489074707
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     }
   },
   {
@@ -12,7 +16,11 @@
     "intent": "select_trip",
     "intent_prediction": {
       "name": "book_seats",
+<<<<<<< HEAD
       "confidence": 0.7163341641426086
+=======
+      "confidence": 0.6124163866043091
+>>>>>>> 72f78bce2cbcd6e2669681bcac16bf01f6f99419
     }
   }
 ]
