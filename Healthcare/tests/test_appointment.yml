@@ -1,0 +1,224 @@
+stories: 
+- story: place appointment - doctor not selected
+  steps:
+  - user: |
+      i want to place an appointment
+    intent: make_appiontment
+  - action: utter_ask_toselect_doctor
+
+- story: place appointment - doctor selected
+  steps:
+  - user: |
+      doc_45h34h5g3hj56gk6346k56h46jfg
+    intent : inform_docthash
+  - action: utter_doct_selection_success
+  - user: |
+      i want to place an appointment
+    intent: make_appiontment
+  - slot_was_set:
+    - docthash
+  - action: form_place_appointment
+  - active_loop: form_place_appointment
+  - user: |
+      usr_4h23g423hg5234kj52k2j2
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - action: act_prompt_userdata
+  - slot_was_set:
+    - client_person
+  - user: |
+      2021-12-10
+    intent: inform_date
+  - slot_was_set:
+    - date
+  - action: utter_date_selection_success
+  - user: |
+      20:20
+    intent: inform_time
+  - slot_was_set:
+    - time
+  - action: utter_time_selection_success
+  - action: form_place_appointment
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: act_place_appointment
+
+############################################################################################
+
+- story: change appointment - no appointment id
+  steps:
+  - user: |
+      i want to change appointment
+    intent: change_appointment
+  - slot_was_set:
+    - appointment_id: null
+  - action: utter_ask_appointment_id
+
+- story: change appointment - with userhash + no doctor is selected
+  steps:
+  - user: |
+      usr_5g2h4j5g24k5g245245k45352
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - action: act_prompt_userdata
+  - user: |
+      /inform{"appointment_id":5}
+    intent: /inform{"appointment_id":5}
+  - slot_was_set:
+    - appointment_id
+  - user: |
+      i want to change appointment
+    intent: change_appointment
+  - slot_was_set:
+    - appointment_id
+  - action: form_change_appointment
+  - active_loop: form_change_appointment
+  - user: |
+      2021-12-10
+    intent: inform_date
+  - slot_was_set:
+    - date
+  - action: utter_date_selection_success
+  - user: |
+      20:20
+    intent: inform_time
+  - action: utter_ask_toselect_doctor
+  - user: |
+      doc_245g2h35g4325g345345k355g5k534
+    intent: inform_docthash
+  - slot_was_set:
+    - docthash
+  - action: utter_doct_selection_success
+  - action: form_change_appointment
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: act_change_appointment
+  
+
+- story: change appointment - with userhash + doctor is selected
+  steps:
+  - user: |
+      usr_5g2h4j5g24k5g245245k45352
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - action: act_prompt_userdata
+  - user: |
+      doc_245g2h35g4325g345345k355g5k534
+    intent: inform_docthash
+  - slot_was_set:
+    - docthash
+  - action: utter_doct_selection_success
+  - user: |
+      /inform{"appointment_id":5}
+    intent: /inform{"appointment_id":5}
+  - slot_was_set:
+    - appointment_id
+  - user: |
+      i want to change appointment
+    intent: change_appointment
+  - slot_was_set:
+    - appointment_id
+  - action: form_change_appointment
+  - active_loop: form_change_appointment
+  - user: |
+      2021-12-10
+    intent: inform_date
+  - slot_was_set:
+    - date
+  - action: utter_date_selection_success
+  - user: |
+      20:20
+    intent: inform_time
+  - slot_was_set:
+    - time
+  - action: utter_time_selection_success
+  - action: form_change_appointment
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: act_change_appointment
+
+############################################################################################
+
+- story: delete appointment - no appointment id
+  steps:
+  - user: |
+      i want to cancel appointment
+    intent: delete_appointment
+  - slot_was_set:
+    - appointment_id: null
+  - action: utter_ask_appointment_id
+
+- story: delete appointment - no appointment id
+  steps:
+  - user: |
+      i want to cancel appointment
+    intent: delete_appointment
+  - slot_was_set:
+    - appointment_id: null
+  - action: utter_ask_appointment_id
+
+- story: delete appointment - no appointment id
+  steps:
+  - user: |
+      i want to cancel appointment
+    intent: delete_appointment
+  - slot_was_set:
+    - appointment_id: null
+  - action: utter_ask_appointment_id
+
+- story: delete appointment - appointment id + userhash
+  steps:
+  - user: |
+      usr_5g2h4j5g24k5g245245k45352
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - action: act_prompt_userdata
+  - user: |
+      /inform{"appointment_id":5}
+    intent: /inform{"appointment_id":5}
+  - slot_was_set:
+    - appointment_id
+  - user: |
+      i want to delete appointment
+    intent: delete_appointment
+  - slot_was_set:
+    - appointment_id
+  - action: form_delete_appointment
+  - active_loop: form_delete_appointment
+  - action: form_delete_appointment
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: act_delete_appointment
+
+############################################################################################
+
+- story: list appointments - userhash not provided 
+  steps:
+  - user: |
+      list my appointments
+    intent: check_appointment
+  - slot_was_set:
+    - userhash: null
+  - action: utter_ask_userhash_for_proceed
+
+- story: list appointments - userhash provided 
+  steps:
+  - user: |
+      usr_5hg2345g3k2465g3246g236gk3
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - user: |
+      list my appointments
+    intent: check_appointment
+  - slot_was_set:
+    - userhash
+  - action: act_check_appointment

@@ -80,27 +80,6 @@ class SlotResetSelection(Action):
 
     return slot_list       
 
-# class ScheduleFormValidator(Action):
-#   """Form validator"""
-
-#   def name(self):
-
-#     return "validate_schedule_form"
-
-#   @staticmethod
-#   def city_db() -> List[Text]:
-#     """Database supported cities""" 
-
-#     return ["colombo", "balangoda"] 
-
-#   def run(
-#     self,
-#     dispatcher: CollectingDispatcher,
-#     tracker: Tracker,
-#     domain: Dict[Text, Any],
-#   ) -> List[EventType]:
-
-#     return [SlotSet("location_departure", None), SlotSet("location_destination", None), SlotSet("travelling_mode", None)]      
 
 class ActionSchedule(Action):
   """Retrive transportation schedule"""
@@ -198,7 +177,7 @@ class ComplaintReset(Action):
     domain: Dict[Text, Any],
   ) -> List[EventType]:    
 
-    return [SlotSet("complaint_title", None), SlotSet("complaint_description", None)]     
+    return [SlotSet("complaint_title", None), SlotSet("complaint_description", None), SlotSet("vehical_number", None), SlotSet("driver_id", None), SlotSet("condutor_id", None)]     
 
 class MakeBooking(Action):
   """Make the booking"""

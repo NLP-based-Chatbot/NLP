@@ -11,6 +11,11 @@ rules:
       - intent: bot_challenge
       - action: utter_iamabot
 
+  - rule: Utter thank you
+    steps:
+      - intent: thank
+      - action: utter_welcome
+
   # New Rules
   - rule: Utter greet when greeted
     steps:

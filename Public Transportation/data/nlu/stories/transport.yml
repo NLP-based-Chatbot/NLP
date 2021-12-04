@@ -56,3 +56,4 @@ stories:
       - action: complaint_form
       - active_loop: complaint_form
       - active_loop: null
+      - action: utter_complaint
