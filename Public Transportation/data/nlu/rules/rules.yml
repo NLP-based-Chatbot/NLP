@@ -22,7 +22,7 @@ rules:
       - intent: greet
       - action: utter_greet
 
-  - rule: Rephrase unexpacted intent
+  - rule: Rephrase unexpected intent
     steps:
       - intent: nlu_fallback
       - action: utter_rephrase

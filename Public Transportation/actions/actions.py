@@ -18,6 +18,9 @@ from rasa_sdk.events import (
   EventType
 )
 
+# URL of the backend API
+base_url = '20.185.23.148'
+
 class SlotResetTravel(Action):
   """Resets the slots related to transportation"""
 
@@ -78,8 +81,76 @@ class SlotResetSelection(Action):
     if username:
       slot_list.append(SlotSet("username", None))   
 
-    return slot_list       
+    return slot_list  
 
+class SlotsResetOffice(Action):
+  """Resets office related slots"""
+
+  def name(self):
+    return "action_reset_office_slots"
+
+  def run(
+    self,
+    dispatcher: CollectingDispatcher,
+    tracker: Tracker,
+    domain: Dict[Text, Any],
+  ) -> List[EventType]:
+
+    slot_list = []
+    name = tracker.get_slot('office_name')
+    address = tracker.get_slot('office_address')
+    mode = tracker.get_slot('travelling_mode')
+
+    # slot check for nullity and making them null
+    if name:
+      slot_list.append(SlotSet("office_name", None)) 
+
+    if address:
+      slot_list.append(SlotSet("office_address", None))  
+
+    if mode:
+      slot_list.append(SlotSet("travelling_mode", None))  
+
+    return slot_list      
+
+class SlotResetComplaint(Action):
+  """Reset complaint slots"""
+
+  def name(self):
+
+    return "action_reset_complaint_slots"
+
+  def run(
+    self,
+    dispatcher: CollectingDispatcher,
+    tracker: Tracker,
+    domain: Dict[Text, Any],
+  ) -> List[EventType]:    
+
+    slot_list = []
+    # get current slot values
+    title = tracker.get_slot('complaint_title')
+    description = tracker.get_slot('complaint_description')
+    vehical_number = tracker.get_slot('vehical_number')
+    driver_id = tracker.get_slot('driver_id')
+    conductor_id = tracker.get_slot('conductor_id')
+
+    if title:
+      slot_list.append(SlotSet("complaint_title", None))
+
+    if description:
+      slot_list.append(SlotSet("complaint_description", None)) 
+
+    if vehical_number:
+      slot_list.append(SlotSet("vehical_number", None))  
+
+    if driver_id:
+      slot_list.append(SlotSet("driver_id", None))
+
+    if conductor_id:
+      slot_list.append(SlotSet("condutor_id", None))    
+
+    return slot_list            
 
 class ActionSchedule(Action):
   """Retrive transportation schedule"""
@@ -103,9 +174,9 @@ class ActionSchedule(Action):
       destination = destination.lower()
       method = method.lower()
 
-      results = requests.get(f"http://20.185.23.148:8000/transport/schedule/{method}/{departure}/{destination}").json()
+      results = requests.get(f"http://{base_url}:8000/transport/schedule/{method}/{departure}/{destination}").json()
       if not results:
-        dispatcher.utter_message(text = f"There are currently no {method} schedules availble from {departure} to {destination}")
+        dispatcher.utter_message(text = f"There are currently no {method} schedules available from {departure} to {destination}")
       else:
         count = 0
         for result in results:
@@ -133,16 +204,13 @@ class ActionBooking(Action):
       destination = destination.lower()
       method = method.lower()
 
-      results = requests.get(f"http://20.185.23.148:8000/transport/schedule/{method}/{departure}/{destination}").json()
+      results = requests.get(f"http://{base_url}:8000/transport/schedule/{method}/{departure}/{destination}").json()
       if not results:
         dispatcher.utter_message(text = f"There are currently no {method} bookings availble from {departure} to {destination}")
       else:
         for result in results:
           if result['booking_available'] == True:
-            
             dispatcher.utter_message(text = f"Trip ID: {result['trip_id']} -> Vehical Number: {result['vehical_number']} -> Departure: {result['dep_time']} -> Available Seats: {result['seats_available']}")
-
-    return [SlotSet("location_departure", None), SlotSet("location_destination", None), SlotSet("travelling_mode", None)] 
 
 class ActionTriggerResponseSelector(Action):
   """Retrival Action Finder"""
@@ -161,23 +229,7 @@ class ActionTriggerResponseSelector(Action):
     if retrieval_intent:
       dispatcher.utter_message(template=f"utter_{retrieval_intent}")
 
-    return [SlotSet("retrieval_intent", None)]  
-
-class ComplaintReset(Action):
-  """Reset complaint slots"""
-
-  def name(self):
-
-    return "action_reset_complaint_slots"
-
-  def run(
-    self,
-    dispatcher: CollectingDispatcher,
-    tracker: Tracker,
-    domain: Dict[Text, Any],
-  ) -> List[EventType]:    
-
-    return [SlotSet("complaint_title", None), SlotSet("complaint_description", None), SlotSet("vehical_number", None), SlotSet("driver_id", None), SlotSet("condutor_id", None)]     
+    return [SlotSet("retrieval_intent", None)]    
 
 class MakeBooking(Action):
   """Make the booking"""
@@ -202,7 +254,7 @@ class MakeBooking(Action):
       "seats": int(username)
     }
 
-    results = requests.post(f"http://20.185.23.148:8000/transport/booking", json=booking_data)
+    results = requests.post(f"http://{base_url}:8000/transport/booking", json=booking_data)
 
     if results.ok:
       dispatcher.utter_message(text="You have succefully made the booking")
@@ -210,3 +262,30 @@ class MakeBooking(Action):
       dispatcher.utter_message(text="Something went wrong") 
 
     return [SlotSet("selection", None), SlotSet("seats", None), SlotSet("username", None)]   
+
+
+class FindOffice(Action):
+  """Find an office"""
+
+  def name(self):
+    return "action_find_office"
+
+  def run(
+    self,
+    dispatcher: CollectingDispatcher,
+    tracker: Tracker,
+    domain: Dict[Text, Any],
+  ) -> List[EventType]:
+
+    name = tracker.get_slot('office_name')
+    address = tracker.get_slot('office_address')
+    mode = tracker.get_slot('travelling_mode')
+
+    results = requests.get(f"http://{base_url}:8000/transport/office/{mode}/{name}/{address}").json()
+
+    if not results :
+      dispatcher.utter_message(text=f"Sorry, no entries found under {mode} {name} in {address}")
+    else:
+      for result in results:
+         dispatcher.utter_message(text=f"Office Name: {mode} {name} - {address}")
+         dispatcher.utter_message(text=f"Contact Number: {result['contact_number']}, Email: {result['email']}")

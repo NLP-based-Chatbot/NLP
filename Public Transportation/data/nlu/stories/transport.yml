@@ -1,18 +1,6 @@
 version: '2.0'
 
 stories:
-  - story: Ask Abilities
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ask_abilities
-      - action: utter_ask_abilities
-
-  - story: Abilities + Travelling
-    steps:
-      - intent: ask_services_travelling
-      - action: utter_ask_service_travelling
-
   - story: Ask schedule (Happy Path)
     steps:
       - intent: ask_schedule
@@ -23,21 +11,20 @@ stories:
       - active_loop: null
       - action: action_get_schedule
 
-  - story: Ask booking (Happy Path)
-    steps:
-      - intent: ask_booking
-      - action: action_reset_transport_slots
-      - action: action_reset_selection_slots
-      - action: utter_searching
-      - action: travelling_form
-      - active_loop: travelling_form
-      - active_loop: null
-      - action: action_get_booking
-      - action: utter_booking_selection
-      - action: selection_form
-      - active_loop: selection_form
-      - active_loop: null
-      - action: action_make_booking
+  # - story: Ask booking (Happy Path)
+  #   steps:
+  #     - intent: ask_booking
+  #     - action: action_reset_transport_slots
+  #     - action: utter_searching
+  #     - action: travelling_form
+  #     - active_loop: travelling_form
+  #     - active_loop: null
+  #     - action: action_get_booking
+  #     - action: utter_booking_selection
+  #     - action: selection_form
+  #     - active_loop: selection_form
+  #     - active_loop: null
+  #     - action: action_make_booking
 
   - story: Find route (Happy Path)
     steps:
@@ -57,3 +44,12 @@ stories:
       - active_loop: complaint_form
       - active_loop: null
       - action: utter_complaint
+
+  - story: Find office (Happy Path)
+    steps:
+      - intent: find_office
+      - action: action_reset_office_slots
+      - action: office_finder_form
+      - active_loop: office_finder_form
+      - active_loop: null
+      - action: action_find_office

@@ -1,0 +1,44 @@
+[
+  {
+    "text": "3 wheel",
+    "entities": [
+      {
+        "start": 0,
+        "end": 7,
+        "value": "3 wheel",
+        "entity": "vehical"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "seats",
+        "start": 0,
+        "end": 7,
+        "confidence_entity": 0.39431026577949524,
+        "value": "3 wheel",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "2",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "2",
+        "entity": "selection"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "seats",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.4432789385318756,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]

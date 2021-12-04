@@ -9,7 +9,6 @@ intents:
   - mood_unhappy
   - bot_challenge
   - transport
-  - ask_abilities
   - ask_booking
   - ask_complaint
   - ask_schedule
@@ -17,10 +16,6 @@ intents:
   - travelling_mode
   - ask_path
   - searching
-  - ask_services_travelling
-  - ask_services_scheduling
-  - ask_services_path_finding
-  - ask_services_complaint
   - select_trip
   - book_seats
   - provide_username
@@ -65,13 +60,21 @@ slots:
   complaint_description:
     type: text
     influence_conversation: true
-  vechical_number:
+  vehical_number:
     type: text
     influence_conversation: true
   driver_id:
     type: text
     influence_conversation: true
   conductor_id:
+    type: text
+    influence_conversation: true
+
+  # office finding related
+  office_name:
+    type: text
+    influence_conversation: true
+  office_address:
     type: text
     influence_conversation: true
 
@@ -90,6 +93,8 @@ slots:
       - vehical_number
       - driver_id
       - conductor_id
+      - office_name
+      - office_address
     influence_conversation: true
 
 # responses of the chatbot
@@ -117,31 +122,11 @@ responses:
     - text: 'You are Welcome. Thanks for using our Chatbot.'
 
   # uncertain response
-  utter_rephrase:
-    - text: Sorry I didn't get the message. Can you rephrase it?
-
   utter_default:
     - text: Sorry can you rephrase it again?
 
-  # ability finder
-  utter_ask_abilities:
-    - text: "I am capable of providing,\n
-        1. Travelling schedule services,\n
-        2. Booking services,\n
-        3. Path finding services\n
-        4. Complaint logging services"
-
-  utter_ask_service_travelling:
-    - text: Our travelling schedule service allows you to find Bus Schedules, and Train Schedules.
-
-  utter_ask_service_booking:
-    - text: Our booking service allows you to book Bus, and Train seats.
-
-  utter_ask_service_path_finding:
-    - text: Our routing service is integrated with Google Maps and it allows you to find the best route from you desired location to a destination location.
-
-  utter_ask_service_complaint:
-    - text: Our complaint service allows you to add complaints various types of scenarios that can occur in Busses, and Trains.
+  utter_rephrase:
+    - text: Sorry, I didn't get the message. Can you please rephrase it?
 
   # travelling related
   utter_ask_location_departure:
@@ -154,7 +139,7 @@ responses:
     - text: What is the travelling mode?
 
   utter_ask_selection:
-    - text: Please enter the trip id
+    - text: Please enter the trip id from to the entries
 
   utter_ask_seats:
     - text: Please enter the number of seats
@@ -189,6 +174,18 @@ responses:
         - To: {location_destination}\n
         - Travelling Method: {travelling_mode}"
 
+  # office finder
+  utter_ask_office_name:
+    - text: 'Please select the office type'
+      buttons:
+        - title: 'Depot Office'
+          payload: '/ans_office{{"office_type":"depot"}}'
+        - title: 'Regional Office'
+          payload: '/ans_office{{"office_type":"regional"}}'
+
+  utter_ask_office_address:
+    - text: 'Please enter the location of the office'
+
   # route finder
   utter_path:
     - custom:
@@ -203,7 +200,9 @@ actions:
   - action_get_booking
   - action_reset_complaint_slots
   - action_reset_selection_slots
+  - action_reset_office_slots
   - action_make_booking
+  - action_find_office
 
 session_config:
   session_expiration_time: 60
@@ -249,7 +248,7 @@ forms:
         - type: from_text
       complaint_description:
         - type: from_text
-      vechical_number:
+      vehical_number:
         - type: from_text
       driver_id:
         - type: from_text
@@ -265,8 +264,21 @@ forms:
       selection:
         - type: from_entity
           entity: selection
-          intent: selection
+          intent: select_trip
       seats:
         - type: from_entity
           entity: seats
-          intent: seat
+          intent: book_seats
+
+  office_finder_form:
+    required_slots:
+      travelling_mode:
+        - type: from_entity
+          entity: vehical
+      office_name:
+        - type: from_entity
+          entity: office_type
+          intent: ans_office
+      office_address:
+        - type: from_text
+          entity: city

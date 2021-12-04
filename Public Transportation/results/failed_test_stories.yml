@@ -1,0 +1,13 @@
+version: "2.0"
+stories:
+- story: Searching for a schedule without any slots (.\tests\test_scheduling.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_schedule  # predicted: nlu_fallback: I need to find a scehdule
+  - action: action_reset_transport_slots
+  - action: utter_searching
+  - action: travelling_form
+  - active_loop: travelling_form
+  - active_loop: null
+  - action: action_listen  # predicted: action_get_schedule
