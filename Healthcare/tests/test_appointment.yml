@@ -9,7 +9,7 @@ stories:
 - story: place appointment - doctor selected
   steps:
   - user: |
-      doc_45h34h5g3hj56gk6346k56h46jfg
+      doc_45h34h5g3hj566k56h46jfg
     intent : inform_docthash
   - action: utter_doct_selection_success
   - user: |
@@ -59,7 +59,7 @@ stories:
 - story: change appointment - with userhash + no doctor is selected
   steps:
   - user: |
-      usr_5g2h4j5g24k5g245245k45352
+      usr_5g2h4j5g24k245k45352
     intent: inform_userhash
   - slot_was_set:
     - userhash
@@ -102,7 +102,7 @@ stories:
 - story: change appointment - with userhash + doctor is selected
   steps:
   - user: |
-      usr_5g2h4j5g24k5g245245k45352
+      usr_5g2h4j5g24k5g5k45352
     intent: inform_userhash
   - slot_was_set:
     - userhash
@@ -175,7 +175,7 @@ stories:
 - story: delete appointment - appointment id + userhash
   steps:
   - user: |
-      usr_5g2h4j5g24k5g245245k45352
+      usr_5g2h4j5g24k5g245352
     intent: inform_userhash
   - slot_was_set:
     - userhash
@@ -212,7 +212,7 @@ stories:
 - story: list appointments - userhash provided 
   steps:
   - user: |
-      usr_5hg2345g3k2465g3246g236gk3
+      usr_5hg2345g3k2465g32gk3
     intent: inform_userhash
   - slot_was_set:
     - userhash
