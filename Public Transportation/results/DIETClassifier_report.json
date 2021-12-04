@@ -1,0 +1,66 @@
+{
+  "vehical": {
+    "precision": 1.0,
+    "recall": 0.8571428571428571,
+    "f1-score": 0.923076923076923,
+    "support": 14,
+    "confused_with": {
+      "seats": 2
+    }
+  },
+  "selection": {
+    "precision": 0.75,
+    "recall": 1.0,
+    "f1-score": 0.8571428571428571,
+    "support": 3,
+    "confused_with": {}
+  },
+  "city.departure": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9,
+    "confused_with": {}
+  },
+  "username": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4,
+    "confused_with": {}
+  },
+  "seats": {
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1-score": 0.5714285714285715,
+    "support": 3,
+    "confused_with": {
+      "selection": 1
+    }
+  },
+  "city.destination": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 15,
+    "confused_with": {}
+  },
+  "micro avg": {
+    "precision": 0.9375,
+    "recall": 0.9375,
+    "f1-score": 0.9375,
+    "support": 48
+  },
+  "macro avg": {
+    "precision": 0.875,
+    "recall": 0.9206349206349206,
+    "f1-score": 0.8919413919413919,
+    "support": 48
+  },
+  "weighted avg": {
+    "precision": 0.953125,
+    "recall": 0.9375,
+    "f1-score": 0.941849816849817,
+    "support": 48
+  }
+}
