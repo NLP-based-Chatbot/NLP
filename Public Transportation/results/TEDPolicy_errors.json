@@ -1,0 +1,39 @@
+[
+  {
+    "text": "My departure is Balangoda",
+    "entities": [
+      {
+        "start": 16,
+        "end": 25,
+        "value": "Balangoda",
+        "entity": "city"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "My destination is Balangoda",
+    "entities": [
+      {
+        "start": 18,
+        "end": 27,
+        "value": "Balangoda",
+        "entity": "city"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I am travelling from Bus",
+    "entities": [
+      {
+        "text": "I am travelling from Bus",
+        "start": 21,
+        "end": 24,
+        "entity": "vehical",
+        "value": "Bus"
+      }
+    ],
+    "predicted_entities": []
+  }
+]
