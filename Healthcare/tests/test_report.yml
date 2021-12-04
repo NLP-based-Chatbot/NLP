@@ -1,0 +1,46 @@
+stories:
+- story: list of reports - userhash provided 
+  steps:
+  - user: |
+      usr_h24g34h5g2k5gk425234q3
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - action: act_prompt_userdata
+  - user: |
+      show me my reports
+    intent: get_report
+  - action: act_list_reports
+
+- story: list of reports - userhash not provided
+  steps:
+  - user: |
+      show me my reports
+    intent: get_report
+  - slot_was_set:
+    - userhash: null
+  - action: utter_ask_userhash_for_proceed
+
+- story: inform reporthash - userhash provided
+  steps:
+  - user: |
+      usr_h24g34h5g2k5gk425234q3
+    intent: inform_userhash
+  - slot_was_set:
+    - userhash
+  - user: |
+      report_h42452g5k4g52k45gk234
+    intent: inform_reporthash
+  - slot_was_set:
+    - reporthash
+  - action: action_status_report
+
+- story: inform reporthash - userhash NOT provided
+  steps:
+  - user: |
+      report_h42452g5k4g52k45gk234
+    intent: inform_reporthash
+  - slot_was_set:
+    - userhash: null
+  - action: utter_ask_userhash_for_proceed
+

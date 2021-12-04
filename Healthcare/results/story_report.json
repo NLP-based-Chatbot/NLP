@@ -5,11 +5,11 @@
     "f1-score": 0.0,
     "support": 2
   },
-  "utter_doct_selection_success": {
+  "utter_ask_userhash_for_proceed": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 6
+    "support": 4
   },
   "form_delete_appointment": {
     "precision": 1.0,
@@ -17,94 +17,16 @@
     "f1-score": 0.6666666666666666,
     "support": 2
   },
-  "add_complaint": {
+  "act_show_timerange": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 1
   },
-  "form_change_appointment": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 4
-  },
-  "form_make_complain": {
-    "precision": 1.0,
-    "recall": 0.5,
-    "f1-score": 0.6666666666666666,
-    "support": 2
-  },
-  "action_listen": {
-    "precision": 0.9767441860465116,
-    "recall": 0.8076923076923077,
-    "f1-score": 0.8842105263157894,
-    "support": 52
-  },
-  "act_prompt_userdata": {
-    "precision": 0.8571428571428571,
-    "recall": 1.0,
-    "f1-score": 0.923076923076923,
-    "support": 6
-  },
-  "change_appointment": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 3
-  },
-  "utter_date_selection_success": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 4
-  },
   "form_place_appointment": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 2
-  },
-  "None": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 52
-  },
-  "act_change_appointment": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
-  "inform": {
-    "precision": 0.3333333333333333,
-    "recall": 1.0,
-    "f1-score": 0.5,
-    "support": 2
-  },
-  "act_list_doctors": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
-  "utter_ask_appointment_id": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
-  "inform_docthash": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 6
-  },
-  "get_doctor_list": {
-    "precision": 0.5,
-    "recall": 1.0,
-    "f1-score": 0.6666666666666666,
     "support": 2
   },
   "inform_time": {
@@ -113,13 +35,19 @@
     "f1-score": 1.0,
     "support": 5
   },
-  "inform_userhash": {
-    "precision": 1.0,
-    "recall": 0.5714285714285714,
-    "f1-score": 0.7272727272727273,
-    "support": 7
-  },
   "action_make_complain": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "nlu_fallback": {
+    "precision": 1.0,
+    "recall": 0.8,
+    "f1-score": 0.888888888888889,
+    "support": 5
+  },
+  "inform_patient_name": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
@@ -131,29 +59,23 @@
     "f1-score": 1.0,
     "support": 2
   },
-  "act_delete_appointment": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "make_appiontment": {
+  "delete_appointment": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 2
   },
-  "check_appointment": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
-  "[{\"spec_id\":2}]{\"entity\": \"spec_id\", \"value\": 2}": {
+  "act_list_specilizations": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 1
+  },
+  "form_change_appointment": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4
   },
   "act_new_patient": {
     "precision": 1.0,
@@ -161,73 +83,13 @@
     "f1-score": 1.0,
     "support": 1
   },
-  "utter_time_selection_success": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 3
-  },
-  "act_check_appointment": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "inform_patient_name": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "utter_ask_userhash_for_proceed": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
-  "get_time_range": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
+  "None": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 60
   },
   "utter_ask_toselect_doctor": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 4
-  },
-  "act_show_timerange": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "form_place_medtest": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "get_spec_list": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "delete_appointment": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
-  "nlu_fallback": {
-    "precision": 0.5714285714285714,
-    "recall": 0.8,
-    "f1-score": 0.6666666666666666,
-    "support": 5
-  },
-  "inform_date": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
@@ -239,17 +101,41 @@
     "f1-score": 1.0,
     "support": 3
   },
-  "act_place_appointment": {
+  "utter_ask_appointment_id": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "act_check_appointment": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 1
   },
-  "act_list_specilizations": {
+  "action_status_report": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 1
+  },
+  "inform_userhash": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9
+  },
+  "utter_doct_selection_success": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6
+  },
+  "inform_date": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4
   },
   "inform{\"appointment_id\":5}": {
     "precision": 0.0,
@@ -257,28 +143,166 @@
     "f1-score": 0.0,
     "support": 3
   },
+  "act_prompt_userdata": {
+    "precision": 0.7777777777777778,
+    "recall": 1.0,
+    "f1-score": 0.8750000000000001,
+    "support": 7
+  },
+  "utter_time_selection_success": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+  "act_place_appointment": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "inform_reporthash": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "act_list_doctors": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "act_list_reports": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "form_place_medtest": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "[{\"spec_id\":2}]{\"entity\": \"spec_id\", \"value\": 2}": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "inform": {
+    "precision": 0.3333333333333333,
+    "recall": 1.0,
+    "f1-score": 0.5,
+    "support": 2
+  },
+  "act_change_appointment": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "check_appointment": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "get_doctor_list": {
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1-score": 0.6666666666666666,
+    "support": 2
+  },
+  "inform_docthash": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6
+  },
+  "get_spec_list": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "form_make_complain": {
+    "precision": 1.0,
+    "recall": 0.5,
+    "f1-score": 0.6666666666666666,
+    "support": 2
+  },
+  "action_listen": {
+    "precision": 0.972972972972973,
+    "recall": 0.6206896551724138,
+    "f1-score": 0.7578947368421053,
+    "support": 58
+  },
+  "get_report": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "get_time_range": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "change_appointment": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+  "make_appiontment": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "add_complaint": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "utter_date_selection_success": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4
+  },
+  "act_delete_appointment": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
   "micro avg": {
-    "precision": 0.9251700680272109,
-    "recall": 0.6507177033492823,
-    "f1-score": 0.7640449438202247,
-    "support": 209
+    "precision": 0.9411764705882353,
+    "recall": 0.6153846153846154,
+    "f1-score": 0.744186046511628,
+    "support": 234
   },
   "macro avg": {
-    "precision": 0.8892709057663087,
-    "recall": 0.8878865320725784,
-    "f1-score": 0.8767727172867932,
-    "support": 209
+    "precision": 0.906044342214555,
+    "recall": 0.9025678650036683,
+    "f1-score": 0.8940805026751274,
+    "support": 234
   },
   "weighted avg": {
-    "precision": 0.6959682504358148,
-    "recall": 0.6507177033492823,
-    "f1-score": 0.6647925901010766,
-    "support": 209
+    "precision": 0.6989040322373655,
+    "recall": 0.6153846153846154,
+    "f1-score": 0.6432792272704554,
+    "support": 234
   },
   "conversation_accuracy": {
-    "accuracy": 0.041666666666666664,
+    "accuracy": 0.03571428571428571,
     "correct": 1,
     "with_warnings": 0,
-    "total": 24
+    "total": 28
   }
 }
