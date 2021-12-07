@@ -156,7 +156,7 @@ responses:
 
   # complaint related
   utter_ask_complaint_title:
-    - text: Please select the complaint type
+    - text: 'Please select the complaint type'
       buttons:
         - title: 'Slow Travelling'
           payload: '/complaint_type{{"type":"travelling slow"}}'
@@ -173,9 +173,6 @@ responses:
 
   utter_ask_driver_id:
     - text: Please provide driver id (enter 0 if you don't know)
-      buttons:
-        - title: 'Do not know'
-          payload: '/deny{{"know":"none"}}'
 
   utter_ask_conductor_id:
     - text: Please provide the conductor id (enter 0 if you don't know)
@@ -258,7 +255,8 @@ forms:
   complaint_form:
     required_slots:
       complaint_title:
-        - type: from_text
+        - type: from_entity
+          entity: type
       complaint_description:
         - type: from_text
       vehical_number:
