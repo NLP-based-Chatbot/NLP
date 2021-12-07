@@ -19,7 +19,7 @@ from rasa_sdk.events import (
 )
 
 # URL of the backend API
-base_url = '20.185.23.148'
+base_url = '127.0.0.1'
 
 class SlotResetTravel(Action):
   """Resets the slots related to transportation"""

@@ -137,6 +137,11 @@ responses:
 
   utter_ask_travelling_mode:
     - text: What is the travelling mode?
+      buttons:
+        - title: 'Bus'
+          payload: '/travelling_mode{{"vehical":"bus"}}'
+        - title: 'Train'
+          payload: '/travelling_mode{{"vehical":"train"}}'
 
   utter_ask_selection:
     - text: Please enter the trip id from to the entries
