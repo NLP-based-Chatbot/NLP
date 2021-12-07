@@ -83,3 +83,9 @@ nlu:
       - Make a complaint for me
       - How can I file a complaint?
       - Is it possible to file a complaint?
+
+  - intent: complaint_type
+    examples: |
+      - My bus is [travelling too fast](type_complaint)
+      - My bus is [travelling too slow](type_complaint)
+      - Bus is [too noisy](type_complaint)

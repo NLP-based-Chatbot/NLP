@@ -289,3 +289,56 @@ class FindOffice(Action):
       for result in results:
          dispatcher.utter_message(text=f"Office Name: {mode} {name} - {address}")
          dispatcher.utter_message(text=f"Contact Number: {result['contact_number']}, Email: {result['email']}")
+
+class AddComplaint(Action):
+  """Add a complaint"""
+
+  def name(self) -> Text:
+    return "action_make_complaint"
+
+  def run(
+    self,
+    dispatcher: CollectingDispatcher,
+    tracker: Tracker,
+    domain: Dict[Text, Any],
+  ) -> List[EventType]:
+
+    title = tracker.get_slot('complaint_title')
+    description = tracker.get_slot('complaint_description')
+    vehical_number = tracker.get_slot('vehical_number')
+    driver_id = tracker.get_slot('driver_id')
+    conductor_id = tracker.get_slot('conductor_id')
+
+    if driver_id == "0":
+      driver_id = None
+
+    if conductor_id == "0":
+      conductor_id = None  
+
+    complaint_data = {
+      "type_id": 1,
+      "title": title,
+      "description": description,
+      "vehical_number": vehical_number,
+      "driver_id": driver_id,
+      "conductor_id" : conductor_id
+    }
+
+    results = requests.post(f"http://{base_url}:8000/transport/complaint", json=complaint_data)
+
+    if results.ok:
+      complaint = {
+        "domain": "transport",
+        "type": "bus",
+        "title": title,
+        "description": description,
+        "vehical_number": vehical_number,
+        "driver_id": driver_id,
+        "conductor_id" : conductor_id
+      }
+      dispatcher.utter_message(text = "You have succesfully made a complaint")
+      dispatcher.utter_message(json_message = {"complaint":  complaint})  
+    else:
+      dispatcher.utter_message(text="Sorry, Complainet wasn't placed because of an error")
+
+

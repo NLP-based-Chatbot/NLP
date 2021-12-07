@@ -43,7 +43,7 @@ stories:
       - action: complaint_form
       - active_loop: complaint_form
       - active_loop: null
-      - action: utter_complaint
+      - action: action_make_complaint
 
   - story: Find office (Happy Path)
     steps:

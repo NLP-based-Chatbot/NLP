@@ -22,6 +22,7 @@ intents:
   - thank
   - find_office
   - ans_office
+  - complaint_type
 
 entities:
   - vehical
@@ -30,6 +31,7 @@ entities:
   - seats
   - username
   - office_type
+  - type
 
 # Slot values
 slots:
@@ -155,6 +157,13 @@ responses:
   # complaint related
   utter_ask_complaint_title:
     - text: Please select the complaint type
+      buttons:
+        - title: 'Slow Travelling'
+          payload: '/complaint_type{{"type":"travelling slow"}}'
+        - title: 'Fast Travelling'
+          payload: '/complaint_type{{"type":"travelling fast"}}'
+        - title: 'Noisy'
+          payload: '/complaint_type{{"type":"noisy environment"}}'
 
   utter_ask_complaint_description:
     - text: Please provide the description for the complaint
@@ -163,15 +172,13 @@ responses:
     - text: Please provide the number of the vehical
 
   utter_ask_driver_id:
-    - text: Please provide driver id (Neglect if you don't know)
+    - text: Please provide driver id (enter 0 if you don't know)
+      buttons:
+        - title: 'Do not know'
+          payload: '/deny{{"know":"none"}}'
 
   utter_ask_conductor_id:
-    - text: Please provide the conductor id (Neglect if you don't know)
-
-  utter_complaint:
-    - text: "Complaint Details,\n
-        Title: {complaint_title}\n
-        Description: {complaint_description}"
+    - text: Please provide the conductor id (enter 0 if you don't know)
 
   utter_slots_booking:
     - text: "Booking details,\n
@@ -208,6 +215,7 @@ actions:
   - action_reset_office_slots
   - action_make_booking
   - action_find_office
+  - action_make_complaint
 
 session_config:
   session_expiration_time: 60
