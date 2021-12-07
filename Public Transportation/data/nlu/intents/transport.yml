@@ -23,7 +23,6 @@ nlu:
       - My depature is from [Galle]{"entity": "city", "role": "departure"}
       - My depature location is [Kandy]{"entity": "city", "role": "departure"}
       - My location is [Kelaniya]{"entity": "city", "role": "departure"}
-
       - I am travelling to [Moratuwa]{"entity": "city", "role": "destination"}
       - My destination is [Negombo]{"entity": "city", "role": "destination"}
       - My destination location is [Hambanthota]{"entity": "city", "role": "destination"}   
